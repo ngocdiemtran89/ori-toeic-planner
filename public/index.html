@@ -144,6 +144,54 @@ main{max-width:980px;margin:auto;padding:22px 16px 56px}
 .use-case{font-size:12px;color:var(--gr);margin-top:10px;padding:8px 12px;background:var(--grl);border-radius:6px;line-height:1.6}
 .use-case strong{color:var(--tx2)}
 
+
+/* VOCAB TOPIC */
+.topic-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+@media(max-width:700px){.topic-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:440px){.topic-grid{grid-template-columns:repeat(2,1fr)}}
+.topic-btn{border:1.5px solid var(--bd);border-radius:8px;padding:8px 6px;cursor:pointer;background:var(--wh);font-size:12px;font-weight:500;text-align:center;transition:all .12s;color:var(--tx2);font-family:inherit}
+.topic-btn:hover{border-color:var(--g);color:var(--gd)}
+.topic-btn.picked{border-color:var(--g);background:var(--gl);color:var(--gd);font-weight:600}
+
+/* VOCAB TABS */
+.vtab-panel{background:var(--wh);border:1px solid var(--bd);border-radius:var(--rad);padding:18px 20px;box-shadow:var(--sh)}
+
+/* VOCAB TABLE */
+.vtable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:10px}
+.vtable th{background:var(--nv);color:#fff;padding:8px 10px;text-align:left;font-weight:600;font-size:12px}
+.vtable td{padding:7px 10px;border-bottom:1px solid var(--bd);vertical-align:top}
+.vtable tr:hover td{background:#F9FAFB}
+.vtable .en{font-weight:600;color:var(--nv)}
+.vtable .vi{color:var(--tx2)}
+.vtable .ex{font-size:12px;color:var(--gr);font-style:italic}
+
+/* QUIZ */
+.q-card{background:var(--grl);border-radius:8px;padding:14px 16px;margin-bottom:10px}
+.q-num{font-weight:700;color:var(--nv);font-size:13px;margin-bottom:6px}
+.q-text{font-size:14px;font-weight:500;color:var(--tx);margin-bottom:10px;line-height:1.5}
+.q-opts{display:grid;gap:6px}
+.q-opt{border:1.5px solid var(--bd);border-radius:8px;padding:9px 14px;cursor:pointer;background:var(--wh);font-size:13px;text-align:left;transition:all .12s;font-family:inherit;color:var(--tx2)}
+.q-opt:hover{border-color:var(--g);background:var(--gl)}
+.q-opt.correct{border-color:#059669;background:#ECFDF5;color:#065F46;font-weight:600}
+.q-opt.wrong{border-color:#DC2626;background:#FEF2F2;color:#991B1B}
+.q-opt.show-correct{border-color:#059669;background:#ECFDF5;color:#065F46;font-weight:600}
+.q-opt[disabled]{cursor:default;opacity:.85}
+.q-explain{margin-top:8px;font-size:12px;color:var(--gd);background:var(--gl);border-radius:6px;padding:8px 12px;display:none;line-height:1.6}
+
+/* FILL BLANK */
+.fb-card{background:var(--grl);border-radius:8px;padding:14px 16px;margin-bottom:10px}
+.fb-sentence{font-size:14px;color:var(--tx);line-height:1.6;margin-bottom:10px}
+.fb-sentence .blank{display:inline-block;min-width:100px;border-bottom:2px solid var(--nv);text-align:center;font-weight:600;color:var(--g)}
+.fb-opts{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+@media(max-width:500px){.fb-opts{grid-template-columns:repeat(2,1fr)}}
+.fb-explain{margin-top:8px;font-size:12px;color:var(--gd);background:var(--gl);border-radius:6px;padding:8px 12px;display:none;line-height:1.6}
+
+/* SCORE */
+.score-card{background:linear-gradient(135deg,var(--nv),#1a3a6b);border-radius:var(--rad);padding:20px;margin-top:14px;text-align:center;color:#fff}
+.score-big{font-size:42px;font-weight:800;color:var(--gld)}
+.score-label{font-size:13px;opacity:.7;margin-top:4px}
+.score-msg{font-size:14px;margin-top:10px;font-weight:500}
+
 footer{background:var(--nv);color:rgba(255,255,255,.4);text-align:center;font-size:11px;padding:14px;margin-top:24px;line-height:1.8}
 footer strong{color:rgba(255,255,255,.75)}
 
@@ -245,6 +293,62 @@ footer strong{color:rgba(255,255,255,.75)}
   <div id="plancards"></div>
   <div id="totbar"></div>
   <button class="chbtn" onclick="resetFocus()">↺ Đổi 2 Part tập trung — tuần sau</button>
+</div>
+
+
+
+<!-- VOCAB BY TOPIC SECTION -->
+<div class="slbl" style="margin-top:8px">Luyện từ vựng theo chủ đề — AI tạo Quiz + Bài tập Part 5</div>
+<div class="card" id="vocab-card">
+  <div style="font-size:13px;color:var(--tx2);margin-bottom:14px;line-height:1.6">
+    Chọn chủ đề → AI tự soạn bảng từ vựng + quiz trắc nghiệm + bài tập điền câu kiểu Part 5. Dùng lại Groq API key ở Bước 4.
+  </div>
+  <div style="font-size:12px;font-weight:600;color:var(--gd);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Chọn chủ đề</div>
+  <div class="topic-grid" id="topic-grid">
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Office & Workplace">Office & Workplace</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Travel & Tourism">Travel & Tourism</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Shopping & Retail">Shopping & Retail</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Banking & Finance">Banking & Finance</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Health & Hospital">Health & Hospital</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Restaurant & Food">Restaurant & Food</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Human Resources">Human Resources</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Manufacturing & Factory">Manufacturing</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Marketing & Advertising">Marketing</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Technology & IT">Technology & IT</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Logistics & Shipping">Logistics</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Real Estate & Housing">Real Estate</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Education & Training">Education</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Law & Legal">Law & Legal</button>
+    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Aviation & Airport">Aviation</button>
+  </div>
+  <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+    <input type="text" id="custom-topic" placeholder="...hoặc tự nhập chủ đề" style="flex:1;min-width:180px;border:1px solid var(--bd);border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;background:var(--grl)">
+    <button class="gbtn" onclick="genVocab()" id="vbtn" style="white-space:nowrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 6v12M6 12h12"/></svg>
+      Tạo bài học
+    </button>
+  </div>
+  <div id="vocab-err"></div>
+</div>
+
+<div class="ldbox" id="vld">
+  <div class="spin"></div>
+  <div class="ltxt">AI đang soạn từ vựng + quiz...</div>
+  <div class="lsub" id="vlsub">Đang tạo bảng từ vựng theo chủ đề...</div>
+</div>
+
+<div id="vocab-out" style="display:none">
+  <div class="slbl">Bài học từ vựng</div>
+  <div id="vocab-topic-title"></div>
+  <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap">
+    <button class="tab-btn on" data-vtab="words" onclick="showVTab('words')">📖 Từ vựng</button>
+    <button class="tab-btn" data-vtab="quiz" onclick="showVTab('quiz')">❓ Quiz</button>
+    <button class="tab-btn" data-vtab="fill" onclick="showVTab('fill')">✏️ Điền câu Part 5</button>
+  </div>
+  <div id="vtab-words" class="vtab-panel"></div>
+  <div id="vtab-quiz" class="vtab-panel" style="display:none"></div>
+  <div id="vtab-fill" class="vtab-panel" style="display:none"></div>
+  <div id="vocab-score" style="display:none"></div>
 </div>
 
 
@@ -549,6 +653,15 @@ Hãy soạn cho tôi bộ từ vựng từ bài này:
 
 3. 3 TRAP thường gặp với loại ảnh này (từ dễ nghe nhầm hoặc dễ chọn sai)
 
+
+
+5. ĐOẠN VĂN SONG NGỮ (quan trọng):
+Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
+→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
+Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
+→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
+→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
+
 Viết ngắn gọn, dễ nhớ, có thể in ra ôn.`
   },
   p2: {
@@ -571,6 +684,15 @@ Hãy soạn:
 3. 5 MẪU TRẢ LỜI hay dùng trong Part 2 với ví dụ thật
 
 4. 3-5 câu hay NGHE NHẦM — giải thích tại sao nhầm và cách phân biệt
+
+
+
+5. ĐOẠN VĂN SONG NGỮ (quan trọng):
+Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
+→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
+Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
+→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
+→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
 
 Không lý thuyết — chỉ từ vựng + mẫu câu cụ thể.`
   },
@@ -597,6 +719,15 @@ Từ script này, hãy soạn:
 
 4. 3 DẠNG CÂU HỎI thường gặp cho loại hội thoại này trong đề TOEIC
 
+
+
+5. ĐOẠN VĂN SONG NGỮ (quan trọng):
+Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
+→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
+Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
+→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
+→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
+
 Viết tiếng Việt, ngắn gọn, dùng được ngay.`
   },
   p4: {
@@ -619,6 +750,15 @@ Từ script này, hãy soạn:
 3. SIGNAL WORDS trong bài — từ báo hiệu thông tin quan trọng (first, however, as a result...)
 
 4. 3 CÂU HỎI kiểu TOEIC thường đặt cho bài nói loại này
+
+
+
+5. ĐOẠN VĂN SONG NGỮ (quan trọng):
+Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
+→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
+Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
+→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
+→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
 
 Không viết dài — chỉ bảng từ + ví dụ thực tế.`
   },
@@ -649,6 +789,15 @@ Hãy soạn:
 
 4. 3 CÂU LUYỆN THÊM tương tự — có đáp án ở cuối
 
+
+
+5. ĐOẠN VĂN SONG NGỮ (quan trọng):
+Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
+→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
+Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
+→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
+→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
+
 Viết súc tích, thực chiến — không lý thuyết ngữ pháp dài.`
   },
   p6: {
@@ -674,6 +823,15 @@ Hãy soạn:
 3. LOẠI VĂN BẢN (email/memo/notice/letter...) + 6 từ đặc trưng loại này
 
 4. TỪ NỐI / COHERENCE trong đoạn văn và cách dùng (however, therefore, in addition...)
+
+
+
+5. ĐOẠN VĂN SONG NGỮ (quan trọng):
+Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
+→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
+Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
+→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
+→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
 
 Ngắn gọn, dùng ngay trước buổi học sau.`
   },
@@ -701,6 +859,15 @@ Từ bài đọc trên, hãy soạn:
    → dạng: main idea / detail / inference / NOT question / vocab in context
 
 4. TÓM TẮT bài bằng 3 câu tiếng Anh đơn giản (để luyện nói lại)
+
+
+
+5. ĐOẠN VĂN SONG NGỮ (quan trọng):
+Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
+→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
+Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
+→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
+→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
 
 Viết tiếng Việt, thực chiến, dùng được ngay.`
   }
@@ -753,6 +920,253 @@ function copyPrompt(partId) {
 
 // init tab
 showTab('p1');
+
+// ── VOCAB BY TOPIC ───────────────────────────────────────────
+let pickedTopic = '';
+let vocabData = null;
+let quizScore = {quiz: {correct:0, total:0}, fill: {correct:0, total:0}};
+
+function pickTopic(btn) {
+  document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('picked'));
+  btn.classList.add('picked');
+  pickedTopic = btn.dataset.topic;
+  document.getElementById('custom-topic').value = '';
+}
+
+function showVTab(tab) {
+  ['words','quiz','fill'].forEach(t => {
+    const el = document.getElementById('vtab-' + t);
+    if(el) el.style.display = t === tab ? 'block' : 'none';
+  });
+  document.querySelectorAll('[data-vtab]').forEach(b => b.classList.toggle('on', b.dataset.vtab === tab));
+}
+
+async function genVocab() {
+  const custom = document.getElementById('custom-topic').value.trim();
+  const topic = custom || pickedTopic;
+  if(!topic) {
+    document.getElementById('vocab-err').innerHTML = '<div class="err">Chọn hoặc nhập 1 chủ đề trước.</div>';
+    return;
+  }
+  document.getElementById('vocab-err').innerHTML = '';
+  document.getElementById('vld').style.display = 'block';
+  document.getElementById('vocab-out').style.display = 'none';
+  document.getElementById('vbtn').disabled = true;
+  quizScore = {quiz:{correct:0,total:0}, fill:{correct:0,total:0}};
+
+  const msgs = ['Đang tạo bảng từ vựng...','Đang soạn quiz trắc nghiệm...','Đang viết bài tập điền câu Part 5...'];
+  let mi = 0;
+  const iv = setInterval(() => { document.getElementById('vlsub').textContent = msgs[mi++ % msgs.length]; }, 1500);
+
+  const prompt = `Bạn là giáo viên TOEIC. Tạo bài học từ vựng chủ đề "${topic}" cho học viên luyện TOEIC.
+
+QUAN TRỌNG: Trả lời ĐÚNG FORMAT JSON bên dưới. KHÔNG viết gì ngoài JSON. KHÔNG dùng markdown backticks.
+
+{
+  "topic": "${topic}",
+  "words": [
+    {"en": "từ tiếng Anh", "vi": "nghĩa tiếng Việt", "pos": "n/v/adj/adv", "example": "câu ví dụ tiếng Anh có dùng từ này"},
+    ... (12-15 từ, từ dễ đến khó, đúng chủ đề "${topic}" hay gặp trong TOEIC)
+  ],
+  "quiz": [
+    {
+      "question": "câu hỏi nghĩa từ vựng — tiếng Anh",
+      "options": ["A đáp án", "B đáp án", "C đáp án", "D đáp án"],
+      "answer": 0,
+      "explain": "giải thích ngắn tại sao đáp án đúng — bằng tiếng Việt"
+    },
+    ... (8 câu quiz: 4 câu hỏi nghĩa từ, 4 câu chọn từ đồng nghĩa/trái nghĩa)
+  ],
+  "fill": [
+    {
+      "sentence": "câu tiếng Anh có chỗ trống -------",
+      "options": ["A", "B", "C", "D"],
+      "answer": 0,
+      "explain": "giải thích ngắn — tiếng Việt — tại sao chọn đáp án này, dấu hiệu nhận dạng"
+    },
+    ... (6 câu điền từ kiểu Part 5 TOEIC: 3 câu word form, 2 câu vocabulary in context, 1 câu preposition/conjunction)
+  ]
+}
+
+YÊU CẦU QUAN TRỌNG:
+- quiz: mỗi câu có ĐÚNG 4 options, answer là index 0-3
+- fill: câu tiếng Anh có 1 chỗ trống ký hiệu "-------", 4 đáp án, answer là index 0-3
+- fill phải giống Part 5 thật: test word form (noun/verb/adj/adv), tense, preposition, conjunction
+- Tất cả từ vựng phải liên quan đến chủ đề "${topic}" và hay gặp trong đề TOEIC thật
+- CHỈ TRẢ VỀ JSON, KHÔNG viết gì khác
+
+Thêm 1 field "paragraph" trong JSON: đoạn văn song ngữ 80-120 từ tiếng Anh, dùng tất cả từ vựng ở trên, format chêm nghĩa tiếng Việt trong ngoặc ngay sau từ khó.
+Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board (ban giám đốc)."
+Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên — không phải liệt kê từ rời rạc.`;
+
+  try {
+    const res = await fetch('/api/groq', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json',},
+      body: JSON.stringify({model:'llama-3.3-70b-versatile', max_tokens:3000, temperature:0.6,
+        messages:[{role:'user',content:prompt}]})
+    });
+    const data = await res.json();
+    clearInterval(iv);
+    document.getElementById('vld').style.display = 'none';
+    document.getElementById('vbtn').disabled = false;
+    if(!res.ok) { document.getElementById('vocab-err').innerHTML = '<div class="err">Lỗi API: '+(data.error?.message||'Kiểm tra key')+'</div>'; return; }
+
+    let txt = data.choices?.[0]?.message?.content || '';
+    // Clean: remove markdown fences if any
+    txt = txt.replace(/```json\s*/gi,'').replace(/```\s*/gi,'').trim();
+    // Try to extract JSON object
+    const jsonMatch = txt.match(/\{[\s\S]*\}/);
+    if(!jsonMatch) { document.getElementById('vocab-err').innerHTML = '<div class="err">AI trả về format sai. Thử lại.</div>'; return; }
+
+    try {
+      vocabData = JSON.parse(jsonMatch[0]);
+    } catch(e) {
+      document.getElementById('vocab-err').innerHTML = '<div class="err">Lỗi parse JSON: '+e.message+'. Thử lại.</div>';
+      return;
+    }
+    renderVocab();
+  } catch(e) {
+    clearInterval(iv);
+    document.getElementById('vld').style.display = 'none';
+    document.getElementById('vbtn').disabled = false;
+    document.getElementById('vocab-err').innerHTML = '<div class="err">Lỗi kết nối: '+e.message+'</div>';
+  }
+}
+
+function renderVocab() {
+  if(!vocabData) return;
+  const d = vocabData;
+
+  // Topic title
+  document.getElementById('vocab-topic-title').innerHTML =
+    `<div style="background:var(--nv);color:#fff;border-radius:var(--rad);padding:14px 20px;margin-bottom:14px;display:flex;align-items:center;gap:12px">
+      <span style="font-size:24px">📚</span>
+      <div><div style="font-weight:700;font-size:16px">${escHtml(d.topic)}</div>
+      <div style="font-size:12px;opacity:.6">${d.words?.length||0} từ vựng · ${d.quiz?.length||0} quiz · ${d.fill?.length||0} bài tập Part 5</div></div>
+    </div>`;
+
+  // TAB 1: Words table
+  let whtml = '<table class="vtable"><thead><tr><th style="width:24px">#</th><th>English</th><th>Tiếng Việt</th><th>Loại</th><th>Ví dụ</th></tr></thead><tbody>';
+  (d.words||[]).forEach((w, i) => {
+    whtml += `<tr><td style="color:var(--gr);font-size:12px">${i+1}</td><td class="en">${escHtml(w.en)}</td><td class="vi">${escHtml(w.vi)}</td><td style="font-size:11px;color:var(--gr)">${escHtml(w.pos||'')}</td><td class="ex">${escHtml(w.example||'')}</td></tr>`;
+  });
+  whtml += '</tbody></table>';
+  // Bilingual paragraph
+  if(d.paragraph) {
+    whtml += '<div style="margin-top:14px;background:#F0F7FF;border:1px solid #BFDBFE;border-radius:8px;padding:14px 16px">';
+    whtml += '<div style="font-size:11.5px;font-weight:700;color:#0A2240;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">📝 Đoạn văn song ngữ — Đọc 3 lần để nhớ từ</div>';
+    whtml += '<div style="font-size:14px;line-height:1.85;color:#1E3A5F">' + escHtml(d.paragraph).replace(/\(([^)]+)\)/g, '(<span style=\'color:#2DA65C;font-weight:600\'>$1</span>)') + '</div>';
+    whtml += '</div>';
+  }
+  document.getElementById('vtab-words').innerHTML = whtml;
+
+  // TAB 2: Quiz
+  let qhtml = '';
+  (d.quiz||[]).forEach((q, i) => {
+    const qid = 'qq_' + i;
+    qhtml += `<div class="q-card" id="${qid}">
+      <div class="q-num">Câu ${i+1} / ${d.quiz.length}</div>
+      <div class="q-text">${escHtml(q.question)}</div>
+      <div class="q-opts">`;
+    (q.options||[]).forEach((opt, oi) => {
+      const label = String.fromCharCode(65+oi);
+      qhtml += `<button class="q-opt" onclick="ansQuiz('${qid}',${oi},${q.answer||0})" data-oi="${oi}">${label}. ${escHtml(opt)}</button>`;
+    });
+    qhtml += `</div><div class="q-explain" id="${qid}_ex">${escHtml(q.explain||'')}</div></div>`;
+  });
+  document.getElementById('vtab-quiz').innerHTML = qhtml;
+
+  // TAB 3: Fill blank (Part 5 style)
+  let fhtml = '';
+  (d.fill||[]).forEach((f, i) => {
+    const fid = 'ff_' + i;
+    // Replace ------- with blank span
+    const sentenceHtml = escHtml(f.sentence).replace(/[-]{3,}/g, '<span class="blank" id="'+fid+'_bl">?</span>');
+    fhtml += `<div class="fb-card" id="${fid}">
+      <div class="q-num">Câu ${i+1} / ${d.fill.length}</div>
+      <div class="fb-sentence">${sentenceHtml}</div>
+      <div class="fb-opts">`;
+    (f.options||[]).forEach((opt, oi) => {
+      const label = String.fromCharCode(65+oi);
+      fhtml += `<button class="q-opt" onclick="ansFill('${fid}',${oi},${f.answer||0},'${escAttr(opt)}')" data-oi="${oi}">(${label}) ${escHtml(opt)}</button>`;
+    });
+    fhtml += `</div><div class="fb-explain" id="${fid}_ex">${escHtml(f.explain||'')}</div></div>`;
+  });
+  document.getElementById('vtab-fill').innerHTML = fhtml;
+
+  document.getElementById('vocab-score').style.display = 'none';
+  document.getElementById('vocab-out').style.display = 'block';
+  showVTab('words');
+  document.getElementById('vocab-out').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function ansQuiz(qid, picked, correct) {
+  const card = document.getElementById(qid);
+  if(!card) return;
+  const btns = card.querySelectorAll('.q-opt');
+  if(btns[0] && btns[0].disabled) return; // already answered
+  btns.forEach((b, i) => {
+    b.disabled = true;
+    if(i === correct) b.classList.add('correct');
+    if(i === picked && picked !== correct) b.classList.add('wrong');
+  });
+  const ex = document.getElementById(qid + '_ex');
+  if(ex) { ex.style.display = 'block'; }
+  quizScore.quiz.total++;
+  if(picked === correct) quizScore.quiz.correct++;
+  checkAllDone();
+}
+
+function ansFill(fid, picked, correct, optText) {
+  const card = document.getElementById(fid);
+  if(!card) return;
+  const btns = card.querySelectorAll('.q-opt');
+  if(btns[0] && btns[0].disabled) return;
+  btns.forEach((b, i) => {
+    b.disabled = true;
+    if(i === correct) b.classList.add('correct');
+    if(i === picked && picked !== correct) b.classList.add('wrong');
+  });
+  // Fill in the blank
+  const bl = document.getElementById(fid + '_bl');
+  if(bl) {
+    const correctOpt = vocabData.fill[parseInt(fid.split('_')[1])].options[correct];
+    bl.textContent = correctOpt;
+    bl.style.color = picked === correct ? '#059669' : '#DC2626';
+  }
+  const ex = document.getElementById(fid + '_ex');
+  if(ex) ex.style.display = 'block';
+  quizScore.fill.total++;
+  if(picked === correct) quizScore.fill.correct++;
+  checkAllDone();
+}
+
+function checkAllDone() {
+  if(!vocabData) return;
+  const totalQ = (vocabData.quiz?.length||0) + (vocabData.fill?.length||0);
+  const totalDone = quizScore.quiz.total + quizScore.fill.total;
+  if(totalDone >= totalQ && totalQ > 0) {
+    const totalCorrect = quizScore.quiz.correct + quizScore.fill.correct;
+    const pct = Math.round(totalCorrect / totalQ * 100);
+    let msg = '';
+    if(pct >= 90) msg = '🏆 Xuất sắc! Bạn nắm rất vững chủ đề này!';
+    else if(pct >= 70) msg = '👍 Tốt lắm! Ôn lại vài từ sai là hoàn hảo.';
+    else if(pct >= 50) msg = '💪 Khá ổn! Cần ôn thêm từ vựng chủ đề này.';
+    else msg = '📖 Cần ôn lại từ vựng — xem bảng từ và làm lại quiz nhé!';
+
+    document.getElementById('vocab-score').innerHTML = `
+      <div class="score-card">
+        <div class="score-big">${totalCorrect}/${totalQ}</div>
+        <div class="score-label">Đúng ${pct}% — Quiz: ${quizScore.quiz.correct}/${quizScore.quiz.total} · Part 5: ${quizScore.fill.correct}/${quizScore.fill.total}</div>
+        <div class="score-msg">${msg}</div>
+      </div>`;
+    document.getElementById('vocab-score').style.display = 'block';
+  }
+}
+
+function escAttr(s) { return s.replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
+
 
 </script>
 </body>

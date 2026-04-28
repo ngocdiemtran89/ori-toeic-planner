@@ -30,7 +30,6 @@ main{max-width:980px;margin:auto;padding:22px 16px 56px}
 .pt th{background:var(--nv);color:#fff;padding:7px 10px;text-align:center;font-weight:600;font-size:11.5px}
 .pt th:first-child{text-align:left}
 .pt td{padding:6px 10px;border-bottom:1px solid var(--bd);vertical-align:middle}
-.pt tr:last-child td{border-bottom:none}
 .pt input[type=number]{width:56px;border:1px solid var(--bd);border-radius:6px;padding:4px 6px;font-size:13px;text-align:center;background:var(--grl);font-family:inherit}
 .pt input[type=number]:focus{outline:none;border-color:var(--g);background:#fff}
 .bl{background:#DBEAFE;color:#1E40AF;font-size:10px;padding:2px 6px;border-radius:8px;font-weight:600}
@@ -67,10 +66,10 @@ main{max-width:980px;margin:auto;padding:22px 16px 56px}
 .dbody{padding:14px 16px;font-size:13px;color:var(--tx2);line-height:1.75;white-space:pre-wrap}
 .dbody .em{color:var(--nv);font-weight:600}.dbody .mot{color:var(--gd);font-style:italic;font-weight:500}
 .tipcard{background:#F0FDF4;border:1px solid #A3D9B5;border-left:3px solid var(--g);border-radius:var(--rad);padding:14px 18px;margin-top:4px;font-size:13px;color:var(--gd);line-height:1.7;white-space:pre-wrap}
-.tipcard strong{color:var(--gd);font-weight:700}
+.tipcard strong{font-weight:700}
 .totbar{background:var(--nv);border-radius:var(--rad);padding:14px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:16px 0 6px}
-.ti{text-align:center}.tv{font-size:17px;font-weight:800;color:var(--gld)}.tl{font-size:10px;opacity:.5;margin-top:2px;text-transform:uppercase;letter-spacing:.4px}
-.chbtn{background:transparent;border:1.5px solid var(--g);color:var(--g);font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;font-family:inherit;transition:all .15s;margin-top:12px}
+.ti{text-align:center}.tv{font-size:17px;font-weight:800;color:var(--gld)}.tl{font-size:10px;opacity:.5;margin-top:2px;text-transform:uppercase}
+.chbtn{background:transparent;border:1.5px solid var(--g);color:var(--g);font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;font-family:inherit;margin-top:12px}
 .chbtn:hover{background:var(--gl)}
 .err{background:#FEF2F2;border:1px solid #FCA5A5;border-radius:8px;padding:10px 14px;font-size:13px;color:#991B1B;margin-top:10px}
 .tab-btn{padding:5px 14px;border-radius:20px;border:1px solid var(--bd);background:var(--wh);font-size:13px;font-weight:500;cursor:pointer;transition:all .12s;color:var(--tx2);font-family:inherit}
@@ -82,12 +81,12 @@ main{max-width:980px;margin:auto;padding:22px 16px 56px}
 @media(max-width:700px){.topic-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:440px){.topic-grid{grid-template-columns:repeat(2,1fr)}}
 .topic-btn{border:1.5px solid var(--bd);border-radius:8px;padding:8px 6px;cursor:pointer;background:var(--wh);font-size:12px;font-weight:500;text-align:center;transition:all .12s;color:var(--tx2);font-family:inherit}
-.topic-btn:hover{border-color:var(--g);color:var(--gd)}.topic-btn.picked{border-color:var(--g);background:var(--gl);color:var(--gd);font-weight:600}
+.topic-btn:hover{border-color:var(--g)}.topic-btn.picked{border-color:var(--g);background:var(--gl);color:var(--gd);font-weight:600}
 .vtab-panel{background:var(--wh);border:1px solid var(--bd);border-radius:var(--rad);padding:18px 20px;box-shadow:var(--sh)}
 .vtable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:10px}
 .vtable th{background:var(--nv);color:#fff;padding:8px 10px;text-align:left;font-weight:600;font-size:12px}
-.vtable td{padding:7px 10px;border-bottom:1px solid var(--bd);vertical-align:top}
-.vtable .en{font-weight:600;color:var(--nv)}.vtable .vi{color:var(--tx2)}.vtable .ex{font-size:12px;color:var(--gr);font-style:italic}
+.vtable td{padding:7px 10px;border-bottom:1px solid var(--bd)}
+.vtable .en{font-weight:600;color:var(--nv)}.vtable .ex{font-size:12px;color:var(--gr);font-style:italic}
 .q-card{background:var(--grl);border-radius:8px;padding:14px 16px;margin-bottom:10px}
 .q-num{font-weight:700;color:var(--nv);font-size:13px;margin-bottom:6px}
 .q-text{font-size:14px;font-weight:500;color:var(--tx);margin-bottom:10px;line-height:1.5}
@@ -129,16 +128,16 @@ footer strong{color:rgba(255,255,255,.75)}
 
 <div class="slbl">Bước 2 — Chọn 2 Part tập trung tuần này</div>
 <div class="card">
-  <div style="font-size:13px;color:var(--tx2);margin-bottom:12px">Chọn đúng <strong>2 Part</strong> tập trung sâu. Khi đạt mục tiêu → bấm "Đổi Part" chọn 2 Part mới. Các Part còn lại vẫn ôn nhẹ.</div>
+  <div style="font-size:13px;color:var(--tx2);margin-bottom:12px">Chọn đúng <strong>2 Part</strong> tập trung sâu. Khi đạt mục tiêu → bấm "Đổi Part" chọn 2 Part mới.</div>
   <div class="fg" id="fg"></div>
   <div class="finfo" id="fi">Chưa chọn — hãy chọn 2 Part bên trên.</div>
 </div>
 
 <div class="slbl">Bước 3 — Chọn lịch học</div>
 <div class="card">
-  <div class="cr"><span class="cl">Số buổi / tuần</span><div class="bg" id="dg"><button class="bs" onclick="setD(3)" data-v="3">3 buổi</button><button class="bs on" onclick="setD(4)" data-v="4">4 buổi</button><button class="bs" onclick="setD(5)" data-v="5">5 buổi</button><button class="bs" onclick="setD(6)" data-v="6">6 buổi</button><button class="bs" onclick="setD(7)" data-v="7">7 buổi</button></div></div>
-  <div class="cr"><span class="cl">Thời gian / buổi</span><div class="bg" id="hg"><button class="bs" onclick="setH(60)" data-v="60">1 tiếng</button><button class="bs on" onclick="setH(90)" data-v="90">1.5 tiếng</button><button class="bs" onclick="setH(120)" data-v="120">2 tiếng</button><button class="bs" onclick="setH(150)" data-v="150">2.5 tiếng</button><button class="bs" onclick="setH(180)" data-v="180">3 tiếng</button></div></div>
-  <div class="cr" style="margin-bottom:0"><span class="cl">Dịch Part 7 / buổi</span><div class="bg" id="tg"><button class="bs on" onclick="setT(20)" data-v="20">20 phút</button><button class="bs" onclick="setT(25)" data-v="25">25 phút</button><button class="bs" onclick="setT(30)" data-v="30">30 phút</button></div></div>
+  <div class="cr"><span class="cl">Số buổi / tuần</span><div class="bg" id="dg"></div></div>
+  <div class="cr"><span class="cl">Thời gian / buổi</span><div class="bg" id="hg"></div></div>
+  <div class="cr" style="margin-bottom:0"><span class="cl">Dịch Part 7 / buổi</span><div class="bg" id="tg"></div></div>
 </div>
 
 <div class="slbl">Bước 4 — Tạo kế hoạch bằng AI</div>
@@ -151,18 +150,17 @@ footer strong{color:rgba(255,255,255,.75)}
 <div id="planout">
   <div class="slbl">Kế hoạch học tập tuần này</div>
   <div id="sloganarea"></div><div id="plancards"></div><div id="totbar"></div>
-  <button class="chbtn" onclick="resetFocus()">↺ Đổi 2 Part tập trung — tuần sau</button>
+  <button class="chbtn" id="resetbtn">↺ Đổi 2 Part tập trung — tuần sau</button>
 </div>
 
-<!-- VOCAB BY TOPIC -->
 <div class="slbl" style="margin-top:8px">Luyện từ vựng theo chủ đề — Quiz + Part 5</div>
 <div class="card">
-  <div style="font-size:13px;color:var(--tx2);margin-bottom:14px;line-height:1.6">Chọn chủ đề → AI soạn bảng từ + đoạn văn song ngữ + quiz + bài tập Part 5. Dùng Groq key ở Bước 4.</div>
+  <div style="font-size:13px;color:var(--tx2);margin-bottom:14px;line-height:1.6">Chọn chủ đề → AI soạn bảng từ + đoạn văn song ngữ + quiz + bài tập Part 5.</div>
   <div style="font-size:12px;font-weight:600;color:var(--gd);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Chọn chủ đề</div>
   <div class="topic-grid" id="topic-grid"></div>
   <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
     <input type="text" id="custom-topic" placeholder="...hoặc tự nhập chủ đề" style="flex:1;min-width:180px;border:1px solid var(--bd);border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;background:var(--grl)">
-    <button class="gbtn" onclick="genVocab()" id="vbtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 6v12M6 12h12"/></svg>Tạo bài học</button>
+    <button class="gbtn" id="vbtn">➕ Tạo bài học</button>
   </div>
   <div id="vocab-err"></div>
 </div>
@@ -170,21 +168,16 @@ footer strong{color:rgba(255,255,255,.75)}
 <div id="vocab-out" style="display:none">
   <div class="slbl">Bài học từ vựng</div>
   <div id="vtitle"></div>
-  <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap">
-    <button class="tab-btn on" data-vtab="words" onclick="showVT('words')">📖 Từ vựng</button>
-    <button class="tab-btn" data-vtab="quiz" onclick="showVT('quiz')">❓ Quiz</button>
-    <button class="tab-btn" data-vtab="fill" onclick="showVT('fill')">✏️ Part 5</button>
-  </div>
+  <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap" id="vtabs"></div>
   <div id="vt-words" class="vtab-panel"></div>
   <div id="vt-quiz" class="vtab-panel" style="display:none"></div>
   <div id="vt-fill" class="vtab-panel" style="display:none"></div>
   <div id="vscore" style="display:none"></div>
 </div>
 
-<!-- PROMPT COPY-PASTE -->
 <div class="slbl" style="margin-top:8px">Học cùng AI — Prompt copy-paste cho từng Part</div>
 <div class="card">
-  <div style="font-size:13px;color:var(--tx2);margin-bottom:16px;line-height:1.6">Copy đoạn văn / script từ bài vừa làm → paste prompt dưới đây vào <strong>ChatGPT / Claude / Gemini</strong> → nhận từ vựng + đoạn văn song ngữ từ đúng bài đó.</div>
+  <div style="font-size:13px;color:var(--tx2);margin-bottom:16px;line-height:1.6">Copy script từ bài vừa làm → paste prompt vào <strong>ChatGPT / Claude / Gemini</strong> → nhận từ vựng + đoạn văn song ngữ.</div>
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px" id="ptabs"></div>
   <div id="pcontent"></div>
 </div>
@@ -193,263 +186,254 @@ footer strong{color:rgba(255,255,255,.75)}
 <footer><strong>ORI TOEIC Dream Job Academy</strong> · 135 Bạch Đằng, Tân Bình, TP.HCM<br>oritoeicdreamjob.com · 0906 303 373 · Cô Katie dạy trực tiếp<br>Học là hiểu – Thi là đậu – Đi làm là dùng được</footer>
 
 <script>
-// ═══════════════════════════════════════════════════════════════
-// DATA
-// ═══════════════════════════════════════════════════════════════
+(function(){
+"use strict";
+
 var PARTS=[
-  {id:'p1',name:'Part 1',type:'L',total:6,desc:'Mô tả ảnh'},
-  {id:'p2',name:'Part 2',type:'L',total:25,desc:'Hỏi & đáp'},
-  {id:'p3',name:'Part 3',type:'L',total:39,desc:'Hội thoại'},
-  {id:'p4',name:'Part 4',type:'L',total:30,desc:'Bài nói ngắn'},
-  {id:'p5',name:'Part 5',type:'R',total:30,desc:'Điền từ'},
-  {id:'p6',name:'Part 6',type:'R',total:16,desc:'Điền vào đoạn'},
-  {id:'p7',name:'Part 7',type:'R',total:54,desc:'Đọc hiểu'}
+  {id:"p1",name:"Part 1",type:"L",total:6,desc:"Mô tả ảnh"},
+  {id:"p2",name:"Part 2",type:"L",total:25,desc:"Hỏi & đáp"},
+  {id:"p3",name:"Part 3",type:"L",total:39,desc:"Hội thoại"},
+  {id:"p4",name:"Part 4",type:"L",total:30,desc:"Bài nói ngắn"},
+  {id:"p5",name:"Part 5",type:"R",total:30,desc:"Điền từ"},
+  {id:"p6",name:"Part 6",type:"R",total:16,desc:"Điền vào đoạn"},
+  {id:"p7",name:"Part 7",type:"R",total:54,desc:"Đọc hiểu"}
 ];
 var DF={p1_n:1,p1_t:5,p2_n:17,p2_t:18,p3_n:33,p3_t:37,p4_n:21,p4_t:21,p5_n:17,p5_t:19,p6_n:4,p6_t:6,p7_n:21,p7_t:27};
 var LT=[5,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,165,170,175,180,185,190,195,200,205,210,215,220,225,230,235,240,245,250,255,260,265,270,275,280,285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,365,370,375,380,385,395,400,405,410,415,420,425,430,435,440,445,450,455,460,465,470,475,480,485,490,495,495,495,495,495];
 var RT=[5,5,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,165,170,175,180,185,190,195,200,205,210,215,220,225,230,235,240,245,250,255,260,265,270,275,280,285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,365,370,375,380,385,390,395,400,405,410,415,420,425,430,435,440,445,450,455,460,465,470,475,480,485,490,495];
-var DNS=['Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7','Chủ nhật'];
+var DNS=["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"];
 var SLOGANS=[
-  {i:'🔥',t:'Một buổi học hôm nay = một câu đúng trong phòng thi.',s:'Phản xạ không đến từ học thuộc — nó đến từ lặp đi lặp lại.'},
-  {i:'⚡',t:'Không cần thiên tài. Chỉ cần học đều — mỗi ngày, mỗi tuần.',s:'2 Part. Tập trung sâu. Làm chủ. Rồi mới tiến tiếp.'},
-  {i:'🎯',t:'Xem lỗi kỹ hơn làm thêm đề. Đó là bí quyết tăng điểm nhanh nhất.',s:'Mỗi câu sai là một bài học. Đừng để nó trôi qua.'},
-  {i:'🌱',t:'Điểm số không tăng qua đêm — nhưng mỗi buổi đều để lại dấu vết.',s:'Tin vào quá trình. Kết quả sẽ tự đến.'},
-  {i:'💪',t:'Dịch Part 7 mỗi ngày — không phải để dịch giỏi, mà để hiểu sâu.',s:'Người hiểu cấu trúc sẽ trả lời nhanh hơn người chỉ đọc.'}
+  {i:"🔥",t:"Một buổi học hôm nay = một câu đúng trong phòng thi.",s:"Phản xạ đến từ lặp đi lặp lại."},
+  {i:"⚡",t:"Không cần thiên tài. Chỉ cần học đều mỗi ngày.",s:"2 Part. Tập trung sâu. Làm chủ. Rồi mới tiến tiếp."},
+  {i:"🎯",t:"Xem lỗi kỹ hơn làm thêm đề — bí quyết tăng điểm nhanh nhất.",s:"Mỗi câu sai là một bài học."},
+  {i:"💪",t:"Dịch Part 7 mỗi ngày — hiểu sâu cấu trúc, đọc nhanh hơn.",s:"Người hiểu cấu trúc trả lời nhanh hơn người chỉ đọc."}
 ];
-var TOPICS=['Office & Workplace','Travel & Tourism','Shopping & Retail','Banking & Finance','Health & Hospital','Restaurant & Food','Human Resources','Manufacturing','Marketing & Advertising','Technology & IT','Logistics & Shipping','Real Estate','Education & Training','Law & Legal','Aviation & Airport'];
+var TOPICS=["Office & Workplace","Travel & Tourism","Shopping & Retail","Banking & Finance","Health & Hospital","Restaurant & Food","Human Resources","Manufacturing","Marketing","Technology & IT","Logistics & Shipping","Real Estate","Education","Law & Legal","Aviation & Airport"];
 
 var days=4,mins=90,trans=20,focus=[];
-function gv(id){var e=document.getElementById(id);return e?parseInt(e.value)||0:0;}
-function escH(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-function fmtM(m){if(m>=60){var h=Math.floor(m/60),r=m%60;return r?h+'g'+r+'p':h+' giờ';}return m+'p';}
+var pickedTopic="",vocabData=null,vScore={q:{c:0,t:0},f:{c:0,t:0}};
 
-// ═══════════════════════════════════════════════════════════════
-// SCORE & TABLE
-// ═══════════════════════════════════════════════════════════════
+function $(id){return document.getElementById(id);}
+function gv(id){var e=$(id);return e?parseInt(e.value)||0:0;}
+function escH(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function fmtM(m){if(m>=60){var h=Math.floor(m/60),r=m%60;return r?h+"g"+r+"p":h+" giờ";}return m+"p";}
+
+// === SCORE ===
 function calcScore(){
-  var lc=gv('p1_n')+gv('p2_n')+gv('p3_n')+gv('p4_n');
-  var lt=gv('p1_t')+gv('p2_t')+gv('p3_t')+gv('p4_t');
-  var rc=gv('p5_n')+gv('p6_n')+gv('p7_n');
-  var rt=gv('p5_t')+gv('p6_t')+gv('p7_t');
-  return{lc:LT[Math.min(lc,LT.length-1)],lt:LT[Math.min(lt,LT.length-1)],rc:RT[Math.min(rc,RT.length-1)],rt:RT[Math.min(rt,RT.length-1)]};
+  var lc=gv("p1_n")+gv("p2_n")+gv("p3_n")+gv("p4_n"),lt=gv("p1_t")+gv("p2_t")+gv("p3_t")+gv("p4_t");
+  var rc=gv("p5_n")+gv("p6_n")+gv("p7_n"),rt=gv("p5_t")+gv("p6_t")+gv("p7_t");
+  return{lc:LT[Math.min(lc,100)],lt:LT[Math.min(lt,100)],rc:RT[Math.min(rc,100)],rt:RT[Math.min(rt,100)]};
 }
 function upd(){
   PARTS.forEach(function(p){
-    var n=gv(p.id+'_n'),t=gv(p.id+'_t'),nd=t-n;
-    var nel=document.getElementById(p.id+'_nd'),pel=document.getElementById(p.id+'_pr');
-    if(nel){nel.textContent=nd>0?'+'+nd:'–';nel.className='nv '+(nd>0?(nd>=5?'hi':nd>=2?'mi':'lo'):'ke');}
-    if(pel){
-      if(nd<=0)pel.innerHTML='<span style="font-size:11px;color:var(--gr)">Ổn định</span>';
-      else if(nd>=5)pel.innerHTML='<span style="color:#DC2626;font-weight:700;font-size:12px">⬆ Cao</span>';
-      else if(nd>=2)pel.innerHTML='<span style="color:var(--gd);font-weight:600;font-size:12px">↑ TB</span>';
-      else pel.innerHTML='<span style="color:var(--b);font-size:12px">→ Nhẹ</span>';
-    }
-    var fb=document.getElementById('fb_'+p.id);
-    if(fb)fb.querySelector('.ft').textContent=(p.type==='L'?'Listening':'Reading')+' · '+(nd>0?'+'+nd+' câu':'ổn định');
+    var n=gv(p.id+"_n"),t=gv(p.id+"_t"),nd=t-n;
+    var nel=$(p.id+"_nd"),pel=$(p.id+"_pr");
+    if(nel){nel.textContent=nd>0?"+"+nd:"–";nel.className="nv "+(nd>0?(nd>=5?"hi":nd>=2?"mi":"lo"):"ke");}
+    if(pel){pel.innerHTML=nd<=0?"<span style='font-size:11px;color:var(--gr)'>Ổn định</span>":nd>=5?"<span style='color:#DC2626;font-weight:700'>⬆ Cao</span>":nd>=2?"<span style='color:var(--gd);font-weight:600'>↑ TB</span>":"<span style='color:var(--b)'>→ Nhẹ</span>";}
+    var fb=$("fb_"+p.id);
+    if(fb)fb.querySelector(".ft").textContent=(p.type==="L"?"Listening":"Reading")+" · "+(nd>0?"+"+nd+" câu":"ổn định");
   });
   var s=calcScore(),now=s.lc+s.rc,tgt=s.lt+s.rt;
-  document.getElementById('sn').textContent=now;
-  document.getElementById('st').textContent=tgt;
-  document.getElementById('sd').textContent=(tgt-now>0?'+':'')+(tgt-now);
-  document.getElementById('snlr').textContent='L: '+s.lc+' | R: '+s.rc;
-  document.getElementById('stlr').textContent='L: '+s.lt+' | R: '+s.rt;
-  document.getElementById('sdlr').textContent='L '+(s.lt-s.lc>=0?'+':'')+(s.lt-s.lc)+' | R '+(s.rt-s.rc>=0?'+':'')+(s.rt-s.rc);
+  $("sn").textContent=now;$("st").textContent=tgt;$("sd").textContent=(tgt-now>0?"+":"")+(tgt-now);
+  $("snlr").textContent="L: "+s.lc+" | R: "+s.rc;$("stlr").textContent="L: "+s.lt+" | R: "+s.rt;
+  $("sdlr").textContent="L "+(s.lt-s.lc>=0?"+":"")+(s.lt-s.lc)+" | R "+(s.rt-s.rc>=0?"+":"")+(s.rt-s.rc);
 }
+
+// === BUILD TABLE ===
 function buildTable(){
-  var tb=document.getElementById('ptb');tb.innerHTML='';
+  var tb=$("ptb");tb.innerHTML="";
   PARTS.forEach(function(p){
-    var tr=document.createElement('tr');
-    tr.innerHTML='<td><span style="font-weight:500;color:var(--tx2);display:flex;align-items:center;gap:5px">'+p.name+' <span class="b'+(p.type==='L'?'l':'r')+'">'+p.type+'</span><span style="font-size:11px;color:var(--gr)">'+p.desc+'</span></span></td><td style="text-align:center"><input type="number" id="'+p.id+'_n" min="0" max="'+p.total+'" value="'+(DF[p.id+'_n']||0)+'" oninput="upd()"></td><td style="text-align:center"><input type="number" id="'+p.id+'_t" min="0" max="'+p.total+'" value="'+(DF[p.id+'_t']||0)+'" oninput="upd()"></td><td id="'+p.id+'_nd" class="nv">—</td><td style="text-align:center;color:var(--gr);font-size:12px">/ '+p.total+'</td><td id="'+p.id+'_pr" style="text-align:center">—</td>';
+    var tr=document.createElement("tr");
+    tr.innerHTML="<td><span style='font-weight:500;display:flex;align-items:center;gap:5px'>"+p.name+" <span class='b"+(p.type==="L"?"l":"r")+"'>"+p.type+"</span><span style='font-size:11px;color:var(--gr)'>"+p.desc+"</span></span></td><td style='text-align:center'><input type='number' id='"+p.id+"_n' min='0' max='"+p.total+"' value='"+(DF[p.id+"_n"]||0)+"'></td><td style='text-align:center'><input type='number' id='"+p.id+"_t' min='0' max='"+p.total+"' value='"+(DF[p.id+"_t"]||0)+"'></td><td id='"+p.id+"_nd' class='nv'>—</td><td style='text-align:center;color:var(--gr);font-size:12px'>/ "+p.total+"</td><td id='"+p.id+"_pr' style='text-align:center'>—</td>";
     tb.appendChild(tr);
   });
+  // Add input listeners
+  tb.addEventListener("input",upd);
   upd();
 }
 
-// ═══════════════════════════════════════════════════════════════
-// FOCUS
-// ═══════════════════════════════════════════════════════════════
+// === FOCUS ===
 function buildFG(){
-  var fg=document.getElementById('fg');fg.innerHTML='';
+  var fg=$("fg");fg.innerHTML="";
   PARTS.forEach(function(p){
-    var btn=document.createElement('div');btn.className='fb';btn.id='fb_'+p.id;
-    btn.onclick=function(){togF(p.id);};
-    btn.innerHTML='<div class="fn">'+p.name+'</div><div class="ft"></div>';
+    var btn=document.createElement("div");btn.className="fb";btn.id="fb_"+p.id;
+    btn.innerHTML="<div class='fn'>"+p.name+"</div><div class='ft'></div>";
+    btn.addEventListener("click",function(){togF(p.id);});
     fg.appendChild(btn);
   });
   updFI();
 }
 function togF(id){
-  if(focus.indexOf(id)>=0){focus=focus.filter(function(x){return x!==id;});}
-  else{if(focus.length>=2){alert('Tối đa 2 Part. Bỏ chọn 1 trước.');return;}focus.push(id);}
-  PARTS.forEach(function(p){var b=document.getElementById('fb_'+p.id);if(!b)return;b.className='fb'+(focus.indexOf(p.id)>=0?' sel':focus.length>=2?' dis':'');});
+  if(focus.indexOf(id)>=0)focus=focus.filter(function(x){return x!==id;});
+  else{if(focus.length>=2){alert("Tối đa 2 Part.");return;}focus.push(id);}
+  PARTS.forEach(function(p){var b=$("fb_"+p.id);if(b)b.className="fb"+(focus.indexOf(p.id)>=0?" sel":focus.length>=2?" dis":"");});
   updFI();
 }
 function updFI(){
-  var el=document.getElementById('fi');
-  if(!focus.length){el.innerHTML='Chưa chọn — hãy chọn 2 Part bên trên.';return;}
-  if(focus.length===1){el.innerHTML='Đã chọn: <strong>'+PARTS.find(function(x){return x.id===focus[0];}).name+'</strong>. Chọn thêm 1 Part.';return;}
+  var el=$("fi");
+  if(!focus.length){el.innerHTML="Chưa chọn — hãy chọn 2 Part.";return;}
+  if(focus.length===1){el.innerHTML="Đã chọn: <strong>"+PARTS.find(function(x){return x.id===focus[0];}).name+"</strong>. Chọn thêm 1.";return;}
   var p1=PARTS.find(function(x){return x.id===focus[0];}),p2=PARTS.find(function(x){return x.id===focus[1];});
-  var keep=PARTS.filter(function(p){return focus.indexOf(p.id)<0;}).map(function(p){return p.name;}).join(', ');
-  el.innerHTML='Tuần này: <strong>'+p1.name+' + '+p2.name+'</strong>. Còn lại ('+keep+') ôn duy trì.';
+  el.innerHTML="Tuần này: <strong>"+p1.name+" + "+p2.name+"</strong>.";
 }
-function resetFocus(){focus=[];PARTS.forEach(function(p){var b=document.getElementById('fb_'+p.id);if(b)b.className='fb';});updFI();document.getElementById('planout').style.display='none';document.getElementById('fg').scrollIntoView({behavior:'smooth'});}
-function setD(n){days=n;document.querySelectorAll('#dg .bs').forEach(function(b){b.classList.toggle('on',+b.dataset.v===n);});}
-function setH(m){mins=m;document.querySelectorAll('#hg .bs').forEach(function(b){b.classList.toggle('on',+b.dataset.v===m);});}
-function setT(m){trans=m;document.querySelectorAll('#tg .bs').forEach(function(b){b.classList.toggle('on',+b.dataset.v===m);});}
-function showErr(m){document.getElementById('errbox').innerHTML=m?'<div class="err">'+m+'</div>':'';}
 
-// ═══════════════════════════════════════════════════════════════
-// GENERATE PLAN (Groq)
-// ═══════════════════════════════════════════════════════════════
+// === CONTROLS (no inline onclick) ===
+function buildControls(){
+  var dgEl=$("dg"),hgEl=$("hg"),tgEl=$("tg");
+  [{v:3,l:"3 buổi"},{v:4,l:"4 buổi"},{v:5,l:"5 buổi"},{v:6,l:"6 buổi"},{v:7,l:"7 buổi"}].forEach(function(o){
+    var b=document.createElement("button");b.className="bs"+(o.v===4?" on":"");b.textContent=o.l;
+    b.addEventListener("click",function(){days=o.v;dgEl.querySelectorAll(".bs").forEach(function(x){x.classList.toggle("on",x===b);});});
+    dgEl.appendChild(b);
+  });
+  [{v:60,l:"1 tiếng"},{v:90,l:"1.5 tiếng"},{v:120,l:"2 tiếng"},{v:150,l:"2.5 tiếng"},{v:180,l:"3 tiếng"}].forEach(function(o){
+    var b=document.createElement("button");b.className="bs"+(o.v===90?" on":"");b.textContent=o.l;
+    b.addEventListener("click",function(){mins=o.v;hgEl.querySelectorAll(".bs").forEach(function(x){x.classList.toggle("on",x===b);});});
+    hgEl.appendChild(b);
+  });
+  [{v:20,l:"20 phút"},{v:25,l:"25 phút"},{v:30,l:"30 phút"}].forEach(function(o){
+    var b=document.createElement("button");b.className="bs"+(o.v===20?" on":"");b.textContent=o.l;
+    b.addEventListener("click",function(){trans=o.v;tgEl.querySelectorAll(".bs").forEach(function(x){x.classList.toggle("on",x===b);});});
+    tgEl.appendChild(b);
+  });
+  $("gbtn").addEventListener("click",genPlan);
+  $("resetbtn").addEventListener("click",function(){focus=[];PARTS.forEach(function(p){var b=$("fb_"+p.id);if(b)b.className="fb";});updFI();$("planout").style.display="none";$("fg").scrollIntoView({behavior:"smooth"});});
+}
+
+// === GENERATE PLAN ===
 function genPlan(){
   
-  if(focus.length<2){showErr('Chọn đúng 2 Part ở Bước 2.');return;}
-  showErr('');
-  document.getElementById('ldbox').style.display='block';
-  document.getElementById('planout').style.display='none';
-  document.getElementById('gbtn').disabled=true;
-  var msgs=['Đang phân tích điểm...','Đang phân bổ thời gian...','Đang soạn lịch...'];
-  var mi=0,sub=document.getElementById('lsub');
-  var iv=setInterval(function(){sub.textContent=msgs[mi++%msgs.length];},1800);
+  if(focus.length<2){$("errbox").innerHTML="<div class='err'>Chọn 2 Part ở Bước 2.</div>";return;}
+  $("errbox").innerHTML="";$("ldbox").style.display="block";$("planout").style.display="none";$("gbtn").disabled=true;
+  var msgs=["Đang phân tích điểm...","Đang phân bổ thời gian...","Đang soạn lịch..."],mi=0;
+  var iv=setInterval(function(){$("lsub").textContent=msgs[mi++%msgs.length];},1800);
+  var pInfo=PARTS.map(function(p){var n=gv(p.id+"_n"),t=gv(p.id+"_t");return p.name+"("+p.type+"): "+n+"/"+p.total+" cần +"+(Math.max(0,t-n))+(focus.indexOf(p.id)>=0?" [TẬP TRUNG]":" [duy trì]");}).join("\n");
+  var sc=calcScore(),fp=PARTS.filter(function(p){return focus.indexOf(p.id)>=0;});
+  var studyMins=mins-trans,dNames=DNS.slice(0,days).join(", ");
+  var fpD=fp.map(function(p){var q=p.id==="p1"?6:p.id==="p2"?10:p.id==="p3"?13:p.id==="p4"?10:p.id==="p5"?10:p.id==="p6"?8:15;return p.name+": "+q+" câu/buổi (tổng "+p.total+")";}).join("\n");
+  var prompt="Bạn là Cô Katie, giáo viên TOEIC ORI Academy.\n\nCẤU TRÚC ĐỀ (SỐ CÂU CHÍNH XÁC):\nPart 1(L):6 · Part 2(L):25 · Part 3(L):39 · Part 4(L):30\nPart 5(R):30 · Part 6(R):16 · Part 7(R):54\nKHÔNG tự bịa số câu khác.\n\nĐIỂM:\n"+pInfo+"\nTổng: "+(sc.lc+sc.rc)+" → "+(sc.lt+sc.rt)+"\n\nGỢI Ý:\n"+fpD+"\n\nLỊCH: "+days+" buổi ("+dNames+")\nMỗi buổi "+mins+"p. Bắt buộc "+trans+"p dịch Part 7.\nCòn "+studyMins+"p: 40% đề + 35% lỗi + 25% từ vựng\n\nTẬP TRUNG: "+fp.map(function(p){return p.name+" ("+p.total+" câu)";}).join(" và ")+"\n\n📅 [Ngày] — "+mins+"p\n🎯 Làm đề ([X]p): Part, số câu, tip\n🔍 Xem lỗi ([X]p): hướng dẫn\n📖 Từ vựng ([X]p): 4-5 từ thật: EN | VN | ví dụ\n📝 Dịch Part 7 ("+trans+"p): loại bài, cấu trúc\n💬 Slogan: 1 câu khác mỗi ngày\n\n---\nTIP TUẦN NÀY: 2-3 câu\n\nTiếng Việt, ngắn gọn.";
 
-  var pInfo=PARTS.map(function(p){var n=gv(p.id+'_n'),t=gv(p.id+'_t');return p.name+'('+p.type+'): '+n+'/'+p.total+'→'+t+'/'+p.total+' cần +'+(Math.max(0,t-n))+(focus.indexOf(p.id)>=0?' [TẬP TRUNG]':' [duy trì]');}).join('\n');
-  var sc=calcScore();
-  var fp=PARTS.filter(function(p){return focus.indexOf(p.id)>=0;});
-  var studyMins=mins-trans;
-  var dNames=DNS.slice(0,days).join(', ');
-  var fpDetails=fp.map(function(p){var q=p.id==='p1'?6:p.id==='p2'?10:p.id==='p3'?13:p.id==='p4'?10:p.id==='p5'?10:p.id==='p6'?8:15;return p.name+': làm '+q+' câu/buổi (tổng đề '+p.total+' câu)';}).join('\n');
-
-  var prompt='Bạn là Cô Katie, giáo viên TOEIC ORI Academy. Lập kế hoạch tuần này.\n\nCẤU TRÚC ĐỀ TOEIC (ĐÚNG SỐ CÂU):\n- Part 1 (L): 6 câu → làm tối đa 6/buổi\n- Part 2 (L): 25 câu → 10-15/buổi\n- Part 3 (L): 39 câu → 10-13/buổi\n- Part 4 (L): 30 câu → 10-15/buổi\n- Part 5 (R): 30 câu → 10-15/buổi\n- Part 6 (R): 16 câu → 8-16/buổi\n- Part 7 (R): 54 câu → 10-15/buổi\n⚠️ KHÔNG tự bịa số câu khác.\n\nĐIỂM SỐ:\n'+pInfo+'\nTổng: '+(sc.lc+sc.rc)+'→'+(sc.lt+sc.rt)+'\n\nSỐ CÂU GỢI Ý:\n'+fpDetails+'\n\nLỊCH: '+days+' buổi — '+dNames+'\nMỗi buổi: '+mins+'p tổng, BẮT BUỘC '+trans+'p DỊCH PART 7\nCòn lại '+studyMins+'p: 40% làm đề + 35% xem lỗi + 25% từ vựng\n\nTẬP TRUNG: '+fp.map(function(p){return p.name+' ('+p.total+' câu)';}).join(' và ')+'\n\nFORMAT:\n📅 [Ngày] — '+mins+' phút\n🎯 Làm đề ([X]p): Part — số câu, tip\n🔍 Xem lỗi ([X]p): hướng dẫn cụ thể\n📖 Từ vựng ([X]p): 4-5 từ thật từ bài, ghi: EN | VN | ví dụ\n📝 Dịch Part 7 ('+trans+'p): loại bài, focus cấu trúc\n💬 Slogan: 1 câu khác mỗi ngày\n\n---\nTIP TUẦN NÀY: 2-3 câu\n\nViết tiếng Việt, thân thiện, ngắn gọn.';
-
-  fetch('/api/groq',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({model:'llama-3.3-70b-versatile',max_tokens:2200,temperature:0.72,messages:[{role:'user',content:prompt}]})
+  fetch("/api/groq",{
+    method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+key},
+    body:JSON.stringify({model:"llama-3.3-70b-versatile",max_tokens:2200,temperature:0.72,messages:[{role:"user",content:prompt}]})
   }).then(function(r){return r.json();}).then(function(data){
-    clearInterval(iv);document.getElementById('ldbox').style.display='none';document.getElementById('gbtn').disabled=false;
-    if(data.error){showErr('Lỗi: '+(data.error.message||''));return;}
-    renderPlan(data.choices[0].message.content||'');
-  }).catch(function(e){clearInterval(iv);document.getElementById('ldbox').style.display='none';document.getElementById('gbtn').disabled=false;showErr('Lỗi: '+e.message);});
+    clearInterval(iv);$("ldbox").style.display="none";$("gbtn").disabled=false;
+    if(data.error){$("errbox").innerHTML="<div class='err'>Lỗi: "+(data.error.message||"")+"</div>";return;}
+    renderPlan(data.choices[0].message.content||"");
+  }).catch(function(e){clearInterval(iv);$("ldbox").style.display="none";$("gbtn").disabled=false;$("errbox").innerHTML="<div class='err'>Lỗi: "+e.message+"</div>";});
 }
-
 function renderPlan(txt){
   var sl=SLOGANS[Math.floor(Math.random()*SLOGANS.length)];
-  document.getElementById('sloganarea').innerHTML='<div class="slogan"><div class="sli">'+sl.i+'</div><div><div class="slt">'+sl.t+'</div><div class="sls">'+sl.s+'</div></div></div>';
-  var lines=txt.split('\n'),dayBlocks=[],cur=null;
-  lines.forEach(function(line){var tr=line.trim();if(!tr)return;if(tr.indexOf('📅')===0||/^(Thứ [2-7]|Chủ nhật)/i.test(tr)){if(cur)dayBlocks.push(cur);cur={head:tr.replace(/^📅\s*/,''),body:[]};}else if(cur){cur.body.push(tr);}});
+  $("sloganarea").innerHTML="<div class='slogan'><div class='sli'>"+sl.i+"</div><div><div class='slt'>"+sl.t+"</div><div class='sls'>"+sl.s+"</div></div></div>";
+  var lines=txt.split("\n"),dayBlocks=[],cur=null;
+  lines.forEach(function(line){var tr=line.trim();if(!tr)return;if(tr.indexOf("📅")===0||/^(Thứ [2-7]|Chủ nhật)/i.test(tr)){if(cur)dayBlocks.push(cur);cur={head:tr.replace(/^📅\s*/,""),body:[]};}else if(cur)cur.body.push(tr);});
   if(cur)dayBlocks.push(cur);
-  var tipIdx=txt.indexOf('TIP TUẦN'),tipText=tipIdx>=0?txt.slice(tipIdx+11).trim():'';
+  var tipIdx=txt.indexOf("TIP TUẦN"),tipText=tipIdx>=0?txt.slice(tipIdx+11).trim():"";
   var realDays=dayBlocks.filter(function(b){return b.head&&!/^TIP/i.test(b.head);});
-  var pc=document.getElementById('plancards');pc.innerHTML='';
-  realDays.forEach(function(b,i){
-    var div=document.createElement('div');div.className='daycard';
-    var bodyHTML=b.body.map(fmtLine).join('\n');
-    div.innerHTML='<div class="dh"><div class="dn">'+b.head.split('—')[0].trim()+'</div>'+(b.head.indexOf('—')>=0?'<div class="dtag">'+(b.head.split('—')[1]||'').trim()+'</div>':'')+'<div class="dtm">⏱ '+fmtM(mins)+'</div></div><div class="dbody">'+bodyHTML+'</div>';
-    pc.appendChild(div);
-  });
-  if(tipText){var td=document.createElement('div');td.className='tipcard';td.innerHTML='<strong>💡 Tip tuần này từ Cô Katie:</strong>\n'+tipText.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');pc.appendChild(td);}
-  var totM=days*mins,totTr=days*trans,totSt=totM-totTr;
-  document.getElementById('totbar').innerHTML='<div class="totbar"><div class="ti"><div class="tv">'+days+' buổi</div><div class="tl">/ tuần</div></div><div class="ti"><div class="tv">'+fmtM(totM)+'</div><div class="tl">tổng</div></div><div class="ti"><div class="tv">'+fmtM(totSt)+'</div><div class="tl">học & ôn</div></div><div class="ti"><div class="tv">'+fmtM(totTr)+'</div><div class="tl">dịch Part 7</div></div><div class="ti"><div class="tv">'+focus.map(function(id){return PARTS.find(function(p){return p.id===id;}).name;}).join(' + ')+'</div><div class="tl">tập trung</div></div></div>';
-  document.getElementById('planout').style.display='block';
-  document.getElementById('planout').scrollIntoView({behavior:'smooth',block:'start'});
+  var pc=$("plancards");pc.innerHTML="";
+  realDays.forEach(function(b,i){var div=document.createElement("div");div.className="daycard";var bh=b.body.map(fmtLine).join("\n");div.innerHTML="<div class='dh'><div class='dn'>"+b.head.split("—")[0].trim()+"</div>"+(b.head.indexOf("—")>=0?"<div class='dtag'>"+(b.head.split("—")[1]||"").trim()+"</div>":"")+"<div class='dtm'>⏱ "+fmtM(mins)+"</div></div><div class='dbody'>"+bh+"</div>";pc.appendChild(div);});
+  if(tipText){var td=document.createElement("div");td.className="tipcard";td.innerHTML="<strong>💡 Tip tuần này:</strong>\n"+tipText.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>");pc.appendChild(td);}
+  var totM=days*mins,totTr=days*trans;
+  $("totbar").innerHTML="<div class='totbar'><div class='ti'><div class='tv'>"+days+" buổi</div><div class='tl'>/ tuần</div></div><div class='ti'><div class='tv'>"+fmtM(totM)+"</div><div class='tl'>tổng</div></div><div class='ti'><div class='tv'>"+fmtM(totM-totTr)+"</div><div class='tl'>học & ôn</div></div><div class='ti'><div class='tv'>"+fmtM(totTr)+"</div><div class='tl'>dịch P7</div></div><div class='ti'><div class='tv'>"+focus.map(function(id){return PARTS.find(function(p){return p.id===id;}).name;}).join(" + ")+"</div><div class='tl'>tập trung</div></div></div>";
+  $("planout").style.display="block";$("planout").scrollIntoView({behavior:"smooth",block:"start"});
 }
-function fmtLine(l){var icons=['🎯','🔍','📖','📝','💬','💡','🏆','⭐'];var isMot=l.indexOf('💬')===0;var isIcon=icons.some(function(ic){return l.indexOf(ic)===0;});var out=l.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');if(isMot)return '<span class="mot">'+out+'</span>';if(isIcon)return '<span class="em">'+out+'</span>';return out;}
+function fmtLine(l){var isM=l.indexOf("💬")===0;var isI=["🎯","🔍","📖","📝","💬","💡"].some(function(ic){return l.indexOf(ic)===0;});var o=l.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>");if(isM)return "<span class='mot'>"+o+"</span>";if(isI)return "<span class='em'>"+o+"</span>";return o;}
 
-// ═══════════════════════════════════════════════════════════════
-// VOCAB BY TOPIC
-// ═══════════════════════════════════════════════════════════════
-var pickedTopic='',vocabData=null,vScore={q:{c:0,t:0},f:{c:0,t:0}};
-
+// === VOCAB ===
 function buildTopics(){
-  var g=document.getElementById('topic-grid');g.innerHTML='';
+  var g=$("topic-grid");g.innerHTML="";
   TOPICS.forEach(function(t){
-    var b=document.createElement('button');b.className='topic-btn';b.textContent=t;b.dataset.topic=t;
-    b.onclick=function(){document.querySelectorAll('.topic-btn').forEach(function(x){x.classList.remove('picked');});b.classList.add('picked');pickedTopic=t;document.getElementById('custom-topic').value='';};
+    var b=document.createElement("button");b.className="topic-btn";b.textContent=t;
+    b.addEventListener("click",function(){g.querySelectorAll(".topic-btn").forEach(function(x){x.classList.remove("picked");});b.classList.add("picked");pickedTopic=t;$("custom-topic").value="";});
     g.appendChild(b);
   });
+  $("vbtn").addEventListener("click",genVocab);
 }
-function showVT(tab){['words','quiz','fill'].forEach(function(t){var el=document.getElementById('vt-'+t);if(el)el.style.display=t===tab?'block':'none';});document.querySelectorAll('[data-vtab]').forEach(function(b){b.classList.toggle('on',b.dataset.vtab===tab);});}
+function showVT(tab){["words","quiz","fill"].forEach(function(t){var el=$("vt-"+t);if(el)el.style.display=t===tab?"block":"none";});$("vtabs").querySelectorAll(".tab-btn").forEach(function(b){b.classList.toggle("on",b.dataset.vtab===tab);});}
+function buildVTabs(){
+  var vt=$("vtabs");vt.innerHTML="";
+  [{k:"words",l:"📖 Từ vựng"},{k:"quiz",l:"❓ Quiz"},{k:"fill",l:"✏️ Part 5"}].forEach(function(o,i){
+    var b=document.createElement("button");b.className="tab-btn"+(i===0?" on":"");b.textContent=o.l;b.dataset.vtab=o.k;
+    b.addEventListener("click",function(){showVT(o.k);});
+    vt.appendChild(b);
+  });
+}
 
 function genVocab(){
   
-  var topic=document.getElementById('custom-topic').value.trim()||pickedTopic;
-  if(!topic){document.getElementById('vocab-err').innerHTML='<div class="err">Chọn hoặc nhập chủ đề.</div>';return;}
-  document.getElementById('vocab-err').innerHTML='';
-  document.getElementById('vld').style.display='block';document.getElementById('vocab-out').style.display='none';document.getElementById('vbtn').disabled=true;
+  var topic=$("custom-topic").value.trim()||pickedTopic;
+  if(!topic){$("vocab-err").innerHTML="<div class='err'>Chọn hoặc nhập chủ đề.</div>";return;}
+  $("vocab-err").innerHTML="";$("vld").style.display="block";$("vocab-out").style.display="none";$("vbtn").disabled=true;
   vScore={q:{c:0,t:0},f:{c:0,t:0}};
-  var msgs=['Đang tạo bảng từ vựng...','Đang soạn quiz...','Đang viết bài tập Part 5...','Đang viết đoạn văn song ngữ...'];
-  var mi=0;var iv=setInterval(function(){document.getElementById('vlsub').textContent=msgs[mi++%msgs.length];},1500);
+  var msgs=["Đang tạo bảng từ...","Đang soạn quiz...","Đang viết Part 5...","Đang viết đoạn văn song ngữ..."],mi=0;
+  var iv=setInterval(function(){$("vlsub").textContent=msgs[mi++%msgs.length];},1500);
+  var prompt="Bạn là giáo viên TOEIC. Tạo bài học từ vựng chủ đề \""+topic+"\".\n\nTrả lời ĐÚNG JSON. KHÔNG markdown. KHÔNG backticks.\n\n{\"topic\":\""+topic+"\",\"words\":[{\"en\":\"từ\",\"vi\":\"nghĩa\",\"pos\":\"n/v/adj\",\"example\":\"câu ví dụ\"}],\"quiz\":[{\"question\":\"câu hỏi\",\"options\":[\"A\",\"B\",\"C\",\"D\"],\"answer\":0,\"explain\":\"giải thích\"}],\"fill\":[{\"sentence\":\"câu có -------\",\"options\":[\"A\",\"B\",\"C\",\"D\"],\"answer\":0,\"explain\":\"giải thích\"}],\"paragraph\":\"đoạn 80-120 từ Anh, chèn (nghĩa Việt) sau từ khó\"}\n\nwords:12-15 từ. quiz:8 câu(4 options,answer=0-3). fill:6 câu Part 5(-------=chỗ trống,4 options,answer=0-3). paragraph: ngữ cảnh thực tế.\nCHỈ JSON.";
 
-  var prompt='Bạn là giáo viên TOEIC. Tạo bài học từ vựng chủ đề "'+topic+'" cho học viên TOEIC.\n\nTrả lời ĐÚNG FORMAT JSON. KHÔNG viết gì ngoài JSON. KHÔNG markdown backticks.\n\n{"topic":"'+topic+'","words":[{"en":"từ","vi":"nghĩa","pos":"n/v/adj/adv","example":"câu ví dụ"}],"quiz":[{"question":"câu hỏi","options":["A","B","C","D"],"answer":0,"explain":"giải thích tiếng Việt"}],"fill":[{"sentence":"câu có -------","options":["A","B","C","D"],"answer":0,"explain":"giải thích"}],"paragraph":"đoạn văn song ngữ 80-120 từ tiếng Anh, dùng tất cả từ vựng, chèn nghĩa tiếng Việt trong ngoặc sau từ khó. Ví dụ: The manager submitted (nộp) the report (báo cáo) before the deadline (hạn chót)."}\n\nwords: 12-15 từ hay gặp trong TOEIC chủ đề '+topic+'\nquiz: 8 câu (4 hỏi nghĩa, 4 đồng nghĩa/trái nghĩa), mỗi câu 4 options, answer=index 0-3\nfill: 6 câu Part 5 (3 word form, 2 vocab in context, 1 preposition/conjunction), chỗ trống ký hiệu "-------", 4 options, answer=index 0-3\nparagraph: đoạn văn ngữ cảnh thực tế, đọc tự nhiên, KHÔNG liệt kê từ rời rạc\n\nCHỈ TRẢ VỀ JSON.';
-
-  fetch('/api/groq',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({model:'llama-3.3-70b-versatile',max_tokens:3000,temperature:0.6,messages:[{role:'user',content:prompt}]})
+  fetch("/api/groq",{
+    method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+key},
+    body:JSON.stringify({model:"llama-3.3-70b-versatile",max_tokens:3000,temperature:0.6,messages:[{role:"user",content:prompt}]})
   }).then(function(r){return r.json();}).then(function(data){
-    clearInterval(iv);document.getElementById('vld').style.display='none';document.getElementById('vbtn').disabled=false;
-    if(data.error){document.getElementById('vocab-err').innerHTML='<div class="err">Lỗi: '+(data.error.message||'')+'</div>';return;}
-    var txt=(data.choices[0].message.content||'').replace(/```json\s*/gi,'').replace(/```\s*/gi,'').trim();
+    clearInterval(iv);$("vld").style.display="none";$("vbtn").disabled=false;
+    if(data.error){$("vocab-err").innerHTML="<div class='err'>Lỗi: "+(data.error.message||"")+"</div>";return;}
+    var txt=(data.choices[0].message.content||"").replace(/```json\s*/gi,"").replace(/```\s*/gi,"").trim();
     var m=txt.match(/\{[\s\S]*\}/);
-    if(!m){document.getElementById('vocab-err').innerHTML='<div class="err">AI trả format sai. Thử lại.</div>';return;}
-    try{vocabData=JSON.parse(m[0]);}catch(e){document.getElementById('vocab-err').innerHTML='<div class="err">Lỗi JSON: '+e.message+'</div>';return;}
+    if(!m){$("vocab-err").innerHTML="<div class='err'>AI trả format sai. Thử lại.</div>";return;}
+    try{vocabData=JSON.parse(m[0]);}catch(e){$("vocab-err").innerHTML="<div class='err'>Lỗi JSON: "+e.message+"</div>";return;}
     renderVocab();
-  }).catch(function(e){clearInterval(iv);document.getElementById('vld').style.display='none';document.getElementById('vbtn').disabled=false;document.getElementById('vocab-err').innerHTML='<div class="err">Lỗi: '+e.message+'</div>';});
+  }).catch(function(e){clearInterval(iv);$("vld").style.display="none";$("vbtn").disabled=false;$("vocab-err").innerHTML="<div class='err'>Lỗi: "+e.message+"</div>";});
 }
 
 function renderVocab(){
   var d=vocabData;if(!d)return;
-  document.getElementById('vtitle').innerHTML='<div style="background:var(--nv);color:#fff;border-radius:var(--rad);padding:14px 20px;margin-bottom:14px;display:flex;align-items:center;gap:12px"><span style="font-size:24px">📚</span><div><div style="font-weight:700;font-size:16px">'+escH(d.topic)+'</div><div style="font-size:12px;opacity:.6">'+(d.words?d.words.length:0)+' từ · '+(d.quiz?d.quiz.length:0)+' quiz · '+(d.fill?d.fill.length:0)+' Part 5</div></div></div>';
-
-  // WORDS TAB
-  var wh='<table class="vtable"><thead><tr><th>#</th><th>English</th><th>Tiếng Việt</th><th>Loại</th><th>Ví dụ</th></tr></thead><tbody>';
-  (d.words||[]).forEach(function(w,i){wh+='<tr><td style="color:var(--gr);font-size:12px">'+(i+1)+'</td><td class="en">'+escH(w.en)+'</td><td class="vi">'+escH(w.vi)+'</td><td style="font-size:11px;color:var(--gr)">'+escH(w.pos||'')+'</td><td class="ex">'+escH(w.example||'')+'</td></tr>';});
-  wh+='</tbody></table>';
-  // Paragraph
+  $("vtitle").innerHTML="<div style='background:var(--nv);color:#fff;border-radius:var(--rad);padding:14px 20px;margin-bottom:14px;display:flex;align-items:center;gap:12px'><span style='font-size:24px'>📚</span><div><div style='font-weight:700;font-size:16px'>"+escH(d.topic)+"</div><div style='font-size:12px;opacity:.6'>"+(d.words?d.words.length:0)+" từ · "+(d.quiz?d.quiz.length:0)+" quiz · "+(d.fill?d.fill.length:0)+" Part 5</div></div></div>";
+  // WORDS
+  var wh="<table class='vtable'><thead><tr><th>#</th><th>English</th><th>Tiếng Việt</th><th>Loại</th><th>Ví dụ</th></tr></thead><tbody>";
+  (d.words||[]).forEach(function(w,i){wh+="<tr><td style='color:var(--gr);font-size:12px'>"+(i+1)+"</td><td class='en'>"+escH(w.en)+"</td><td>"+escH(w.vi)+"</td><td style='font-size:11px;color:var(--gr)'>"+escH(w.pos||"")+"</td><td class='ex'>"+escH(w.example||"")+"</td></tr>";});
+  wh+="</tbody></table>";
   if(d.paragraph){
-    var paraHtml=escH(d.paragraph).replace(/\(([^)]+)\)/g, '(<span class="vn">$1</span>)');
-    wh+='<div class="para-box"><div class="para-title">📝 Đoạn văn song ngữ — Đọc 3 lần để nhớ từ</div><div class="para-text">'+paraHtml+'</div></div>';
+    var ph=escH(d.paragraph).replace(/\(([^)]+)\)/g,"(<span class='vn'>$1</span>)");
+    wh+="<div class='para-box'><div class='para-title'>📝 Đoạn văn song ngữ — Đọc 3 lần để nhớ từ</div><div class='para-text'>"+ph+"</div></div>";
   }
-  document.getElementById('vt-words').innerHTML=wh;
-
-  // QUIZ TAB
-  var qh='';
+  $("vt-words").innerHTML=wh;
+  // QUIZ
+  var qh="";
   (d.quiz||[]).forEach(function(q,i){
-    qh+='<div class="q-card" id="qq'+i+'"><div class="q-num">Câu '+(i+1)+' / '+d.quiz.length+'</div><div class="q-text">'+escH(q.question)+'</div><div class="q-opts">';
-    (q.options||[]).forEach(function(opt,oi){qh+='<button class="q-opt" onclick="ansQ('+i+','+oi+','+q.answer+')">'+String.fromCharCode(65+oi)+'. '+escH(opt)+'</button>';});
-    qh+='</div><div class="q-explain" id="qq'+i+'_ex">'+escH(q.explain||'')+'</div></div>';
+    qh+="<div class='q-card' id='qq"+i+"'><div class='q-num'>Câu "+(i+1)+"</div><div class='q-text'>"+escH(q.question)+"</div><div class='q-opts'>";
+    (q.options||[]).forEach(function(opt,oi){qh+="<button class='q-opt' data-qi='"+i+"' data-oi='"+oi+"' data-ans='"+q.answer+"'>"+String.fromCharCode(65+oi)+". "+escH(opt)+"</button>";});
+    qh+="</div><div class='q-explain' id='qq"+i+"_ex'>"+escH(q.explain||"")+"</div></div>";
   });
-  document.getElementById('vt-quiz').innerHTML=qh;
-
-  // FILL TAB
-  var fh='';
+  $("vt-quiz").innerHTML=qh;
+  // Attach quiz listeners via delegation
+  $("vt-quiz").addEventListener("click",function(e){
+    var btn=e.target.closest(".q-opt");if(!btn||btn.disabled)return;
+    var qi=parseInt(btn.dataset.qi),oi=parseInt(btn.dataset.oi),ans=parseInt(btn.dataset.ans);
+    var card=$("qq"+qi);if(!card)return;
+    card.querySelectorAll(".q-opt").forEach(function(b,i){b.disabled=true;if(i===ans)b.classList.add("correct");if(i===oi&&oi!==ans)b.classList.add("wrong");});
+    var ex=$("qq"+qi+"_ex");if(ex)ex.style.display="block";
+    vScore.q.t++;if(oi===ans)vScore.q.c++;checkVDone();
+  });
+  // FILL
+  var fh="";
   (d.fill||[]).forEach(function(f,i){
-    var sentHtml=escH(f.sentence).replace(/[-]{3,}/g,'<span class="blank" id="ff'+i+'_bl">?</span>');
-    fh+='<div class="q-card" id="ff'+i+'"><div class="q-num">Câu '+(i+1)+' / '+d.fill.length+'</div><div class="fb-sentence">'+sentHtml+'</div><div class="fb-opts">';
-    (f.options||[]).forEach(function(opt,oi){fh+='<button class="q-opt" onclick="ansF('+i+','+oi+','+f.answer+')">('+String.fromCharCode(65+oi)+') '+escH(opt)+'</button>';});
-    fh+='</div><div class="q-explain" id="ff'+i+'_ex">'+escH(f.explain||'')+'</div></div>';
+    var sh=escH(f.sentence).replace(/[-]{3,}/g,"<span class='blank' id='ff"+i+"_bl'>?</span>");
+    fh+="<div class='q-card' id='ff"+i+"'><div class='q-num'>Câu "+(i+1)+"</div><div class='fb-sentence'>"+sh+"</div><div class='fb-opts'>";
+    (f.options||[]).forEach(function(opt,oi){fh+="<button class='q-opt' data-fi='"+i+"' data-oi='"+oi+"' data-ans='"+f.answer+"'>("+String.fromCharCode(65+oi)+") "+escH(opt)+"</button>";});
+    fh+="</div><div class='q-explain' id='ff"+i+"_ex'>"+escH(f.explain||"")+"</div></div>";
   });
-  document.getElementById('vt-fill').innerHTML=fh;
-
-  document.getElementById('vscore').style.display='none';
-  document.getElementById('vocab-out').style.display='block';
-  showVT('words');
-  document.getElementById('vocab-out').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function ansQ(qi,picked,correct){
-  var card=document.getElementById('qq'+qi);if(!card)return;
-  var btns=card.querySelectorAll('.q-opt');if(btns[0]&&btns[0].disabled)return;
-  btns.forEach(function(b,i){b.disabled=true;if(i===correct)b.classList.add('correct');if(i===picked&&picked!==correct)b.classList.add('wrong');});
-  var ex=document.getElementById('qq'+qi+'_ex');if(ex)ex.style.display='block';
-  vScore.q.t++;if(picked===correct)vScore.q.c++;checkVDone();
-}
-function ansF(fi,picked,correct){
-  var card=document.getElementById('ff'+fi);if(!card)return;
-  var btns=card.querySelectorAll('.q-opt');if(btns[0]&&btns[0].disabled)return;
-  btns.forEach(function(b,i){b.disabled=true;if(i===correct)b.classList.add('correct');if(i===picked&&picked!==correct)b.classList.add('wrong');});
-  var bl=document.getElementById('ff'+fi+'_bl');
-  if(bl&&vocabData&&vocabData.fill[fi]){bl.textContent=vocabData.fill[fi].options[correct];bl.style.color=picked===correct?'#059669':'#DC2626';}
-  var ex=document.getElementById('ff'+fi+'_ex');if(ex)ex.style.display='block';
-  vScore.f.t++;if(picked===correct)vScore.f.c++;checkVDone();
+  $("vt-fill").innerHTML=fh;
+  $("vt-fill").addEventListener("click",function(e){
+    var btn=e.target.closest(".q-opt");if(!btn||btn.disabled)return;
+    var fi=parseInt(btn.dataset.fi),oi=parseInt(btn.dataset.oi),ans=parseInt(btn.dataset.ans);
+    var card=$("ff"+fi);if(!card)return;
+    card.querySelectorAll(".q-opt").forEach(function(b,i){b.disabled=true;if(i===ans)b.classList.add("correct");if(i===oi&&oi!==ans)b.classList.add("wrong");});
+    var bl=$("ff"+fi+"_bl");if(bl&&vocabData.fill[fi]){bl.textContent=vocabData.fill[fi].options[ans];bl.style.color=oi===ans?"#059669":"#DC2626";}
+    var ex=$("ff"+fi+"_ex");if(ex)ex.style.display="block";
+    vScore.f.t++;if(oi===ans)vScore.f.c++;checkVDone();
+  });
+  $("vscore").style.display="none";
+  $("vocab-out").style.display="block";
+  buildVTabs();
+  showVT("words");
+  $("vocab-out").scrollIntoView({behavior:"smooth",block:"start"});
 }
 function checkVDone(){
   if(!vocabData)return;
@@ -457,67 +441,55 @@ function checkVDone(){
   var totalDone=vScore.q.t+vScore.f.t;
   if(totalDone>=totalQ&&totalQ>0){
     var c=vScore.q.c+vScore.f.c,pct=Math.round(c/totalQ*100);
-    var msg=pct>=90?'🏆 Xuất sắc!':pct>=70?'👍 Tốt lắm! Ôn vài từ sai nữa.':pct>=50?'💪 Khá ổn! Cần ôn thêm.':'📖 Cần ôn lại — xem bảng từ và làm lại.';
-    document.getElementById('vscore').innerHTML='<div class="score-card"><div class="score-big">'+c+'/'+totalQ+'</div><div class="score-label">Đúng '+pct+'% — Quiz: '+vScore.q.c+'/'+vScore.q.t+' · Part 5: '+vScore.f.c+'/'+vScore.f.t+'</div><div class="score-msg">'+msg+'</div></div>';
-    document.getElementById('vscore').style.display='block';
+    var msg=pct>=90?"🏆 Xuất sắc!":pct>=70?"👍 Tốt lắm!":pct>=50?"💪 Khá ổn! Ôn thêm.":"📖 Cần ôn lại.";
+    $("vscore").innerHTML="<div class='score-card'><div class='score-big'>"+c+"/"+totalQ+"</div><div class='score-label'>Đúng "+pct+"% — Quiz: "+vScore.q.c+"/"+vScore.q.t+" · Part 5: "+vScore.f.c+"/"+vScore.f.t+"</div><div class='score-msg'>"+msg+"</div></div>";
+    $("vscore").style.display="block";
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// PROMPT COPY-PASTE (AI Tips per Part)
-// ═══════════════════════════════════════════════════════════════
-var BILINGUAL_BLOCK='\n\n5. ĐOẠN VĂN SONG NGỮ (quan trọng):\nViết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê, format chêm song ngữ:\n→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.\nVí dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."\n→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên — KHÔNG liệt kê rời rạc.\n→ Đọc 3 lần = nhớ cả nghĩa lẫn cách dùng.';
-
+// === PROMPT TABS ===
+var BIL="\n\n5. ĐOẠN VĂN SONG NGỮ:\nViết 1 đoạn 80-120 từ Anh dùng tất cả từ trên, chèn (nghĩa Việt) sau từ khó.\nVD: \"The manager submitted (nộp) the report (báo cáo) before the deadline (hạn chót).\"\nĐoạn văn ngữ cảnh thực tế, tự nhiên. Đọc 3 lần = nhớ.";
 var PROMPTS={
-p1:{meta:'Listening · 6 câu · Mô tả ảnh',desc:'Mô tả loại ảnh vừa làm → AI tạo từ vựng + đoạn văn song ngữ.',
-prompt:'Tôi vừa làm Part 1 TOEIC (mô tả ảnh). Ảnh có nội dung:\n[MÔ TẢ NGẮN ẢNH — ví dụ: "văn phòng, người ngồi làm việc, có máy tính"]\n\nSoạn:\n1. 8-10 từ/cụm từ MÔ TẢ ẢNH loại này trong TOEIC\n   → từ | nghĩa | ví dụ câu mô tả ảnh\n2. 4-5 CẤU TRÚC CÂU Part 1: "A man is + V-ing..." / "There is/are..."\n3. 3 TRAP thường gặp với loại ảnh này\n4. 3 câu Part 1 mẫu để luyện thêm'+BILINGUAL_BLOCK+'\n\nViết ngắn gọn, dễ nhớ.'},
-p2:{meta:'Listening · 25 câu · Hỏi & đáp',desc:'Paste script câu hỏi-đáp → AI phân loại + mẫu trả lời + đoạn văn song ngữ.',
-prompt:'Tôi vừa làm Part 2 TOEIC. Script:\n\n[PASTE SCRIPT CÁC CÂU VÀO ĐÂY]\nVí dụ: Q: "Where is the meeting being held?" A: "In the conference room."\n\nSoạn:\n1. TẤT CẢ từ quan trọng từ script: từ | nghĩa | loại\n2. PHÂN LOẠI câu hỏi (Where/When/Who/Yes-No/Tag/Indirect)\n3. 5 MẪU TRẢ LỜI hay dùng Part 2\n4. 3-5 câu hay NGHE NHẦM — giải thích cách phân biệt'+BILINGUAL_BLOCK+'\n\nKhông lý thuyết — chỉ từ vựng + mẫu câu.'},
-p3:{meta:'Listening · 39 câu · Hội thoại',desc:'Paste script hội thoại → AI trích từ vựng + signal words + đoạn văn song ngữ.',
-prompt:'Tôi vừa làm Part 3 TOEIC. Script hội thoại:\n\n[PASTE SCRIPT VÀO ĐÂY]\n\nSoạn:\n1. TỪ VỰNG THẬT từ bài: từ | nghĩa | ví dụ câu khác\n2. CỤM ĐỘNG TỪ / IDIOM (nếu có): cụm | nghĩa | ngữ cảnh\n3. CHỦ ĐỀ hội thoại + 5 từ thêm cùng chủ đề\n4. 3 DẠNG CÂU HỎI thường gặp cho loại này'+BILINGUAL_BLOCK+'\n\nViết tiếng Việt, ngắn gọn.'},
-p4:{meta:'Listening · 30 câu · Bài nói ngắn',desc:'Paste script bài nói → AI phân loại thể loại + từ đặc trưng + đoạn văn song ngữ.',
-prompt:'Tôi vừa làm Part 4 TOEIC. Script bài nói:\n\n[PASTE SCRIPT VÀO ĐÂY]\n\nSoạn:\n1. TỪ VỰNG THẬT: từ | nghĩa | ghi chú\n2. LOẠI BÀI (announcement/ad/news/voicemail...)? + 8 từ đặc trưng\n3. SIGNAL WORDS báo hiệu thông tin quan trọng\n4. 3 CÂU HỎI kiểu TOEIC cho bài nói loại này'+BILINGUAL_BLOCK+'\n\nKhông viết dài — chỉ bảng từ + ví dụ.'},
-p5:{meta:'Reading · 30 câu · Điền từ vào câu',desc:'Paste các câu Part 5 → AI phân tích word form + ngữ pháp + đoạn văn song ngữ.',
-prompt:'Tôi vừa làm Part 5 TOEIC. Các câu (có đáp án):\n\n[PASTE CÁC CÂU VÀO ĐÂY]\nVí dụ: The new policy will ------- affect all employees.\n(A) significance (B) significant (C) significantly (D) signify → C\n\nSoạn:\n1. PHÂN TÍCH TỪNG CÂU: loại câu hỏi | dấu hiệu | tại sao đúng\n2. TỪ VỰNG: từ | nghĩa | word family (noun/verb/adj/adv)\n3. NGUYÊN TẮC nhận dạng nhanh\n4. 3 CÂU LUYỆN THÊM tương tự — có đáp án cuối'+BILINGUAL_BLOCK+'\n\nViết súc tích, thực chiến.'},
-p6:{meta:'Reading · 16 câu · Điền từ vào đoạn',desc:'Paste đoạn văn Part 6 → AI phân tích coherence + từ nối + đoạn văn song ngữ.',
-prompt:'Tôi vừa làm Part 6 TOEIC. Đoạn văn + đáp án:\n\n[PASTE ĐOẠN VĂN VÀO ĐÂY]\n\nSoạn:\n1. TỪ VỰNG THẬT: từ | nghĩa | word form | ví dụ câu khác\n2. PHÂN TÍCH từng chỗ điền: vị trí | loại | dấu hiệu | lý do sai\n3. LOẠI VĂN BẢN (email/memo/notice...) + từ đặc trưng\n4. TỪ NỐI / COHERENCE: however, therefore, in addition...'+BILINGUAL_BLOCK+'\n\nNgắn gọn, dùng ngay.'},
-p7:{meta:'Reading · 54 câu · Đọc hiểu',desc:'Paste bài đọc → AI trích từ theo ngữ cảnh + câu hỏi mẫu + đoạn văn song ngữ.',
-prompt:'Tôi vừa đọc/dịch bài Part 7 TOEIC. Nội dung:\n\n[PASTE BÀI ĐỌC VÀO ĐÂY]\n\nSoạn:\n1. TỪ VỰNG THẬT: từ | nghĩa trong bài | ví dụ câu mới\n2. CỤM TỪ CHUYÊN NGÀNH: cụm | nghĩa | lĩnh vực\n3. 3 CÂU HỎI TOEIC mẫu từ bài + cách tìm đáp án nhanh\n4. TÓM TẮT bài bằng 3 câu tiếng Anh đơn giản'+BILINGUAL_BLOCK+'\n\nViết tiếng Việt, thực chiến.'}
+p1:{meta:"Listening · 6 câu",prompt:"Part 1 (mô tả ảnh). Ảnh:\n[MÔ TẢ ẢNH]\n\n1. 8-10 từ mô tả ảnh loại này: EN | VN | ví dụ\n2. 4-5 cấu trúc Part 1\n3. 3 trap thường gặp\n4. 3 câu mẫu luyện thêm"+BIL},
+p2:{meta:"Listening · 25 câu",prompt:"Part 2 (hỏi & đáp). Script:\n[PASTE SCRIPT]\n\n1. Từ vựng từ script: EN | VN | loại\n2. Phân loại câu hỏi\n3. 5 mẫu trả lời\n4. 3-5 câu hay nghe nhầm"+BIL},
+p3:{meta:"Listening · 39 câu",prompt:"Part 3 (hội thoại). Script:\n[PASTE SCRIPT]\n\n1. Từ vựng thật: EN | VN | ví dụ\n2. Cụm động từ/idiom\n3. Chủ đề + 5 từ thêm\n4. 3 dạng câu hỏi thường gặp"+BIL},
+p4:{meta:"Listening · 30 câu",prompt:"Part 4 (bài nói). Script:\n[PASTE SCRIPT]\n\n1. Từ vựng thật: EN | VN | ghi chú\n2. Loại bài + 8 từ đặc trưng\n3. Signal words\n4. 3 câu hỏi TOEIC mẫu"+BIL},
+p5:{meta:"Reading · 30 câu",prompt:"Part 5 (điền từ). Các câu + đáp án:\n[PASTE CÂU]\n\n1. Phân tích từng câu: loại | dấu hiệu | lý do\n2. Từ vựng + word family\n3. Nguyên tắc nhận dạng\n4. 3 câu luyện thêm"+BIL},
+p6:{meta:"Reading · 16 câu",prompt:"Part 6 (điền đoạn). Đoạn văn + đáp án:\n[PASTE ĐOẠN VĂN]\n\n1. Từ vựng thật + word form\n2. Phân tích từng chỗ điền\n3. Loại văn bản + từ đặc trưng\n4. Từ nối / coherence"+BIL},
+p7:{meta:"Reading · 54 câu",prompt:"Part 7 (đọc hiểu). Bài đọc:\n[PASTE BÀI ĐỌC]\n\n1. Từ vựng thật theo ngữ cảnh\n2. Cụm từ chuyên ngành\n3. 3 câu hỏi TOEIC mẫu + cách tìm đáp án\n4. Tóm tắt 3 câu tiếng Anh"+BIL}
 };
-
 function buildPTabs(){
-  var cont=document.getElementById('ptabs');cont.innerHTML='';
+  var cont=$("ptabs");cont.innerHTML="";
   PARTS.forEach(function(p,i){
-    var btn=document.createElement('button');btn.className='tab-btn'+(i===0?' on':'');btn.textContent=p.name;btn.dataset.pid=p.id;
-    btn.onclick=function(){document.querySelectorAll('#ptabs .tab-btn').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');showPTab(p.id);};
+    var btn=document.createElement("button");btn.className="tab-btn"+(i===0?" on":"");btn.textContent=p.name;btn.dataset.pid=p.id;
+    btn.addEventListener("click",function(){cont.querySelectorAll(".tab-btn").forEach(function(b){b.classList.remove("on");});btn.classList.add("on");showPTab(p.id);});
     cont.appendChild(btn);
   });
-  showPTab('p1');
+  showPTab("p1");
 }
 function showPTab(pid){
   var d=PROMPTS[pid];if(!d)return;
-  var el=document.getElementById('pcontent');
-  el.innerHTML='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px"><span style="background:#DBEAFE;color:#1E40AF;font-size:11px;padding:3px 9px;border-radius:10px;font-weight:600">'+d.meta.split('·')[0].trim()+'</span><span style="background:var(--grl);color:var(--tx2);font-size:11px;padding:3px 9px;border-radius:10px;font-weight:600">'+d.meta.split('·').slice(1).join('·').trim()+'</span></div>'
-    +'<div style="font-size:13px;color:var(--tx2);line-height:1.65;margin-bottom:14px">'+d.desc+'</div>'
-    +'<div style="font-size:11.5px;font-weight:700;color:var(--nv);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Prompt — copy &amp; paste vào AI</div>'
-    +'<div class="prompt-box"><button class="copy-btn" id="cpb_'+pid+'" onclick="copyP(\''+pid+'\')">Copy</button><pre class="prompt-pre">'+escH(d.prompt)+'</pre></div>'
-    +'<div style="margin-top:10px;font-size:12px;color:var(--gr);background:#F0FDF4;border:1px solid #A3D9B5;border-radius:6px;padding:8px 12px;line-height:1.7"><strong style="color:var(--gd)">Cách dùng:</strong> Làm bài → Mở ChatGPT/Claude/Gemini → Copy prompt → Thay <span style="color:#DC2626;font-weight:600">[PASTE ... VÀO ĐÂY]</span> bằng bài thật → Gửi → Nhận từ vựng + đoạn văn song ngữ</div>';
-}
-function copyP(pid){
-  var d=PROMPTS[pid];if(!d)return;var btn=document.getElementById('cpb_'+pid);
-  navigator.clipboard.writeText(d.prompt).then(function(){if(btn){btn.textContent='✓ Đã copy!';btn.style.background='#059669';setTimeout(function(){btn.textContent='Copy';btn.style.background='';},2000);}}).catch(function(){
-    var ta=document.createElement('textarea');ta.value=d.prompt;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
-    if(btn){btn.textContent='✓ Đã copy!';btn.style.background='#059669';setTimeout(function(){btn.textContent='Copy';btn.style.background='';},2000);}
+  $("pcontent").innerHTML="<div style='display:flex;gap:8px;margin-bottom:10px'><span class='bl'>"+d.meta+"</span></div><div style='font-size:11.5px;font-weight:700;color:var(--nv);text-transform:uppercase;margin-bottom:8px'>Prompt — copy &amp; paste vào AI</div><div class='prompt-box'><button class='copy-btn' id='cpb'>Copy</button><pre class='prompt-pre'>"+escH(d.prompt)+"</pre></div><div style='margin-top:10px;font-size:12px;color:var(--gr);background:#F0FDF4;border:1px solid #A3D9B5;border-radius:6px;padding:8px 12px;line-height:1.7'><strong style='color:var(--gd)'>Cách dùng:</strong> Làm bài → Mở ChatGPT/Claude/Gemini → Copy prompt → Thay <span style='color:#DC2626;font-weight:600'>[PASTE...]</span> bằng bài thật → Nhận từ vựng + đoạn văn song ngữ</div>";
+  $("cpb").addEventListener("click",function(){
+    var text=d.prompt;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){$("cpb").textContent="✓ Đã copy!";$("cpb").style.background="#059669";setTimeout(function(){$("cpb").textContent="Copy";$("cpb").style.background="";},2000);});
+    }else{
+      var ta=document.createElement("textarea");ta.value=text;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);
+      $("cpb").textContent="✓ Đã copy!";$("cpb").style.background="#059669";setTimeout(function(){$("cpb").textContent="Copy";$("cpb").style.background="";},2000);
+    }
   });
 }
 
-// ═══════════════════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════════════════
+// === INIT ===
 buildTable();
 buildFG();
+buildControls();
 buildTopics();
+buildVTabs();
 buildPTabs();
+
+})();
 </script>
 </body>
 </html>

@@ -124,6 +124,26 @@ main{max-width:980px;margin:auto;padding:22px 16px 56px}
 
 .err{background:#FEF2F2;border:1px solid #FCA5A5;border-radius:8px;padding:10px 14px;font-size:13px;color:#991B1B;margin-top:10px}
 
+
+/* AI TIPS TABS */
+.tab-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tab-btn{padding:5px 14px;border-radius:20px;border:1px solid var(--bd);background:var(--wh);font-size:13px;font-weight:500;cursor:pointer;transition:all .12s;color:var(--tx2);font-family:inherit}
+.tab-btn:hover{border-color:var(--g);color:var(--gd)}
+.tab-btn.on{background:var(--g);border-color:var(--g);color:#fff;font-weight:600}
+.prompt-box{background:#F8FAFF;border:1px solid #C7D9F5;border-radius:8px;padding:14px 16px;font-size:12.5px;line-height:1.75;color:var(--tx2);position:relative;white-space:pre-wrap;font-family:inherit}
+.prompt-box .ph{color:#9CA3AF;font-style:italic}
+.copy-btn{position:absolute;top:10px;right:10px;background:var(--g);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .12s}
+.copy-btn:hover{background:var(--gd)}
+.copy-btn.copied{background:#059669}
+.tip-tag{display:inline-block;background:var(--gl);color:var(--gd);font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;margin-bottom:8px;border:1px solid #A3D9B5}
+.part-meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.meta-badge{font-size:11px;padding:3px 9px;border-radius:10px;font-weight:600}
+.mb-l{background:#DBEAFE;color:#1E40AF}
+.mb-r{background:#FEF3C7;color:#92400E}
+.mb-q{background:var(--grl);color:var(--gr)}
+.use-case{font-size:12px;color:var(--gr);margin-top:10px;padding:8px 12px;background:var(--grl);border-radius:6px;line-height:1.6}
+.use-case strong{color:var(--tx2)}
+
 footer{background:var(--nv);color:rgba(255,255,255,.4);text-align:center;font-size:11px;padding:14px;margin-top:24px;line-height:1.8}
 footer strong{color:rgba(255,255,255,.75)}
 
@@ -224,6 +244,25 @@ footer strong{color:rgba(255,255,255,.75)}
   <div id="plancards"></div>
   <div id="totbar"></div>
   <button class="chbtn" onclick="resetFocus()">↺ Đổi 2 Part tập trung — tuần sau</button>
+</div>
+
+
+<!-- AI TIPS SECTION -->
+<div class="slbl" style="margin-top:8px">Học cùng AI — Prompt copy-paste cho từng Part</div>
+<div class="card" id="ai-tips-card">
+  <div style="font-size:13px;color:var(--tx2);margin-bottom:16px;line-height:1.6">
+    Sau mỗi buổi làm đề, copy đoạn văn / script / câu hỏi từ bài vừa làm, rồi dùng prompt dưới đây paste vào <strong>ChatGPT / Claude / Gemini</strong> để AI soạn từ vựng từ đúng bài đó — không phải từ vựng chung chung.
+  </div>
+  <div class="tab-row" id="tab-row">
+    <button class="tab-btn on" onclick="showTab('p1')">Part 1</button>
+    <button class="tab-btn" onclick="showTab('p2')">Part 2</button>
+    <button class="tab-btn" onclick="showTab('p3')">Part 3</button>
+    <button class="tab-btn" onclick="showTab('p4')">Part 4</button>
+    <button class="tab-btn" onclick="showTab('p5')">Part 5</button>
+    <button class="tab-btn" onclick="showTab('p6')">Part 6</button>
+    <button class="tab-btn" onclick="showTab('p7')">Part 7</button>
+  </div>
+  <div id="tab-content"></div>
 </div>
 
 </main>
@@ -358,33 +397,55 @@ async function genPlan(){
   const studyMins=mins-trans;
   const dNames=DNS.slice(0,days).join(', ');
 
+  // Calculate recommended questions per session for focus parts
+  const focusPartDetails = fp.map(p => {
+    const sessionCount = Math.ceil(days / 2);
+    const qPerSession = p.id==='p1' ? 6 : p.id==='p2' ? 10 : p.id==='p3' ? 13 : p.id==='p4' ? 10 : p.id==='p5' ? 10 : p.id==='p6' ? 8 : 15;
+    return `${p.name}: làm ${qPerSession} câu/buổi (tổng đề có ${p.total} câu — KHÔNG được ghi số khác)`;
+  }).join('\n');
+
   const prompt=`Bạn là Cô Katie, giáo viên TOEIC của ORI Academy (phương pháp phản xạ, không học thuộc lòng). Lập kế hoạch học tuần này cho học viên.
 
-ĐIỂM SỐ:
+CẤU TRÚC ĐỀ TOEIC (TỔNG SỐ CÂU THẬT — PHẢI DÙNG ĐÚNG SỐ NÀY):
+- Part 1 (Listening): TỔNG 6 câu → mỗi buổi làm TỐI ĐA 6 câu
+- Part 2 (Listening): TỔNG 25 câu → mỗi buổi làm 10-15 câu
+- Part 3 (Listening): TỔNG 39 câu → mỗi buổi làm 10-13 câu
+- Part 4 (Listening): TỔNG 30 câu → mỗi buổi làm 10-15 câu
+- Part 5 (Reading): TỔNG 30 câu → mỗi buổi làm 10-15 câu
+- Part 6 (Reading): TỔNG 16 câu → mỗi buổi làm 8-16 câu
+- Part 7 (Reading): TỔNG 54 câu → mỗi buổi làm 10-15 câu
+
+⚠️ TUYỆT ĐỐI KHÔNG được tự bịa số câu khác với cấu trúc trên. Ví dụ KHÔNG được viết "Part 5: 6 câu" hay "Part 1: 30 câu".
+
+ĐIỂM SỐ HỌC VIÊN:
 ${pInfo}
 Tổng hiện tại: ${sc.lc+sc.rc} → Mục tiêu: ${sc.lt+sc.rt}
 
+SỐ CÂU GỢI Ý MỖI BUỔI CHO 2 PART TẬP TRUNG:
+${focusPartDetails}
+
 LỊCH HỌC: ${days} buổi — ${dNames}
 Mỗi buổi: ${mins} phút tổng
-Trong đó BẮT BUỘC: ${trans} phút DỊCH PART 7 (cố định mỗi buổi)
-Còn lại ${studyMins} phút cho: làm đề + xem lỗi + từ vựng
+BẮT BUỘC mỗi buổi: ${trans} phút DỊCH PART 7 (cố định)
+Còn lại ${studyMins} phút: chia cho làm đề (40%) + xem lỗi (35%) + từ vựng (25%)
 
-TUẦN NÀY TẬP TRUNG CHUYÊN SÂU: ${fp.map(p=>p.name+' ('+p.type+')').join(' và ')} — chiếm 60-70% thời gian làm đề
-Các Part khác: ôn duy trì nhẹ 1-2 câu/buổi (đừng bỏ hoàn toàn)
+TUẦN NÀY TẬP TRUNG: ${fp.map(p=>p.name+' — tổng đề '+p.total+' câu').join(' và ')}
+Xen kẽ 2 Part này mỗi buổi (ngày 1: Part A nhiều + Part B duy trì, ngày 2: Part B nhiều + Part A duy trì)
+Các Part còn lại: duy trì 5-10 câu/tuần, chia đều vào các buổi
 
-FORMAT OUTPUT (viết từng ngày, theo cấu trúc này — không thêm bớt):
+FORMAT OUTPUT — viết đúng cấu trúc này cho từng ngày:
 
-📅 [Tên ngày] — [tổng phút] phút
-🎯 Làm đề ([phút]p): [Part cụ thể, số câu, tip làm bài ngắn]
-🔍 Xem lỗi ([phút]p): [cách xem lỗi cụ thể — nghe lại/đọc lại điểm nào]
-📖 Từ vựng ([phút]p): [loại từ vựng cần ghi nhớ theo bài vừa làm]
-📝 Dịch Part 7 (${trans}p): [dịch bài gì, focus vào cấu trúc câu nào — khác nhau mỗi ngày]
-💬 Slogan hôm nay: [1 câu ngắn, truyền cảm hứng, cụ thể với bài học ngày đó — KHÔNG lặp lại giữa các ngày]
+📅 [Tên ngày] — ${mins} phút
+🎯 Làm đề ([X]p): [tên Part] — [số câu cụ thể đúng với cấu trúc trên], [tip làm bài 1 câu]
+🔍 Xem lỗi ([X]p): [hướng dẫn cụ thể: nghe lại/đọc lại gì, chú ý điểm nào]
+📖 Từ vựng ([X]p): [liệt kê 4-5 từ/cụm từ THẬT xuất hiện trong bài Part đó — ghi: từ tiếng Anh | nghĩa tiếng Việt | ví dụ câu ngắn. KHÔNG được viết chung chung "ôn từ vựng chủ đề X"]
+📝 Dịch Part 7 (${trans}p): [loại bài đọc gì — email/thông báo/quảng cáo/bài báo, focus cấu trúc câu gì — khác mỗi ngày]
+💬 Slogan hôm nay: [1 câu ngắn gọn, khác nhau mỗi ngày, liên quan đến nội dung buổi học]
 
 ---
-TIP TUẦN NÀY: [2-3 câu tổng kết chiến lược, giải thích tại sao chọn 2 Part này, và dấu hiệu nào cho thấy đã sẵn sàng chuyển sang 2 Part tiếp theo]
+TIP TUẦN NÀY: [2-3 câu: lý do chọn 2 Part này, dấu hiệu nào cho thấy đã sẵn sàng đổi sang 2 Part mới]
 
-Viết tiếng Việt, giọng cô giáo thân thiện, ngắn gọn súc tích, không lý thuyết dài dòng.`;
+Viết tiếng Việt, giọng cô giáo thân thiện, ngắn gọn — không giải thích lý thuyết dài.`;
 
   try{
     const res=await fetch('/api/groq',{

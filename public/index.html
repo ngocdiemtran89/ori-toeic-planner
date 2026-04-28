@@ -227,7 +227,8 @@ footer strong{color:rgba(255,255,255,.75)}
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       Tạo kế hoạch AI
     </button>
-    <span style="font-size:12px;color:var(--gr)">Nhấn nút → AI sẽ lập kế hoạch học tập riêng cho bạn</span>
+  </div>
+  <span style="font-size:12px;color:var(--gr)">Nhấn nút → AI sẽ lập kế hoạch học tập riêng cho bạn</span>
   </div>
   <div id="errbox"></div>
 </div>
@@ -254,13 +255,13 @@ footer strong{color:rgba(255,255,255,.75)}
     Sau mỗi buổi làm đề, copy đoạn văn / script / câu hỏi từ bài vừa làm, rồi dùng prompt dưới đây paste vào <strong>ChatGPT / Claude / Gemini</strong> để AI soạn từ vựng từ đúng bài đó — không phải từ vựng chung chung.
   </div>
   <div class="tab-row" id="tab-row">
-    <button class="tab-btn on" onclick="showTab('p1')">Part 1</button>
-    <button class="tab-btn" onclick="showTab('p2')">Part 2</button>
-    <button class="tab-btn" onclick="showTab('p3')">Part 3</button>
-    <button class="tab-btn" onclick="showTab('p4')">Part 4</button>
-    <button class="tab-btn" onclick="showTab('p5')">Part 5</button>
-    <button class="tab-btn" onclick="showTab('p6')">Part 6</button>
-    <button class="tab-btn" onclick="showTab('p7')">Part 7</button>
+    <button class="tab-btn on" data-part="p1" onclick="showTab('p1')">Part 1</button>
+    <button class="tab-btn" data-part="p2" onclick="showTab('p2')">Part 2</button>
+    <button class="tab-btn" data-part="p3" onclick="showTab('p3')">Part 3</button>
+    <button class="tab-btn" data-part="p4" onclick="showTab('p4')">Part 4</button>
+    <button class="tab-btn" data-part="p5" onclick="showTab('p5')">Part 5</button>
+    <button class="tab-btn" data-part="p6" onclick="showTab('p6')">Part 6</button>
+    <button class="tab-btn" data-part="p7" onclick="showTab('p7')">Part 7</button>
   </div>
   <div id="tab-content"></div>
 </div>
@@ -378,6 +379,7 @@ function setH(m){mins=m;document.querySelectorAll('#hg .bs').forEach(b=>b.classL
 function setT(m){trans=m;document.querySelectorAll('#tg .bs').forEach(b=>b.classList.toggle('on',+b.dataset.v===m));}
 
 async function genPlan(){
+  
   if(focus.length<2){showErr('Hãy chọn đúng 2 Part tập trung ở Bước 2 trước.');return;}
   showErr('');
   document.getElementById('ldbox').style.display='block';
@@ -399,7 +401,8 @@ async function genPlan(){
 
   // Calculate recommended questions per session for focus parts
   const focusPartDetails = fp.map(p => {
-    const sessionCount = Math.ceil(days / 2);
+    const sessionCount = Math.ceil(days / 2); // each focus part appears ~half the sessions
+    // Recommend doing a mini-set per session: cap at reasonable per-session amount
     const qPerSession = p.id==='p1' ? 6 : p.id==='p2' ? 10 : p.id==='p3' ? 13 : p.id==='p4' ? 10 : p.id==='p5' ? 10 : p.id==='p6' ? 8 : 15;
     return `${p.name}: làm ${qPerSession} câu/buổi (tổng đề có ${p.total} câu — KHÔNG được ghi số khác)`;
   }).join('\n');
@@ -526,6 +529,231 @@ function showErr(m){document.getElementById('errbox').innerHTML=m?`<div class="e
 
 buildTable();
 buildFG();
+
+// ── AI TIPS ──────────────────────────────────────────────────
+const AI_TIPS = {
+  p1: {
+    meta: 'Listening · 6 câu · Mô tả ảnh',
+    desc: 'Part 1 không có transcript. Bạn mô tả loại ảnh vừa làm, AI tạo từ vựng mô tả cảnh vật hay xuất hiện trong TOEIC.',
+    useCase: '💡 Dùng sau khi xem đáp án Part 1 — mô tả ngắn nội dung ảnh (văn phòng / ngoài trời / kho hàng / nhà hàng...)',
+    prompt: `Tôi vừa làm Part 1 TOEIC (mô tả ảnh). Ảnh trong bài có nội dung:
+[MÔ TẢ NGẮN ẢNH — ví dụ: "văn phòng, người ngồi làm việc, có máy tính và tài liệu trên bàn"]
+
+Hãy soạn cho tôi bộ từ vựng từ bài này:
+
+1. 8-10 TỪ/CỤM TỪ thường dùng để MÔ TẢ ẢNH loại này trong TOEIC
+   → từ tiếng Anh | nghĩa tiếng Việt | ví dụ câu mô tả ảnh
+
+2. 4-5 CẤU TRÚC CÂU hay dùng trong Part 1:
+   → "A man is + V-ing..." / "The items are placed..." / "There is/are..."
+
+3. 3 TRAP thường gặp với loại ảnh này (từ dễ nghe nhầm hoặc dễ chọn sai)
+
+Viết ngắn gọn, dễ nhớ, có thể in ra ôn.`
+  },
+  p2: {
+    meta: 'Listening · 25 câu · Câu hỏi & đáp',
+    desc: 'Copy script các câu bạn vừa nghe (từ sách giải hoặc app), AI phân tích loại câu hỏi và từ vựng then chốt.',
+    useCase: '💡 Dùng sau khi làm xong 1 set Part 2 — copy script từ sách ETS / app giải thích đáp án vào.',
+    prompt: `Tôi vừa làm Part 2 TOEIC (hỏi & đáp). Script các câu tôi vừa làm:
+
+[PASTE SCRIPT CÁC CÂU VÀO ĐÂY]
+Ví dụ:
+Q: "Where is the meeting being held?"
+A: "In the conference room on the third floor."
+
+Hãy soạn:
+1. TẤT CẢ từ/cụm từ quan trọng từ script trên:
+   → từ tiếng Anh | nghĩa | loại (question word / verb / noun phrase)
+
+2. PHÂN LOẠI câu hỏi xuất hiện (Where/When/Who/What/Why/How/Yes-No/Tag/Indirect)
+
+3. 5 MẪU TRẢ LỜI hay dùng trong Part 2 với ví dụ thật
+
+4. 3-5 câu hay NGHE NHẦM — giải thích tại sao nhầm và cách phân biệt
+
+Không lý thuyết — chỉ từ vựng + mẫu câu cụ thể.`
+  },
+  p3: {
+    meta: 'Listening · 39 câu · Hội thoại 2-3 người',
+    desc: 'Copy script hội thoại từ sách giải, AI trích từ vựng thật và signal words trong đúng bài đó.',
+    useCase: '💡 Dùng sau khi nghe xong — mở sách giải, copy script hội thoại paste vào.',
+    prompt: `Tôi vừa làm Part 3 TOEIC. Script hội thoại:
+
+[PASTE SCRIPT HỘI THOẠI VÀO ĐÂY]
+Ví dụ:
+M: "I was wondering if you could help me with the quarterly report."
+W: "Sure. When do you need it by?"
+M: "The presentation is scheduled for Friday morning."
+
+Từ script này, hãy soạn:
+1. TỪ VỰNG THẬT từ bài — tất cả từ quan trọng:
+   → từ | nghĩa | ví dụ câu khác dùng từ này
+
+2. CỤM ĐỘNG TỪ / IDIOM trong hội thoại (nếu có):
+   → cụm | nghĩa thực tế | ngữ cảnh dùng
+
+3. CHỦ ĐỀ hội thoại (meeting/complaint/order/schedule...) + 5 từ thêm cùng chủ đề
+
+4. 3 DẠNG CÂU HỎI thường gặp cho loại hội thoại này trong đề TOEIC
+
+Viết tiếng Việt, ngắn gọn, dùng được ngay.`
+  },
+  p4: {
+    meta: 'Listening · 30 câu · Bài nói ngắn (monologue)',
+    desc: 'Copy script bài nói từ sách giải, AI phân tích từ vựng theo thể loại (thông báo/quảng cáo/tin tức...).',
+    useCase: '💡 Dùng sau khi nghe xong — đặc biệt các bài nghe không ra, mở script xem lại rồi paste vào.',
+    prompt: `Tôi vừa làm Part 4 TOEIC. Script bài nói:
+
+[PASTE SCRIPT BÀI NÓI VÀO ĐÂY]
+Ví dụ:
+"Good afternoon, shoppers. We'd like to remind you that our store will be closing in thirty minutes. Please bring your purchases to the checkout counter..."
+
+Từ script này, hãy soạn:
+1. TỪ VỰNG THẬT từ bài:
+   → từ | nghĩa | ghi chú (formal/informal, lĩnh vực gì)
+
+2. LOẠI BÀI NÓI (announcement/advertisement/news/tour guide/voicemail/meeting...)?
+   → 8 từ ĐẶC TRƯNG của thể loại này trong TOEIC
+
+3. SIGNAL WORDS trong bài — từ báo hiệu thông tin quan trọng (first, however, as a result...)
+
+4. 3 CÂU HỎI kiểu TOEIC thường đặt cho bài nói loại này
+
+Không viết dài — chỉ bảng từ + ví dụ thực tế.`
+  },
+  p5: {
+    meta: 'Reading · 30 câu · Điền từ vào câu đơn',
+    desc: 'Copy nguyên văn các câu Part 5 bạn vừa làm (ghi rõ đáp án đúng), AI phân tích word form và ngữ pháp.',
+    useCase: '💡 Dùng sau khi xem đáp án — đặc biệt câu sai về từ loại, thì, giới từ, đại từ.',
+    prompt: `Tôi vừa làm Part 5 TOEIC. Các câu tôi vừa làm (có đáp án đúng):
+
+[PASTE CÁC CÂU VÀO ĐÂY]
+Ví dụ:
+1. The new policy will ------- affect all employees.
+   (A) significance  (B) significant  (C) significantly  (D) signify
+   → ĐÁP ÁN ĐÚNG: C
+
+2. Employees are required to submit ------- expense reports by Friday.
+   (A) they  (B) their  (C) them  (D) themselves
+   → ĐÁP ÁN ĐÚNG: B
+
+Hãy soạn:
+1. PHÂN TÍCH TỪNG CÂU:
+   → câu số | loại câu hỏi (word form/tense/pronoun/preposition/conjunction...) | dấu hiệu nhận dạng | tại sao đáp án đúng
+
+2. TỪ VỰNG MỚI từ tất cả các câu:
+   → từ | nghĩa | word family (noun/verb/adj/adv cùng gốc)
+
+3. NGUYÊN TẮC NHANH để nhận dạng dạng câu này lần sau (1-2 câu)
+
+4. 3 CÂU LUYỆN THÊM tương tự — có đáp án ở cuối
+
+Viết súc tích, thực chiến — không lý thuyết ngữ pháp dài.`
+  },
+  p6: {
+    meta: 'Reading · 16 câu · Điền từ vào đoạn văn',
+    desc: 'Copy nguyên đoạn văn Part 6, AI phân tích từ vựng theo ngữ cảnh và coherence (tính mạch lạc).',
+    useCase: '💡 Dùng sau khi xem đáp án Part 6 — đặc biệt câu sentence insertion (chọn câu hoàn chỉnh).',
+    prompt: `Tôi vừa làm Part 6 TOEIC. Đoạn văn và câu hỏi:
+
+[PASTE ĐOẠN VĂN + ĐÁP ÁN VÀO ĐÂY]
+Ví dụ:
+"Dear Mr. Johnson, Thank you for your ----(1)---- in our products.
+We would like to ----(2)---- you to our annual trade show..."
+1. (A) interest  (B) interested  (C) interesting  (D) interestingly → ĐÁP ÁN: A
+2. (A) invite  (B) invitation  (C) inviting  (D) invited → ĐÁP ÁN: A
+
+Hãy soạn:
+1. TỪ VỰNG THẬT từ đoạn văn:
+   → từ | nghĩa | word form liên quan | ví dụ câu khác
+
+2. PHÂN TÍCH từng chỗ điền:
+   → vị trí | loại câu hỏi | dấu hiệu trong câu | tại sao sai các đáp án kia
+
+3. LOẠI VĂN BẢN (email/memo/notice/letter...) + 6 từ đặc trưng loại này
+
+4. TỪ NỐI / COHERENCE trong đoạn văn và cách dùng (however, therefore, in addition...)
+
+Ngắn gọn, dùng ngay trước buổi học sau.`
+  },
+  p7: {
+    meta: 'Reading · 54 câu · Bài đọc đơn + đôi + bộ 3',
+    desc: 'Copy đoạn văn bài đọc, AI phân tích từ vựng theo ngữ cảnh thực — đúng bài vừa đọc, không phải từ điển.',
+    useCase: '💡 Dùng sau khi dịch xong 1 bài Part 7 (email/thông báo/quảng cáo/bài báo).',
+    prompt: `Tôi vừa đọc/dịch bài Part 7 TOEIC. Nội dung bài:
+
+[PASTE BÀI ĐỌC VÀO ĐÂY]
+Ví dụ:
+"To: All staff
+From: HR Department
+Subject: Annual Performance Review
+The performance review period will begin on November 1st. All managers are required to complete evaluations for their direct reports by November 30th..."
+
+Từ bài đọc trên, hãy soạn:
+1. TỪ VỰNG THẬT từ bài — tất cả từ quan trọng:
+   → từ | nghĩa trong ngữ cảnh bài này | ví dụ câu mới dùng từ này
+
+2. CỤM TỪ NGHỀ NGHIỆP / CHUYÊN NGÀNH trong bài:
+   → cụm từ | nghĩa | lĩnh vực (HR/finance/logistics/marketing...)
+
+3. 3 CÂU HỎI TOEIC mẫu từ bài này + gợi ý tìm đáp án nhanh:
+   → dạng: main idea / detail / inference / NOT question / vocab in context
+
+4. TÓM TẮT bài bằng 3 câu tiếng Anh đơn giản (để luyện nói lại)
+
+Viết tiếng Việt, thực chiến, dùng được ngay.`
+  }
+};
+
+function showTab(partId) {
+  const data = AI_TIPS[partId];
+  if (!data) return;
+  // Update active tab button
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    const btnPart = b.getAttribute('data-part');
+    b.classList.toggle('on', btnPart === partId);
+  });
+  // Render content
+  const tc = document.getElementById('tab-content');
+  const safeId = 'pb_' + partId;
+  tc.innerHTML = `
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+      <span style="background:#DBEAFE;color:#1E40AF;font-size:11px;padding:3px 9px;border-radius:10px;font-weight:600">${data.meta.split('·')[0].trim()}</span>
+      <span style="background:#F3F4F6;color:#374151;font-size:11px;padding:3px 9px;border-radius:10px;font-weight:600">${data.meta.split('·').slice(1).join('·').trim()}</span>
+    </div>
+    <div style="font-size:13px;color:#374151;line-height:1.65;margin-bottom:6px">${data.desc}</div>
+    <div style="font-size:12px;color:#6B7280;background:#F3F4F6;border-radius:6px;padding:7px 11px;margin-bottom:14px">${data.useCase}</div>
+    <div style="font-size:11.5px;font-weight:700;color:#145E34;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Prompt — copy &amp; paste vào AI</div>
+    <div style="background:#F0F7FF;border:1px solid #BFDBFE;border-radius:8px;padding:14px 16px;position:relative">
+      <button id="${safeId}" onclick="copyPrompt('${partId}')" style="position:absolute;top:10px;right:10px;background:#2DA65C;color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit">Copy</button>
+      <pre style="font-size:12.5px;line-height:1.75;color:#1E3A5F;white-space:pre-wrap;font-family:inherit;margin:0;padding-right:60px">${escHtml(data.prompt)}</pre>
+    </div>
+    <div style="margin-top:10px;font-size:12px;color:#6B7280;background:#F0FDF4;border:1px solid #A3D9B5;border-radius:6px;padding:8px 12px;line-height:1.7">
+      <strong style="color:#145E34">Cách dùng:</strong> Làm xong bài → Mở ChatGPT / Claude / Gemini → Copy prompt → Thay phần <span style="color:#DC2626;font-weight:600">[PASTE ... VÀO ĐÂY]</span> bằng nội dung bài thật → Gửi → Nhận từ vựng từ đúng bài vừa làm
+    </div>
+  `;
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function copyPrompt(partId) {
+  const data = AI_TIPS[partId];
+  if (!data) return;
+  const btn = document.getElementById('pb_' + partId);
+  navigator.clipboard.writeText(data.prompt).then(() => {
+    if(btn){btn.textContent='✓ Đã copy!';btn.style.background='#059669';setTimeout(()=>{btn.textContent='Copy';btn.style.background='#2DA65C';},2000);}
+  }).catch(() => {
+    const ta=document.createElement('textarea');ta.value=data.prompt;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    if(btn){btn.textContent='✓ Đã copy!';btn.style.background='#059669';setTimeout(()=>{btn.textContent='Copy';btn.style.background='#2DA65C';},2000);}
+  });
+}
+
+// init tab
+showTab('p1');
+
 </script>
 </body>
 </html>

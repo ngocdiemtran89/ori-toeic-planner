@@ -7,165 +7,87 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --g:#2DA65C;--gl:#E8F5EE;--gd:#145E34;--gm:#1B8A4C;
-  --b:#0057B8;--bl:#E6F0FB;
-  --nv:#0A2240;--gld:#C8A951;--gldb:#FFF8E7;
-  --gr:#6B7280;--grl:#F3F4F6;--bd:#E5E7EB;
-  --wh:#fff;--tx:#111827;--tx2:#374151;
-  --rad:10px;--sh:0 1px 4px rgba(0,0,0,.08);
-}
+:root{--g:#2DA65C;--gl:#E8F5EE;--gd:#145E34;--b:#0057B8;--bl:#E6F0FB;--nv:#0A2240;--gld:#C8A951;--gldb:#FFF8E7;--gr:#6B7280;--grl:#F3F4F6;--bd:#E5E7EB;--wh:#fff;--tx:#111827;--tx2:#374151;--rad:10px;--sh:0 1px 4px rgba(0,0,0,.08)}
 body{font-family:'Be Vietnam Pro',sans-serif;background:#EFF7F2;color:var(--tx);min-height:100vh}
 header{background:var(--nv);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 .hi{max-width:980px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:11px 20px}
 .lm{width:36px;height:36px;background:var(--g);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:13px;flex-shrink:0}
 .lt{color:#fff;font-weight:700;font-size:15px;line-height:1.25;margin-left:10px}
-.ls{color:rgba(255,255,255,.5);font-size:10px;font-weight:400}
+.ls{color:rgba(255,255,255,.5);font-size:10px}
 .htag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);font-size:11px;padding:3px 10px;border-radius:20px}
 main{max-width:980px;margin:auto;padding:22px 16px 56px}
 .slbl{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--gd);margin-bottom:10px;display:flex;align-items:center;gap:6px}
 .slbl::before{content:'';width:3px;height:13px;background:var(--g);border-radius:2px;display:inline-block}
 .card{background:var(--wh);border-radius:var(--rad);border:1px solid var(--bd);padding:18px 20px;box-shadow:var(--sh);margin-bottom:18px}
-
-/* SCORE */
 .srow{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:18px}
 .sb{border-radius:8px;padding:13px 14px;text-align:center}
-.sb.n{background:var(--bl);border:1px solid #B5D4F4}
-.sb.t{background:var(--gl);border:1px solid #A3D9B5}
-.sb.d{background:var(--gldb);border:1px solid #FAC775}
+.sb.n{background:var(--bl);border:1px solid #B5D4F4}.sb.t{background:var(--gl);border:1px solid #A3D9B5}.sb.d{background:var(--gldb);border:1px solid #FAC775}
 .sb .lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--gr);margin-bottom:3px}
 .sb .big{font-size:26px;font-weight:800;line-height:1}
-.sb.n .big{color:var(--b)}
-.sb.t .big{color:var(--gd)}
-.sb.d .big{color:#92400E}
+.sb.n .big{color:var(--b)}.sb.t .big{color:var(--gd)}.sb.d .big{color:#92400E}
 .sb .sub{font-size:11px;color:var(--gr);margin-top:3px}
-
-/* TABLE */
 .pt{width:100%;border-collapse:collapse;font-size:13px}
 .pt th{background:var(--nv);color:#fff;padding:7px 10px;text-align:center;font-weight:600;font-size:11.5px}
 .pt th:first-child{text-align:left}
 .pt td{padding:6px 10px;border-bottom:1px solid var(--bd);vertical-align:middle}
 .pt tr:last-child td{border-bottom:none}
-.pt tr:hover td{background:#F9FAFB}
-.bl{background:#DBEAFE;color:#1E40AF;font-size:10px;padding:2px 6px;border-radius:8px;font-weight:600}
-.br{background:#FEF3C7;color:#92400E;font-size:10px;padding:2px 6px;border-radius:8px;font-weight:600}
 .pt input[type=number]{width:56px;border:1px solid var(--bd);border-radius:6px;padding:4px 6px;font-size:13px;text-align:center;background:var(--grl);font-family:inherit}
 .pt input[type=number]:focus{outline:none;border-color:var(--g);background:#fff}
-.nv{font-weight:700;text-align:center}
-.nv.hi{color:#DC2626}.nv.mi{color:var(--gd)}.nv.lo{color:var(--b)}.nv.ke{color:var(--gr);font-style:italic;font-weight:400;font-size:12px}
-
-/* FOCUS */
+.bl{background:#DBEAFE;color:#1E40AF;font-size:10px;padding:2px 6px;border-radius:8px;font-weight:600}
+.br{background:#FEF3C7;color:#92400E;font-size:10px;padding:2px 6px;border-radius:8px;font-weight:600}
+.nv{font-weight:700;text-align:center}.nv.hi{color:#DC2626}.nv.mi{color:var(--gd)}.nv.lo{color:var(--b)}.nv.ke{color:var(--gr);font-style:italic;font-weight:400;font-size:12px}
 .fg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:4px}
 @media(max-width:540px){.fg{grid-template-columns:repeat(2,1fr)}}
 .fb{border:1.5px solid var(--bd);border-radius:8px;padding:9px 10px;cursor:pointer;background:var(--wh);text-align:center;transition:all .15s;user-select:none}
-.fb:hover{border-color:var(--g)}
-.fb.sel{border-color:var(--g);background:var(--gl)}
-.fb.sel .fn{color:var(--gd)}
-.fb.dis{opacity:.38;pointer-events:none;background:var(--grl)}
-.fn{font-size:13px;font-weight:600;color:var(--tx2);margin-bottom:2px}
-.ft{font-size:10px;color:var(--gr)}
+.fb:hover{border-color:var(--g)}.fb.sel{border-color:var(--g);background:var(--gl)}.fb.sel .fn{color:var(--gd)}.fb.dis{opacity:.38;pointer-events:none;background:var(--grl)}
+.fn{font-size:13px;font-weight:600;color:var(--tx2);margin-bottom:2px}.ft{font-size:10px;color:var(--gr)}
 .finfo{font-size:12px;color:var(--gr);background:var(--grl);border-radius:6px;padding:8px 12px;margin-top:10px;line-height:1.6}
 .finfo strong{color:var(--gd)}
-
-/* CONTROLS */
 .cr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:13px}
 .cl{font-size:13px;font-weight:500;color:var(--tx2);min-width:160px}
 .bg{display:flex;gap:4px;flex-wrap:wrap}
 .bs{padding:5px 13px;border-radius:20px;border:1px solid var(--bd);background:var(--wh);font-size:13px;font-weight:500;cursor:pointer;transition:all .12s;color:var(--tx2);font-family:inherit}
-.bs:hover{border-color:var(--g);color:var(--gd)}
-.bs.on{background:var(--g);border-color:var(--g);color:#fff;font-weight:600}
-
-/* API KEY */
+.bs:hover{border-color:var(--g);color:var(--gd)}.bs.on{background:var(--g);border-color:var(--g);color:#fff;font-weight:600}
 .kr{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
 .kr input{flex:1;min-width:200px;border:1px solid var(--bd);border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;background:var(--grl)}
 .kr input:focus{outline:none;border-color:var(--g);background:#fff}
-.kh{font-size:11px;color:var(--gr);line-height:1.6}
-.kh a{color:var(--g);text-decoration:none}
+.kh{font-size:11px;color:var(--gr);line-height:1.6}.kh a{color:var(--g);text-decoration:none}
 .gbtn{background:var(--g);color:#fff;border:none;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:7px;font-family:inherit;transition:background .15s;white-space:nowrap}
-.gbtn:hover{background:var(--gd)}
-.gbtn:disabled{background:#9CA3AF;cursor:not-allowed}
-
-/* LOADING */
+.gbtn:hover{background:var(--gd)}.gbtn:disabled{background:#9CA3AF;cursor:not-allowed}
 .ldbox{display:none;text-align:center;padding:36px 20px;background:var(--wh);border-radius:var(--rad);border:1px solid var(--bd);margin-bottom:18px}
 .spin{width:34px;height:34px;border:3px solid var(--gl);border-top-color:var(--g);border-radius:50%;animation:sp .7s linear infinite;margin:0 auto 14px}
 @keyframes sp{to{transform:rotate(360deg)}}
-.ltxt{font-size:14px;font-weight:600;color:var(--tx2)}
-.lsub{font-size:12px;color:var(--gr);margin-top:6px;font-style:italic}
-
-/* SLOGAN */
+.ltxt{font-size:14px;font-weight:600;color:var(--tx2)}.lsub{font-size:12px;color:var(--gr);margin-top:6px;font-style:italic}
 .slogan{background:var(--nv);border-radius:var(--rad);padding:16px 22px;margin-bottom:18px;display:flex;align-items:center;gap:14px}
-.sli{font-size:28px;flex-shrink:0}
-.slt{color:#fff;font-size:15px;font-weight:700;line-height:1.4}
-.sls{color:var(--gld);font-size:12px;margin-top:3px;font-weight:500}
-
-/* OUTPUT */
+.sli{font-size:28px;flex-shrink:0}.slt{color:#fff;font-size:15px;font-weight:700;line-height:1.4}.sls{color:var(--gld);font-size:12px;margin-top:3px;font-weight:500}
 #planout{display:none}
 .daycard{background:var(--wh);border-radius:var(--rad);border:1px solid var(--bd);overflow:hidden;margin-bottom:10px;box-shadow:var(--sh)}
 .dh{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--nv);color:#fff}
-.dn{font-weight:700;font-size:14px;min-width:70px}
-.dtag{font-size:11px;background:rgba(255,255,255,.15);padding:2px 8px;border-radius:10px;color:rgba(255,255,255,.85)}
-.dtm{margin-left:auto;font-size:12px;opacity:.6}
+.dn{font-weight:700;font-size:14px;min-width:70px}.dtag{font-size:11px;background:rgba(255,255,255,.15);padding:2px 8px;border-radius:10px;color:rgba(255,255,255,.85)}.dtm{margin-left:auto;font-size:12px;opacity:.6}
 .dbody{padding:14px 16px;font-size:13px;color:var(--tx2);line-height:1.75;white-space:pre-wrap}
-.dbody .em{color:var(--nv);font-weight:600}
-.dbody .mot{color:var(--gm);font-style:italic;font-weight:500}
-
-/* TIP */
-.tipcard{background:#F0FDF4;border:1px solid #A3D9B5;border-left:3px solid var(--g);border-radius:var(--rad);padding:14px 18px;margin-top:4px;font-size:13px;color:var(--gd);line-height:1.7}
+.dbody .em{color:var(--nv);font-weight:600}.dbody .mot{color:var(--gd);font-style:italic;font-weight:500}
+.tipcard{background:#F0FDF4;border:1px solid #A3D9B5;border-left:3px solid var(--g);border-radius:var(--rad);padding:14px 18px;margin-top:4px;font-size:13px;color:var(--gd);line-height:1.7;white-space:pre-wrap}
 .tipcard strong{color:var(--gd);font-weight:700}
-
-/* TOTAL */
 .totbar{background:var(--nv);border-radius:var(--rad);padding:14px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:16px 0 6px}
-.ti{text-align:center}
-.tv{font-size:17px;font-weight:800;color:var(--gld)}
-.tl{font-size:10px;opacity:.5;margin-top:2px;text-transform:uppercase;letter-spacing:.4px}
-
-.chbtn{background:transparent;border:1.5px solid var(--g);color:var(--gm);font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;font-family:inherit;transition:all .15s;margin-top:12px}
+.ti{text-align:center}.tv{font-size:17px;font-weight:800;color:var(--gld)}.tl{font-size:10px;opacity:.5;margin-top:2px;text-transform:uppercase;letter-spacing:.4px}
+.chbtn{background:transparent;border:1.5px solid var(--g);color:var(--g);font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;font-family:inherit;transition:all .15s;margin-top:12px}
 .chbtn:hover{background:var(--gl)}
-
 .err{background:#FEF2F2;border:1px solid #FCA5A5;border-radius:8px;padding:10px 14px;font-size:13px;color:#991B1B;margin-top:10px}
-
-
-/* AI TIPS TABS */
-.tab-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .tab-btn{padding:5px 14px;border-radius:20px;border:1px solid var(--bd);background:var(--wh);font-size:13px;font-weight:500;cursor:pointer;transition:all .12s;color:var(--tx2);font-family:inherit}
-.tab-btn:hover{border-color:var(--g);color:var(--gd)}
-.tab-btn.on{background:var(--g);border-color:var(--g);color:#fff;font-weight:600}
-.prompt-box{background:#F8FAFF;border:1px solid #C7D9F5;border-radius:8px;padding:14px 16px;font-size:12.5px;line-height:1.75;color:var(--tx2);position:relative;white-space:pre-wrap;font-family:inherit}
-.prompt-box .ph{color:#9CA3AF;font-style:italic}
-.copy-btn{position:absolute;top:10px;right:10px;background:var(--g);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .12s}
-.copy-btn:hover{background:var(--gd)}
-.copy-btn.copied{background:#059669}
-.tip-tag{display:inline-block;background:var(--gl);color:var(--gd);font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;margin-bottom:8px;border:1px solid #A3D9B5}
-.part-meta{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
-.meta-badge{font-size:11px;padding:3px 9px;border-radius:10px;font-weight:600}
-.mb-l{background:#DBEAFE;color:#1E40AF}
-.mb-r{background:#FEF3C7;color:#92400E}
-.mb-q{background:var(--grl);color:var(--gr)}
-.use-case{font-size:12px;color:var(--gr);margin-top:10px;padding:8px 12px;background:var(--grl);border-radius:6px;line-height:1.6}
-.use-case strong{color:var(--tx2)}
-
-
-/* VOCAB TOPIC */
+.tab-btn:hover{border-color:var(--g);color:var(--gd)}.tab-btn.on{background:var(--g);border-color:var(--g);color:#fff;font-weight:600}
+.prompt-box{background:#F0F7FF;border:1px solid #BFDBFE;border-radius:8px;padding:14px 16px;position:relative}
+.prompt-pre{font-size:12.5px;line-height:1.75;color:#1E3A5F;white-space:pre-wrap;font-family:inherit;margin:0;padding-right:60px}
+.copy-btn{position:absolute;top:10px;right:10px;background:var(--g);color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit}
 .topic-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 @media(max-width:700px){.topic-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:440px){.topic-grid{grid-template-columns:repeat(2,1fr)}}
 .topic-btn{border:1.5px solid var(--bd);border-radius:8px;padding:8px 6px;cursor:pointer;background:var(--wh);font-size:12px;font-weight:500;text-align:center;transition:all .12s;color:var(--tx2);font-family:inherit}
-.topic-btn:hover{border-color:var(--g);color:var(--gd)}
-.topic-btn.picked{border-color:var(--g);background:var(--gl);color:var(--gd);font-weight:600}
-
-/* VOCAB TABS */
+.topic-btn:hover{border-color:var(--g);color:var(--gd)}.topic-btn.picked{border-color:var(--g);background:var(--gl);color:var(--gd);font-weight:600}
 .vtab-panel{background:var(--wh);border:1px solid var(--bd);border-radius:var(--rad);padding:18px 20px;box-shadow:var(--sh)}
-
-/* VOCAB TABLE */
 .vtable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:10px}
 .vtable th{background:var(--nv);color:#fff;padding:8px 10px;text-align:left;font-weight:600;font-size:12px}
 .vtable td{padding:7px 10px;border-bottom:1px solid var(--bd);vertical-align:top}
-.vtable tr:hover td{background:#F9FAFB}
-.vtable .en{font-weight:600;color:var(--nv)}
-.vtable .vi{color:var(--tx2)}
-.vtable .ex{font-size:12px;color:var(--gr);font-style:italic}
-
-/* QUIZ */
+.vtable .en{font-weight:600;color:var(--nv)}.vtable .vi{color:var(--tx2)}.vtable .ex{font-size:12px;color:var(--gr);font-style:italic}
 .q-card{background:var(--grl);border-radius:8px;padding:14px 16px;margin-bottom:10px}
 .q-num{font-weight:700;color:var(--nv);font-size:13px;margin-bottom:6px}
 .q-text{font-size:14px;font-weight:500;color:var(--tx);margin-bottom:10px;line-height:1.5}
@@ -174,248 +96,147 @@ main{max-width:980px;margin:auto;padding:22px 16px 56px}
 .q-opt:hover{border-color:var(--g);background:var(--gl)}
 .q-opt.correct{border-color:#059669;background:#ECFDF5;color:#065F46;font-weight:600}
 .q-opt.wrong{border-color:#DC2626;background:#FEF2F2;color:#991B1B}
-.q-opt.show-correct{border-color:#059669;background:#ECFDF5;color:#065F46;font-weight:600}
 .q-opt[disabled]{cursor:default;opacity:.85}
 .q-explain{margin-top:8px;font-size:12px;color:var(--gd);background:var(--gl);border-radius:6px;padding:8px 12px;display:none;line-height:1.6}
-
-/* FILL BLANK */
-.fb-card{background:var(--grl);border-radius:8px;padding:14px 16px;margin-bottom:10px}
 .fb-sentence{font-size:14px;color:var(--tx);line-height:1.6;margin-bottom:10px}
 .fb-sentence .blank{display:inline-block;min-width:100px;border-bottom:2px solid var(--nv);text-align:center;font-weight:600;color:var(--g)}
 .fb-opts{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 @media(max-width:500px){.fb-opts{grid-template-columns:repeat(2,1fr)}}
-.fb-explain{margin-top:8px;font-size:12px;color:var(--gd);background:var(--gl);border-radius:6px;padding:8px 12px;display:none;line-height:1.6}
-
-/* SCORE */
 .score-card{background:linear-gradient(135deg,var(--nv),#1a3a6b);border-radius:var(--rad);padding:20px;margin-top:14px;text-align:center;color:#fff}
-.score-big{font-size:42px;font-weight:800;color:var(--gld)}
-.score-label{font-size:13px;opacity:.7;margin-top:4px}
-.score-msg{font-size:14px;margin-top:10px;font-weight:500}
-
+.score-big{font-size:42px;font-weight:800;color:var(--gld)}.score-label{font-size:13px;opacity:.7;margin-top:4px}.score-msg{font-size:14px;margin-top:10px;font-weight:500}
+.para-box{margin-top:14px;background:#F0F7FF;border:1px solid #BFDBFE;border-radius:8px;padding:14px 16px}
+.para-title{font-size:11.5px;font-weight:700;color:var(--nv);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.para-text{font-size:14px;line-height:1.85;color:#1E3A5F}
+.para-text .vn{color:var(--g);font-weight:600}
+@media(max-width:560px){.srow{grid-template-columns:1fr 1fr}.srow .sb:last-child{grid-column:span 2}}
 footer{background:var(--nv);color:rgba(255,255,255,.4);text-align:center;font-size:11px;padding:14px;margin-top:24px;line-height:1.8}
 footer strong{color:rgba(255,255,255,.75)}
-
-@media(max-width:560px){.srow{grid-template-columns:1fr 1fr}.srow .sb:last-child{grid-column:span 2}}
 </style>
 </head>
 <body>
-<header>
-  <div class="hi">
-    <div style="display:flex;align-items:center">
-      <div class="lm">ORI</div>
-      <div class="lt">ORI TOEIC Dream Job<div class="ls">Phản xạ – Không học thuộc</div></div>
-    </div>
-    <div class="htag">AI Study Planner</div>
-  </div>
-</header>
-
+<header><div class="hi"><div style="display:flex;align-items:center"><div class="lm">ORI</div><div class="lt">ORI TOEIC Dream Job<div class="ls">Phản xạ – Không học thuộc</div></div></div><div class="htag">AI Study Planner</div></div></header>
 <main>
 
-<div class="slbl">Bước 1 — Nhập điểm hiện tại &amp; mục tiêu từng Part</div>
+<div class="slbl">Bước 1 — Nhập điểm hiện tại &amp; mục tiêu</div>
 <div class="card">
   <div class="srow">
-    <div class="sb n"><div class="lbl">Tháng này</div><div class="big" id="sn">—</div><div class="sub" id="snlr">L: — | R: —</div></div>
-    <div class="sb t"><div class="lbl">Mục tiêu</div><div class="big" id="st">—</div><div class="sub" id="stlr">L: — | R: —</div></div>
-    <div class="sb d"><div class="lbl">Cần tăng</div><div class="big" id="sd">—</div><div class="sub" id="sdlr">—</div></div>
+    <div class="sb n"><div class="lbl">Tháng này</div><div class="big" id="sn">—</div><div class="sub" id="snlr"></div></div>
+    <div class="sb t"><div class="lbl">Mục tiêu</div><div class="big" id="st">—</div><div class="sub" id="stlr"></div></div>
+    <div class="sb d"><div class="lbl">Cần tăng</div><div class="big" id="sd">—</div><div class="sub" id="sdlr"></div></div>
   </div>
-  <table class="pt">
-    <thead><tr>
-      <th style="text-align:left;width:190px">Part</th>
-      <th>Hiện tại</th><th>Mục tiêu</th><th>Cần tăng</th><th>Tổng câu</th><th>Mức độ</th>
-    </tr></thead>
-    <tbody id="ptb"></tbody>
-  </table>
+  <table class="pt"><thead><tr><th style="text-align:left;width:190px">Part</th><th>Hiện tại</th><th>Mục tiêu</th><th>Cần tăng</th><th>Tổng câu</th><th>Mức độ</th></tr></thead><tbody id="ptb"></tbody></table>
 </div>
 
 <div class="slbl">Bước 2 — Chọn 2 Part tập trung tuần này</div>
 <div class="card">
-  <div style="font-size:13px;color:var(--tx2);margin-bottom:12px">
-    Chọn đúng <strong>2 Part</strong> để tập trung sâu tuần này. Khi 2 Part này đạt mục tiêu → bấm <em>"Đổi Part"</em> để chọn 2 Part mới. Các Part còn lại vẫn được ôn nhẹ mỗi buổi — không bị bỏ quên.
-  </div>
+  <div style="font-size:13px;color:var(--tx2);margin-bottom:12px">Chọn đúng <strong>2 Part</strong> tập trung sâu. Khi đạt mục tiêu → bấm "Đổi Part" chọn 2 Part mới. Các Part còn lại vẫn ôn nhẹ.</div>
   <div class="fg" id="fg"></div>
   <div class="finfo" id="fi">Chưa chọn — hãy chọn 2 Part bên trên.</div>
 </div>
 
 <div class="slbl">Bước 3 — Chọn lịch học</div>
 <div class="card">
-  <div class="cr">
-    <span class="cl">Số buổi / tuần</span>
-    <div class="bg" id="dg">
-      <button class="bs" onclick="setD(3)" data-v="3">3 buổi</button>
-      <button class="bs on" onclick="setD(4)" data-v="4">4 buổi</button>
-      <button class="bs" onclick="setD(5)" data-v="5">5 buổi</button>
-      <button class="bs" onclick="setD(6)" data-v="6">6 buổi</button>
-      <button class="bs" onclick="setD(7)" data-v="7">7 buổi</button>
-    </div>
-  </div>
-  <div class="cr">
-    <span class="cl">Thời gian / buổi</span>
-    <div class="bg" id="hg">
-      <button class="bs" onclick="setH(60)" data-v="60">1 tiếng</button>
-      <button class="bs on" onclick="setH(90)" data-v="90">1.5 tiếng</button>
-      <button class="bs" onclick="setH(120)" data-v="120">2 tiếng</button>
-      <button class="bs" onclick="setH(150)" data-v="150">2.5 tiếng</button>
-      <button class="bs" onclick="setH(180)" data-v="180">3 tiếng</button>
-    </div>
-  </div>
-  <div class="cr" style="margin-bottom:0">
-    <span class="cl">Dịch Part 7 / buổi</span>
-    <div class="bg" id="tg">
-      <button class="bs on" onclick="setT(20)" data-v="20">20 phút</button>
-      <button class="bs" onclick="setT(25)" data-v="25">25 phút</button>
-      <button class="bs" onclick="setT(30)" data-v="30">30 phút</button>
-    </div>
-  </div>
+  <div class="cr"><span class="cl">Số buổi / tuần</span><div class="bg" id="dg"><button class="bs" onclick="setD(3)" data-v="3">3 buổi</button><button class="bs on" onclick="setD(4)" data-v="4">4 buổi</button><button class="bs" onclick="setD(5)" data-v="5">5 buổi</button><button class="bs" onclick="setD(6)" data-v="6">6 buổi</button><button class="bs" onclick="setD(7)" data-v="7">7 buổi</button></div></div>
+  <div class="cr"><span class="cl">Thời gian / buổi</span><div class="bg" id="hg"><button class="bs" onclick="setH(60)" data-v="60">1 tiếng</button><button class="bs on" onclick="setH(90)" data-v="90">1.5 tiếng</button><button class="bs" onclick="setH(120)" data-v="120">2 tiếng</button><button class="bs" onclick="setH(150)" data-v="150">2.5 tiếng</button><button class="bs" onclick="setH(180)" data-v="180">3 tiếng</button></div></div>
+  <div class="cr" style="margin-bottom:0"><span class="cl">Dịch Part 7 / buổi</span><div class="bg" id="tg"><button class="bs on" onclick="setT(20)" data-v="20">20 phút</button><button class="bs" onclick="setT(25)" data-v="25">25 phút</button><button class="bs" onclick="setT(30)" data-v="30">30 phút</button></div></div>
 </div>
 
 <div class="slbl">Bước 4 — Tạo kế hoạch bằng AI</div>
 <div class="card">
-  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-    <button class="gbtn" onclick="genPlan()" id="gbtn">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      Tạo kế hoạch AI
-    </button>
+  <div id="errbox"><span style="font-size:12px;color:var(--gr)">Nhấn nút → AI sẽ lập kế hoạch học tập riêng cho bạn</span>
   </div>
-  <span style="font-size:12px;color:var(--gr)">Nhấn nút → AI sẽ lập kế hoạch học tập riêng cho bạn</span>
-  </div>
-  <div id="errbox"></div>
 </div>
-
-<div class="ldbox" id="ldbox">
-  <div class="spin"></div>
-  <div class="ltxt">AI đang lập kế hoạch học tập...</div>
-  <div class="lsub" id="lsub">Đang phân tích điểm số từng Part...</div>
-</div>
+<div class="ldbox" id="ldbox"><div class="spin"></div><div class="ltxt">AI đang lập kế hoạch...</div><div class="lsub" id="lsub"></div></div>
 
 <div id="planout">
   <div class="slbl">Kế hoạch học tập tuần này</div>
-  <div id="sloganarea"></div>
-  <div id="plancards"></div>
-  <div id="totbar"></div>
+  <div id="sloganarea"></div><div id="plancards"></div><div id="totbar"></div>
   <button class="chbtn" onclick="resetFocus()">↺ Đổi 2 Part tập trung — tuần sau</button>
 </div>
 
-
-
-<!-- VOCAB BY TOPIC SECTION -->
-<div class="slbl" style="margin-top:8px">Luyện từ vựng theo chủ đề — AI tạo Quiz + Bài tập Part 5</div>
-<div class="card" id="vocab-card">
-  <div style="font-size:13px;color:var(--tx2);margin-bottom:14px;line-height:1.6">
-    Chọn chủ đề → AI tự soạn bảng từ vựng + quiz trắc nghiệm + bài tập điền câu kiểu Part 5. Dùng lại Groq API key ở Bước 4.
-  </div>
+<!-- VOCAB BY TOPIC -->
+<div class="slbl" style="margin-top:8px">Luyện từ vựng theo chủ đề — Quiz + Part 5</div>
+<div class="card">
+  <div style="font-size:13px;color:var(--tx2);margin-bottom:14px;line-height:1.6">Chọn chủ đề → AI soạn bảng từ + đoạn văn song ngữ + quiz + bài tập Part 5. Dùng Groq key ở Bước 4.</div>
   <div style="font-size:12px;font-weight:600;color:var(--gd);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Chọn chủ đề</div>
-  <div class="topic-grid" id="topic-grid">
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Office & Workplace">Office & Workplace</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Travel & Tourism">Travel & Tourism</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Shopping & Retail">Shopping & Retail</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Banking & Finance">Banking & Finance</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Health & Hospital">Health & Hospital</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Restaurant & Food">Restaurant & Food</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Human Resources">Human Resources</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Manufacturing & Factory">Manufacturing</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Marketing & Advertising">Marketing</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Technology & IT">Technology & IT</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Logistics & Shipping">Logistics</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Real Estate & Housing">Real Estate</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Education & Training">Education</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Law & Legal">Law & Legal</button>
-    <button class="topic-btn" onclick="pickTopic(this)" data-topic="Aviation & Airport">Aviation</button>
-  </div>
+  <div class="topic-grid" id="topic-grid"></div>
   <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
     <input type="text" id="custom-topic" placeholder="...hoặc tự nhập chủ đề" style="flex:1;min-width:180px;border:1px solid var(--bd);border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;background:var(--grl)">
-    <button class="gbtn" onclick="genVocab()" id="vbtn" style="white-space:nowrap">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 6v12M6 12h12"/></svg>
-      Tạo bài học
-    </button>
+    <button class="gbtn" onclick="genVocab()" id="vbtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 6v12M6 12h12"/></svg>Tạo bài học</button>
   </div>
   <div id="vocab-err"></div>
 </div>
-
-<div class="ldbox" id="vld">
-  <div class="spin"></div>
-  <div class="ltxt">AI đang soạn từ vựng + quiz...</div>
-  <div class="lsub" id="vlsub">Đang tạo bảng từ vựng theo chủ đề...</div>
-</div>
-
+<div class="ldbox" id="vld"><div class="spin"></div><div class="ltxt">AI đang soạn từ vựng + quiz...</div><div class="lsub" id="vlsub"></div></div>
 <div id="vocab-out" style="display:none">
   <div class="slbl">Bài học từ vựng</div>
-  <div id="vocab-topic-title"></div>
+  <div id="vtitle"></div>
   <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap">
-    <button class="tab-btn on" data-vtab="words" onclick="showVTab('words')">📖 Từ vựng</button>
-    <button class="tab-btn" data-vtab="quiz" onclick="showVTab('quiz')">❓ Quiz</button>
-    <button class="tab-btn" data-vtab="fill" onclick="showVTab('fill')">✏️ Điền câu Part 5</button>
+    <button class="tab-btn on" data-vtab="words" onclick="showVT('words')">📖 Từ vựng</button>
+    <button class="tab-btn" data-vtab="quiz" onclick="showVT('quiz')">❓ Quiz</button>
+    <button class="tab-btn" data-vtab="fill" onclick="showVT('fill')">✏️ Part 5</button>
   </div>
-  <div id="vtab-words" class="vtab-panel"></div>
-  <div id="vtab-quiz" class="vtab-panel" style="display:none"></div>
-  <div id="vtab-fill" class="vtab-panel" style="display:none"></div>
-  <div id="vocab-score" style="display:none"></div>
+  <div id="vt-words" class="vtab-panel"></div>
+  <div id="vt-quiz" class="vtab-panel" style="display:none"></div>
+  <div id="vt-fill" class="vtab-panel" style="display:none"></div>
+  <div id="vscore" style="display:none"></div>
 </div>
 
-
-<!-- AI TIPS SECTION -->
+<!-- PROMPT COPY-PASTE -->
 <div class="slbl" style="margin-top:8px">Học cùng AI — Prompt copy-paste cho từng Part</div>
-<div class="card" id="ai-tips-card">
-  <div style="font-size:13px;color:var(--tx2);margin-bottom:16px;line-height:1.6">
-    Sau mỗi buổi làm đề, copy đoạn văn / script / câu hỏi từ bài vừa làm, rồi dùng prompt dưới đây paste vào <strong>ChatGPT / Claude / Gemini</strong> để AI soạn từ vựng từ đúng bài đó — không phải từ vựng chung chung.
-  </div>
-  <div class="tab-row" id="tab-row">
-    <button class="tab-btn on" data-part="p1" onclick="showTab('p1')">Part 1</button>
-    <button class="tab-btn" data-part="p2" onclick="showTab('p2')">Part 2</button>
-    <button class="tab-btn" data-part="p3" onclick="showTab('p3')">Part 3</button>
-    <button class="tab-btn" data-part="p4" onclick="showTab('p4')">Part 4</button>
-    <button class="tab-btn" data-part="p5" onclick="showTab('p5')">Part 5</button>
-    <button class="tab-btn" data-part="p6" onclick="showTab('p6')">Part 6</button>
-    <button class="tab-btn" data-part="p7" onclick="showTab('p7')">Part 7</button>
-  </div>
-  <div id="tab-content"></div>
+<div class="card">
+  <div style="font-size:13px;color:var(--tx2);margin-bottom:16px;line-height:1.6">Copy đoạn văn / script từ bài vừa làm → paste prompt dưới đây vào <strong>ChatGPT / Claude / Gemini</strong> → nhận từ vựng + đoạn văn song ngữ từ đúng bài đó.</div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px" id="ptabs"></div>
+  <div id="pcontent"></div>
 </div>
 
 </main>
-
-<footer>
-  <strong>ORI TOEIC Dream Job Academy</strong> · 135 Bạch Đằng, Tân Bình, TP.HCM<br>
-  oritoeicdreamjob.com · 0906 303 373 · Cô Katie dạy trực tiếp<br>
-  Học là hiểu – Thi là đậu – Đi làm là dùng được
-</footer>
+<footer><strong>ORI TOEIC Dream Job Academy</strong> · 135 Bạch Đằng, Tân Bình, TP.HCM<br>oritoeicdreamjob.com · 0906 303 373 · Cô Katie dạy trực tiếp<br>Học là hiểu – Thi là đậu – Đi làm là dùng được</footer>
 
 <script>
-const PARTS=[
+// ═══════════════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════════════
+var PARTS=[
   {id:'p1',name:'Part 1',type:'L',total:6,desc:'Mô tả ảnh'},
   {id:'p2',name:'Part 2',type:'L',total:25,desc:'Hỏi & đáp'},
   {id:'p3',name:'Part 3',type:'L',total:39,desc:'Hội thoại'},
   {id:'p4',name:'Part 4',type:'L',total:30,desc:'Bài nói ngắn'},
   {id:'p5',name:'Part 5',type:'R',total:30,desc:'Điền từ'},
   {id:'p6',name:'Part 6',type:'R',total:16,desc:'Điền vào đoạn'},
-  {id:'p7',name:'Part 7',type:'R',total:54,desc:'Đọc hiểu'},
+  {id:'p7',name:'Part 7',type:'R',total:54,desc:'Đọc hiểu'}
 ];
-const DF={p1_n:1,p1_t:5,p2_n:17,p2_t:18,p3_n:33,p3_t:37,p4_n:21,p4_t:21,p5_n:17,p5_t:19,p6_n:4,p6_t:6,p7_n:21,p7_t:27};
-const LT=[5,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,165,170,175,180,185,190,195,200,205,210,215,220,225,230,235,240,245,250,255,260,265,270,275,280,285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,365,370,375,380,385,395,400,405,410,415,420,425,430,435,440,445,450,455,460,465,470,475,480,485,490,495,495,495,495,495];
-const RT=[5,5,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,165,170,175,180,185,190,195,200,205,210,215,220,225,230,235,240,245,250,255,260,265,270,275,280,285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,365,370,375,380,385,390,395,400,405,410,415,420,425,430,435,440,445,450,455,460,465,470,475,480,485,490,495];
-const DNS=['Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7','Chủ nhật'];
-const SLOGANS=[
+var DF={p1_n:1,p1_t:5,p2_n:17,p2_t:18,p3_n:33,p3_t:37,p4_n:21,p4_t:21,p5_n:17,p5_t:19,p6_n:4,p6_t:6,p7_n:21,p7_t:27};
+var LT=[5,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,165,170,175,180,185,190,195,200,205,210,215,220,225,230,235,240,245,250,255,260,265,270,275,280,285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,365,370,375,380,385,395,400,405,410,415,420,425,430,435,440,445,450,455,460,465,470,475,480,485,490,495,495,495,495,495];
+var RT=[5,5,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,165,170,175,180,185,190,195,200,205,210,215,220,225,230,235,240,245,250,255,260,265,270,275,280,285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,365,370,375,380,385,390,395,400,405,410,415,420,425,430,435,440,445,450,455,460,465,470,475,480,485,490,495];
+var DNS=['Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7','Chủ nhật'];
+var SLOGANS=[
   {i:'🔥',t:'Một buổi học hôm nay = một câu đúng trong phòng thi.',s:'Phản xạ không đến từ học thuộc — nó đến từ lặp đi lặp lại.'},
-  {i:'⚡',t:'Không cần thiên tài. Chỉ cần học đều — mỗi ngày, mỗi tuần.',s:'2 Part. Tập trung sâu. Làm chủ. Rồi mới tiến tiếp — đó là cách ORI.'},
+  {i:'⚡',t:'Không cần thiên tài. Chỉ cần học đều — mỗi ngày, mỗi tuần.',s:'2 Part. Tập trung sâu. Làm chủ. Rồi mới tiến tiếp.'},
   {i:'🎯',t:'Xem lỗi kỹ hơn làm thêm đề. Đó là bí quyết tăng điểm nhanh nhất.',s:'Mỗi câu sai là một bài học. Đừng để nó trôi qua.'},
-  {i:'🌱',t:'Điểm số không tăng qua đêm — nhưng mỗi buổi đều để lại dấu vết.',s:'Tin vào quá trình. Kết quả sẽ tự đến khi bạn không ngừng lại.'},
-  {i:'💪',t:'Dịch Part 7 mỗi ngày — không phải để dịch giỏi, mà để hiểu sâu.',s:'Người hiểu cấu trúc bài đọc sẽ trả lời nhanh hơn người chỉ đọc.'},
+  {i:'🌱',t:'Điểm số không tăng qua đêm — nhưng mỗi buổi đều để lại dấu vết.',s:'Tin vào quá trình. Kết quả sẽ tự đến.'},
+  {i:'💪',t:'Dịch Part 7 mỗi ngày — không phải để dịch giỏi, mà để hiểu sâu.',s:'Người hiểu cấu trúc sẽ trả lời nhanh hơn người chỉ đọc.'}
 ];
+var TOPICS=['Office & Workplace','Travel & Tourism','Shopping & Retail','Banking & Finance','Health & Hospital','Restaurant & Food','Human Resources','Manufacturing','Marketing & Advertising','Technology & IT','Logistics & Shipping','Real Estate','Education & Training','Law & Legal','Aviation & Airport'];
 
-let days=4,mins=90,trans=20,focus=[];
+var days=4,mins=90,trans=20,focus=[];
+function gv(id){var e=document.getElementById(id);return e?parseInt(e.value)||0:0;}
+function escH(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fmtM(m){if(m>=60){var h=Math.floor(m/60),r=m%60;return r?h+'g'+r+'p':h+' giờ';}return m+'p';}
 
-const gv=id=>{const e=document.getElementById(id);return e?parseInt(e.value)||0:0;};
-
+// ═══════════════════════════════════════════════════════════════
+// SCORE & TABLE
+// ═══════════════════════════════════════════════════════════════
 function calcScore(){
-  const lc=['p1','p2','p3','p4'].reduce((s,id)=>s+gv(id+'_n'),0);
-  const lt=['p1','p2','p3','p4'].reduce((s,id)=>s+gv(id+'_t'),0);
-  const rc=['p5','p6','p7'].reduce((s,id)=>s+gv(id+'_n'),0);
-  const rt=['p5','p6','p7'].reduce((s,id)=>s+gv(id+'_t'),0);
+  var lc=gv('p1_n')+gv('p2_n')+gv('p3_n')+gv('p4_n');
+  var lt=gv('p1_t')+gv('p2_t')+gv('p3_t')+gv('p4_t');
+  var rc=gv('p5_n')+gv('p6_n')+gv('p7_n');
+  var rt=gv('p5_t')+gv('p6_t')+gv('p7_t');
   return{lc:LT[Math.min(lc,LT.length-1)],lt:LT[Math.min(lt,LT.length-1)],rc:RT[Math.min(rc,RT.length-1)],rt:RT[Math.min(rt,RT.length-1)]};
 }
-
 function upd(){
-  PARTS.forEach(p=>{
-    const n=gv(p.id+'_n'),t=gv(p.id+'_t'),nd=t-n;
-    const nel=document.getElementById(p.id+'_nd'),pel=document.getElementById(p.id+'_pr');
+  PARTS.forEach(function(p){
+    var n=gv(p.id+'_n'),t=gv(p.id+'_t'),nd=t-n;
+    var nel=document.getElementById(p.id+'_nd'),pel=document.getElementById(p.id+'_pr');
     if(nel){nel.textContent=nd>0?'+'+nd:'–';nel.className='nv '+(nd>0?(nd>=5?'hi':nd>=2?'mi':'lo'):'ke');}
     if(pel){
       if(nd<=0)pel.innerHTML='<span style="font-size:11px;color:var(--gr)">Ổn định</span>';
@@ -423,752 +244,280 @@ function upd(){
       else if(nd>=2)pel.innerHTML='<span style="color:var(--gd);font-weight:600;font-size:12px">↑ TB</span>';
       else pel.innerHTML='<span style="color:var(--b);font-size:12px">→ Nhẹ</span>';
     }
-    const fb=document.getElementById('fb_'+p.id);
-    if(fb)fb.querySelector('.ft').textContent=`${p.type==='L'?'Listening':'Reading'} · ${nd>0?'+'+nd+' câu':'ổn định'}`;
+    var fb=document.getElementById('fb_'+p.id);
+    if(fb)fb.querySelector('.ft').textContent=(p.type==='L'?'Listening':'Reading')+' · '+(nd>0?'+'+nd+' câu':'ổn định');
   });
-  const s=calcScore();
-  const now=s.lc+s.rc,tgt=s.lt+s.rt,dl=tgt-now;
+  var s=calcScore(),now=s.lc+s.rc,tgt=s.lt+s.rt;
   document.getElementById('sn').textContent=now;
   document.getElementById('st').textContent=tgt;
-  document.getElementById('sd').textContent=(dl>0?'+':'')+dl;
-  document.getElementById('snlr').textContent=`L: ${s.lc} | R: ${s.rc}`;
-  document.getElementById('stlr').textContent=`L: ${s.lt} | R: ${s.rt}`;
-  document.getElementById('sdlr').textContent=`L ${s.lt-s.lc>=0?'+':''}${s.lt-s.lc} | R ${s.rt-s.rc>=0?'+':''}${s.rt-s.rc}`;
+  document.getElementById('sd').textContent=(tgt-now>0?'+':'')+(tgt-now);
+  document.getElementById('snlr').textContent='L: '+s.lc+' | R: '+s.rc;
+  document.getElementById('stlr').textContent='L: '+s.lt+' | R: '+s.rt;
+  document.getElementById('sdlr').textContent='L '+(s.lt-s.lc>=0?'+':'')+(s.lt-s.lc)+' | R '+(s.rt-s.rc>=0?'+':'')+(s.rt-s.rc);
 }
-
 function buildTable(){
-  const tb=document.getElementById('ptb'); tb.innerHTML='';
-  PARTS.forEach(p=>{
-    const tr=document.createElement('tr');
-    tr.innerHTML=`<td><span style="font-weight:500;color:var(--tx2);display:flex;align-items:center;gap:5px">${p.name}<span class="b${p.type==='L'?'l':'r'}">${p.type}</span><span style="font-size:11px;color:var(--gr)">${p.desc}</span></span></td><td style="text-align:center"><input type="number" id="${p.id}_n" min="0" max="${p.total}" value="${DF[p.id+'_n']||0}" oninput="upd()"></td><td style="text-align:center"><input type="number" id="${p.id}_t" min="0" max="${p.total}" value="${DF[p.id+'_t']||0}" oninput="upd()"></td><td id="${p.id}_nd" class="nv">—</td><td style="text-align:center;color:var(--gr);font-size:12px">/ ${p.total}</td><td id="${p.id}_pr" style="text-align:center">—</td>`;
+  var tb=document.getElementById('ptb');tb.innerHTML='';
+  PARTS.forEach(function(p){
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td><span style="font-weight:500;color:var(--tx2);display:flex;align-items:center;gap:5px">'+p.name+' <span class="b'+(p.type==='L'?'l':'r')+'">'+p.type+'</span><span style="font-size:11px;color:var(--gr)">'+p.desc+'</span></span></td><td style="text-align:center"><input type="number" id="'+p.id+'_n" min="0" max="'+p.total+'" value="'+(DF[p.id+'_n']||0)+'" oninput="upd()"></td><td style="text-align:center"><input type="number" id="'+p.id+'_t" min="0" max="'+p.total+'" value="'+(DF[p.id+'_t']||0)+'" oninput="upd()"></td><td id="'+p.id+'_nd" class="nv">—</td><td style="text-align:center;color:var(--gr);font-size:12px">/ '+p.total+'</td><td id="'+p.id+'_pr" style="text-align:center">—</td>';
     tb.appendChild(tr);
   });
   upd();
 }
 
+// ═══════════════════════════════════════════════════════════════
+// FOCUS
+// ═══════════════════════════════════════════════════════════════
 function buildFG(){
-  const fg=document.getElementById('fg'); fg.innerHTML='';
-  PARTS.forEach(p=>{
-    const nd=gv(p.id+'_t')-gv(p.id+'_n');
-    const btn=document.createElement('div');
-    btn.className='fb'+(focus.includes(p.id)?' sel':'');
-    btn.id='fb_'+p.id; btn.onclick=()=>togF(p.id);
-    btn.innerHTML=`<div class="fn">${p.name}</div><div class="ft">${p.type==='L'?'Listening':'Reading'} · ${nd>0?'+'+nd+' câu':'ổn định'}</div>`;
+  var fg=document.getElementById('fg');fg.innerHTML='';
+  PARTS.forEach(function(p){
+    var btn=document.createElement('div');btn.className='fb';btn.id='fb_'+p.id;
+    btn.onclick=function(){togF(p.id);};
+    btn.innerHTML='<div class="fn">'+p.name+'</div><div class="ft"></div>';
     fg.appendChild(btn);
   });
   updFI();
 }
-
 function togF(id){
-  if(focus.includes(id)){focus=focus.filter(x=>x!==id);}
-  else{if(focus.length>=2){alert('Chỉ chọn tối đa 2 Part. Bỏ chọn 1 Part trước.');return;}focus.push(id);}
-  PARTS.forEach(p=>{
-    const b=document.getElementById('fb_'+p.id);if(!b)return;
-    b.className='fb'+(focus.includes(p.id)?' sel':focus.length>=2?' dis':'');
-  });
+  if(focus.indexOf(id)>=0){focus=focus.filter(function(x){return x!==id;});}
+  else{if(focus.length>=2){alert('Tối đa 2 Part. Bỏ chọn 1 trước.');return;}focus.push(id);}
+  PARTS.forEach(function(p){var b=document.getElementById('fb_'+p.id);if(!b)return;b.className='fb'+(focus.indexOf(p.id)>=0?' sel':focus.length>=2?' dis':'');});
   updFI();
 }
 function updFI(){
-  const el=document.getElementById('fi');
+  var el=document.getElementById('fi');
   if(!focus.length){el.innerHTML='Chưa chọn — hãy chọn 2 Part bên trên.';return;}
-  if(focus.length===1){const p=PARTS.find(x=>x.id===focus[0]);el.innerHTML=`Đã chọn: <strong>${p.name}</strong>. Chọn thêm 1 Part nữa.`;return;}
-  const p1=PARTS.find(x=>x.id===focus[0]),p2=PARTS.find(x=>x.id===focus[1]);
-  const keep=PARTS.filter(p=>!focus.includes(p.id)).map(p=>p.name).join(', ');
-  el.innerHTML=`Tuần này tập trung: <strong>${p1.name} + ${p2.name}</strong>. Các Part còn lại (${keep}) ôn duy trì nhẹ. Khi 2 Part này đạt mục tiêu → bấm "Đổi Part".`;
+  if(focus.length===1){el.innerHTML='Đã chọn: <strong>'+PARTS.find(function(x){return x.id===focus[0];}).name+'</strong>. Chọn thêm 1 Part.';return;}
+  var p1=PARTS.find(function(x){return x.id===focus[0];}),p2=PARTS.find(function(x){return x.id===focus[1];});
+  var keep=PARTS.filter(function(p){return focus.indexOf(p.id)<0;}).map(function(p){return p.name;}).join(', ');
+  el.innerHTML='Tuần này: <strong>'+p1.name+' + '+p2.name+'</strong>. Còn lại ('+keep+') ôn duy trì.';
 }
-function resetFocus(){focus=[];PARTS.forEach(p=>{const b=document.getElementById('fb_'+p.id);if(b)b.className='fb';});updFI();document.getElementById('planout').style.display='none';document.getElementById('fg').scrollIntoView({behavior:'smooth'});}
+function resetFocus(){focus=[];PARTS.forEach(function(p){var b=document.getElementById('fb_'+p.id);if(b)b.className='fb';});updFI();document.getElementById('planout').style.display='none';document.getElementById('fg').scrollIntoView({behavior:'smooth'});}
+function setD(n){days=n;document.querySelectorAll('#dg .bs').forEach(function(b){b.classList.toggle('on',+b.dataset.v===n);});}
+function setH(m){mins=m;document.querySelectorAll('#hg .bs').forEach(function(b){b.classList.toggle('on',+b.dataset.v===m);});}
+function setT(m){trans=m;document.querySelectorAll('#tg .bs').forEach(function(b){b.classList.toggle('on',+b.dataset.v===m);});}
+function showErr(m){document.getElementById('errbox').innerHTML=m?'<div class="err">'+m+'</div>':'';}
 
-function setD(n){days=n;document.querySelectorAll('#dg .bs').forEach(b=>b.classList.toggle('on',+b.dataset.v===n));}
-function setH(m){mins=m;document.querySelectorAll('#hg .bs').forEach(b=>b.classList.toggle('on',+b.dataset.v===m));}
-function setT(m){trans=m;document.querySelectorAll('#tg .bs').forEach(b=>b.classList.toggle('on',+b.dataset.v===m));}
-
-async function genPlan(){
+// ═══════════════════════════════════════════════════════════════
+// GENERATE PLAN (Groq)
+// ═══════════════════════════════════════════════════════════════
+function genPlan(){
   
-  if(focus.length<2){showErr('Hãy chọn đúng 2 Part tập trung ở Bước 2 trước.');return;}
+  if(focus.length<2){showErr('Chọn đúng 2 Part ở Bước 2.');return;}
   showErr('');
   document.getElementById('ldbox').style.display='block';
   document.getElementById('planout').style.display='none';
   document.getElementById('gbtn').disabled=true;
+  var msgs=['Đang phân tích điểm...','Đang phân bổ thời gian...','Đang soạn lịch...'];
+  var mi=0,sub=document.getElementById('lsub');
+  var iv=setInterval(function(){sub.textContent=msgs[mi++%msgs.length];},1800);
 
-  const msgs=['Đang phân tích điểm số từng Part...','Đang phân bổ thời gian hợp lý...','Đang soạn hướng dẫn từng buổi...','Sắp xong rồi...'];
-  let mi=0; const sub=document.getElementById('lsub');
-  const iv=setInterval(()=>{sub.textContent=msgs[mi++%msgs.length];},1800);
+  var pInfo=PARTS.map(function(p){var n=gv(p.id+'_n'),t=gv(p.id+'_t');return p.name+'('+p.type+'): '+n+'/'+p.total+'→'+t+'/'+p.total+' cần +'+(Math.max(0,t-n))+(focus.indexOf(p.id)>=0?' [TẬP TRUNG]':' [duy trì]');}).join('\n');
+  var sc=calcScore();
+  var fp=PARTS.filter(function(p){return focus.indexOf(p.id)>=0;});
+  var studyMins=mins-trans;
+  var dNames=DNS.slice(0,days).join(', ');
+  var fpDetails=fp.map(function(p){var q=p.id==='p1'?6:p.id==='p2'?10:p.id==='p3'?13:p.id==='p4'?10:p.id==='p5'?10:p.id==='p6'?8:15;return p.name+': làm '+q+' câu/buổi (tổng đề '+p.total+' câu)';}).join('\n');
 
-  const pInfo=PARTS.map(p=>{
-    const n=gv(p.id+'_n'),t=gv(p.id+'_t'),nd=t-n;
-    return `${p.name}(${p.type}): ${n}/${p.total}→${t}/${p.total} cần +${Math.max(0,nd)}${focus.includes(p.id)?' [TẬP TRUNG]':' [duy trì]'}`;
-  }).join('\n');
-  const sc=calcScore();
-  const fp=PARTS.filter(p=>focus.includes(p.id));
-  const studyMins=mins-trans;
-  const dNames=DNS.slice(0,days).join(', ');
+  var prompt='Bạn là Cô Katie, giáo viên TOEIC ORI Academy. Lập kế hoạch tuần này.\n\nCẤU TRÚC ĐỀ TOEIC (ĐÚNG SỐ CÂU):\n- Part 1 (L): 6 câu → làm tối đa 6/buổi\n- Part 2 (L): 25 câu → 10-15/buổi\n- Part 3 (L): 39 câu → 10-13/buổi\n- Part 4 (L): 30 câu → 10-15/buổi\n- Part 5 (R): 30 câu → 10-15/buổi\n- Part 6 (R): 16 câu → 8-16/buổi\n- Part 7 (R): 54 câu → 10-15/buổi\n⚠️ KHÔNG tự bịa số câu khác.\n\nĐIỂM SỐ:\n'+pInfo+'\nTổng: '+(sc.lc+sc.rc)+'→'+(sc.lt+sc.rt)+'\n\nSỐ CÂU GỢI Ý:\n'+fpDetails+'\n\nLỊCH: '+days+' buổi — '+dNames+'\nMỗi buổi: '+mins+'p tổng, BẮT BUỘC '+trans+'p DỊCH PART 7\nCòn lại '+studyMins+'p: 40% làm đề + 35% xem lỗi + 25% từ vựng\n\nTẬP TRUNG: '+fp.map(function(p){return p.name+' ('+p.total+' câu)';}).join(' và ')+'\n\nFORMAT:\n📅 [Ngày] — '+mins+' phút\n🎯 Làm đề ([X]p): Part — số câu, tip\n🔍 Xem lỗi ([X]p): hướng dẫn cụ thể\n📖 Từ vựng ([X]p): 4-5 từ thật từ bài, ghi: EN | VN | ví dụ\n📝 Dịch Part 7 ('+trans+'p): loại bài, focus cấu trúc\n💬 Slogan: 1 câu khác mỗi ngày\n\n---\nTIP TUẦN NÀY: 2-3 câu\n\nViết tiếng Việt, thân thiện, ngắn gọn.';
 
-  // Calculate recommended questions per session for focus parts
-  const focusPartDetails = fp.map(p => {
-    const sessionCount = Math.ceil(days / 2); // each focus part appears ~half the sessions
-    // Recommend doing a mini-set per session: cap at reasonable per-session amount
-    const qPerSession = p.id==='p1' ? 6 : p.id==='p2' ? 10 : p.id==='p3' ? 13 : p.id==='p4' ? 10 : p.id==='p5' ? 10 : p.id==='p6' ? 8 : 15;
-    return `${p.name}: làm ${qPerSession} câu/buổi (tổng đề có ${p.total} câu — KHÔNG được ghi số khác)`;
-  }).join('\n');
-
-  const prompt=`Bạn là Cô Katie, giáo viên TOEIC của ORI Academy (phương pháp phản xạ, không học thuộc lòng). Lập kế hoạch học tuần này cho học viên.
-
-CẤU TRÚC ĐỀ TOEIC (TỔNG SỐ CÂU THẬT — PHẢI DÙNG ĐÚNG SỐ NÀY):
-- Part 1 (Listening): TỔNG 6 câu → mỗi buổi làm TỐI ĐA 6 câu
-- Part 2 (Listening): TỔNG 25 câu → mỗi buổi làm 10-15 câu
-- Part 3 (Listening): TỔNG 39 câu → mỗi buổi làm 10-13 câu
-- Part 4 (Listening): TỔNG 30 câu → mỗi buổi làm 10-15 câu
-- Part 5 (Reading): TỔNG 30 câu → mỗi buổi làm 10-15 câu
-- Part 6 (Reading): TỔNG 16 câu → mỗi buổi làm 8-16 câu
-- Part 7 (Reading): TỔNG 54 câu → mỗi buổi làm 10-15 câu
-
-⚠️ TUYỆT ĐỐI KHÔNG được tự bịa số câu khác với cấu trúc trên. Ví dụ KHÔNG được viết "Part 5: 6 câu" hay "Part 1: 30 câu".
-
-ĐIỂM SỐ HỌC VIÊN:
-${pInfo}
-Tổng hiện tại: ${sc.lc+sc.rc} → Mục tiêu: ${sc.lt+sc.rt}
-
-SỐ CÂU GỢI Ý MỖI BUỔI CHO 2 PART TẬP TRUNG:
-${focusPartDetails}
-
-LỊCH HỌC: ${days} buổi — ${dNames}
-Mỗi buổi: ${mins} phút tổng
-BẮT BUỘC mỗi buổi: ${trans} phút DỊCH PART 7 (cố định)
-Còn lại ${studyMins} phút: chia cho làm đề (40%) + xem lỗi (35%) + từ vựng (25%)
-
-TUẦN NÀY TẬP TRUNG: ${fp.map(p=>p.name+' — tổng đề '+p.total+' câu').join(' và ')}
-Xen kẽ 2 Part này mỗi buổi (ngày 1: Part A nhiều + Part B duy trì, ngày 2: Part B nhiều + Part A duy trì)
-Các Part còn lại: duy trì 5-10 câu/tuần, chia đều vào các buổi
-
-FORMAT OUTPUT — viết đúng cấu trúc này cho từng ngày:
-
-📅 [Tên ngày] — ${mins} phút
-🎯 Làm đề ([X]p): [tên Part] — [số câu cụ thể đúng với cấu trúc trên], [tip làm bài 1 câu]
-🔍 Xem lỗi ([X]p): [hướng dẫn cụ thể: nghe lại/đọc lại gì, chú ý điểm nào]
-📖 Từ vựng ([X]p): [liệt kê 4-5 từ/cụm từ THẬT xuất hiện trong bài Part đó — ghi: từ tiếng Anh | nghĩa tiếng Việt | ví dụ câu ngắn. KHÔNG được viết chung chung "ôn từ vựng chủ đề X"]
-📝 Dịch Part 7 (${trans}p): [loại bài đọc gì — email/thông báo/quảng cáo/bài báo, focus cấu trúc câu gì — khác mỗi ngày]
-💬 Slogan hôm nay: [1 câu ngắn gọn, khác nhau mỗi ngày, liên quan đến nội dung buổi học]
-
----
-TIP TUẦN NÀY: [2-3 câu: lý do chọn 2 Part này, dấu hiệu nào cho thấy đã sẵn sàng đổi sang 2 Part mới]
-
-Viết tiếng Việt, giọng cô giáo thân thiện, ngắn gọn — không giải thích lý thuyết dài.`;
-
-  try{
-    const res=await fetch('/api/groq',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'llama-3.3-70b-versatile',max_tokens:2200,temperature:0.72,messages:[{role:'user',content:prompt}]})
-    });
-    const data=await res.json();
-    clearInterval(iv);
-    document.getElementById('ldbox').style.display='none';
-    document.getElementById('gbtn').disabled=false;
-    if(!res.ok){showErr('Lỗi API: '+(data.error?.message||'Vui lòng thử lại sau'));return;}
-    const txt=data.choices?.[0]?.message?.content||'';
-    renderPlan(txt);
-  }catch(e){
-    clearInterval(iv);
-    document.getElementById('ldbox').style.display='none';
-    document.getElementById('gbtn').disabled=false;
-    showErr('Lỗi kết nối: '+e.message);
-  }
+  fetch('/api/groq',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({model:'llama-3.3-70b-versatile',max_tokens:2200,temperature:0.72,messages:[{role:'user',content:prompt}]})
+  }).then(function(r){return r.json();}).then(function(data){
+    clearInterval(iv);document.getElementById('ldbox').style.display='none';document.getElementById('gbtn').disabled=false;
+    if(data.error){showErr('Lỗi: '+(data.error.message||''));return;}
+    renderPlan(data.choices[0].message.content||'');
+  }).catch(function(e){clearInterval(iv);document.getElementById('ldbox').style.display='none';document.getElementById('gbtn').disabled=false;showErr('Lỗi: '+e.message);});
 }
 
 function renderPlan(txt){
-  const sl=SLOGANS[Math.floor(Math.random()*SLOGANS.length)];
-  document.getElementById('sloganarea').innerHTML=`<div class="slogan"><div class="sli">${sl.i}</div><div><div class="slt">${sl.t}</div><div class="sls">${sl.s}</div></div></div>`;
-
-  const lines=txt.split('\n');
-  const dayBlocks=[];let cur=null;
-  lines.forEach(line=>{
-    const tr=line.trim(); if(!tr)return;
-    if(tr.startsWith('📅')||/^(Thứ [2-7]|Chủ nhật)/i.test(tr)){
-      if(cur)dayBlocks.push(cur);
-      cur={head:tr.replace(/^📅\s*/,''),body:[]};
-    } else if(cur){cur.body.push(tr);}
-  });
+  var sl=SLOGANS[Math.floor(Math.random()*SLOGANS.length)];
+  document.getElementById('sloganarea').innerHTML='<div class="slogan"><div class="sli">'+sl.i+'</div><div><div class="slt">'+sl.t+'</div><div class="sls">'+sl.s+'</div></div></div>';
+  var lines=txt.split('\n'),dayBlocks=[],cur=null;
+  lines.forEach(function(line){var tr=line.trim();if(!tr)return;if(tr.indexOf('📅')===0||/^(Thứ [2-7]|Chủ nhật)/i.test(tr)){if(cur)dayBlocks.push(cur);cur={head:tr.replace(/^📅\s*/,''),body:[]};}else if(cur){cur.body.push(tr);}});
   if(cur)dayBlocks.push(cur);
-
-  // Separate TIP
-  const tipIdx=txt.indexOf('TIP TUẦN');
-  const tipText=tipIdx>=0?txt.slice(tipIdx+11).trim():'';
-  const realDays=dayBlocks.filter(b=>b.head&&!/^TIP/i.test(b.head));
-
-  const pc=document.getElementById('plancards'); pc.innerHTML='';
-  realDays.forEach((b,i)=>{
-    const div=document.createElement('div'); div.className='daycard';
-    const bodyHTML=b.body.map(l=>fmtLine(l)).join('\n');
-    div.innerHTML=`<div class="dh"><div class="dn">${b.head.split('—')[0].trim()}</div>${b.head.includes('—')?`<div class="dtag">${b.head.split('—')[1]?.trim()||'Buổi '+(i+1)}</div>`:''}<div class="dtm">⏱ ${fmtM(mins)}</div></div><div class="dbody">${bodyHTML}</div>`;
+  var tipIdx=txt.indexOf('TIP TUẦN'),tipText=tipIdx>=0?txt.slice(tipIdx+11).trim():'';
+  var realDays=dayBlocks.filter(function(b){return b.head&&!/^TIP/i.test(b.head);});
+  var pc=document.getElementById('plancards');pc.innerHTML='';
+  realDays.forEach(function(b,i){
+    var div=document.createElement('div');div.className='daycard';
+    var bodyHTML=b.body.map(fmtLine).join('\n');
+    div.innerHTML='<div class="dh"><div class="dn">'+b.head.split('—')[0].trim()+'</div>'+(b.head.indexOf('—')>=0?'<div class="dtag">'+(b.head.split('—')[1]||'').trim()+'</div>':'')+'<div class="dtm">⏱ '+fmtM(mins)+'</div></div><div class="dbody">'+bodyHTML+'</div>';
     pc.appendChild(div);
   });
-
-  if(tipText){
-    const td=document.createElement('div');
-    td.className='tipcard';
-    td.innerHTML=`<strong>💡 Tip tuần này từ Cô Katie:</strong>\n${tipText.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}`;
-    td.style.whiteSpace='pre-wrap';
-    pc.appendChild(td);
-  }
-
-  const tot=document.getElementById('totbar');
-  const totM=days*mins,totTr=days*trans,totSt=totM-totTr;
-  tot.innerHTML=`<div class="totbar"><div class="ti"><div class="tv">${days} buổi</div><div class="tl">/ tuần</div></div><div class="ti"><div class="tv">${fmtM(totM)}</div><div class="tl">tổng</div></div><div class="ti"><div class="tv">${fmtM(totSt)}</div><div class="tl">học & ôn</div></div><div class="ti"><div class="tv">${fmtM(totTr)}</div><div class="tl">dịch Part 7</div></div><div class="ti"><div class="tv">${focus.map(id=>PARTS.find(p=>p.id===id).name).join(' + ')}</div><div class="tl">tập trung</div></div></div>`;
-
+  if(tipText){var td=document.createElement('div');td.className='tipcard';td.innerHTML='<strong>💡 Tip tuần này từ Cô Katie:</strong>\n'+tipText.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');pc.appendChild(td);}
+  var totM=days*mins,totTr=days*trans,totSt=totM-totTr;
+  document.getElementById('totbar').innerHTML='<div class="totbar"><div class="ti"><div class="tv">'+days+' buổi</div><div class="tl">/ tuần</div></div><div class="ti"><div class="tv">'+fmtM(totM)+'</div><div class="tl">tổng</div></div><div class="ti"><div class="tv">'+fmtM(totSt)+'</div><div class="tl">học & ôn</div></div><div class="ti"><div class="tv">'+fmtM(totTr)+'</div><div class="tl">dịch Part 7</div></div><div class="ti"><div class="tv">'+focus.map(function(id){return PARTS.find(function(p){return p.id===id;}).name;}).join(' + ')+'</div><div class="tl">tập trung</div></div></div>';
   document.getElementById('planout').style.display='block';
   document.getElementById('planout').scrollIntoView({behavior:'smooth',block:'start'});
 }
-
-function fmtLine(l){
-  const icons=['🎯','🔍','📖','📝','💬','💡','🏆','⭐'];
-  const isIcon=icons.some(ic=>l.startsWith(ic));
-  const isMot=l.startsWith('💬');
-  let out=l.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
-  if(isMot)return`<span class="mot">${out}</span>`;
-  if(isIcon)return`<span class="em">${out}</span>`;
-  return out;
-}
-function fmtM(m){if(m>=60){const h=Math.floor(m/60),r=m%60;return r?`${h}g${r}p`:`${h} giờ`;}return`${m}p`;}
-function showErr(m){document.getElementById('errbox').innerHTML=m?`<div class="err">${m}</div>`:'';}
-
-buildTable();
-buildFG();
-
-// ── AI TIPS ──────────────────────────────────────────────────
-const AI_TIPS = {
-  p1: {
-    meta: 'Listening · 6 câu · Mô tả ảnh',
-    desc: 'Part 1 không có transcript. Bạn mô tả loại ảnh vừa làm, AI tạo từ vựng mô tả cảnh vật hay xuất hiện trong TOEIC.',
-    useCase: '💡 Dùng sau khi xem đáp án Part 1 — mô tả ngắn nội dung ảnh (văn phòng / ngoài trời / kho hàng / nhà hàng...)',
-    prompt: `Tôi vừa làm Part 1 TOEIC (mô tả ảnh). Ảnh trong bài có nội dung:
-[MÔ TẢ NGẮN ẢNH — ví dụ: "văn phòng, người ngồi làm việc, có máy tính và tài liệu trên bàn"]
-
-Hãy soạn cho tôi bộ từ vựng từ bài này:
-
-1. 8-10 TỪ/CỤM TỪ thường dùng để MÔ TẢ ẢNH loại này trong TOEIC
-   → từ tiếng Anh | nghĩa tiếng Việt | ví dụ câu mô tả ảnh
-
-2. 4-5 CẤU TRÚC CÂU hay dùng trong Part 1:
-   → "A man is + V-ing..." / "The items are placed..." / "There is/are..."
-
-3. 3 TRAP thường gặp với loại ảnh này (từ dễ nghe nhầm hoặc dễ chọn sai)
-
-
-
-5. ĐOẠN VĂN SONG NGỮ (quan trọng):
-Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
-→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
-Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
-→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
-→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
-
-Viết ngắn gọn, dễ nhớ, có thể in ra ôn.`
-  },
-  p2: {
-    meta: 'Listening · 25 câu · Câu hỏi & đáp',
-    desc: 'Copy script các câu bạn vừa nghe (từ sách giải hoặc app), AI phân tích loại câu hỏi và từ vựng then chốt.',
-    useCase: '💡 Dùng sau khi làm xong 1 set Part 2 — copy script từ sách ETS / app giải thích đáp án vào.',
-    prompt: `Tôi vừa làm Part 2 TOEIC (hỏi & đáp). Script các câu tôi vừa làm:
-
-[PASTE SCRIPT CÁC CÂU VÀO ĐÂY]
-Ví dụ:
-Q: "Where is the meeting being held?"
-A: "In the conference room on the third floor."
-
-Hãy soạn:
-1. TẤT CẢ từ/cụm từ quan trọng từ script trên:
-   → từ tiếng Anh | nghĩa | loại (question word / verb / noun phrase)
-
-2. PHÂN LOẠI câu hỏi xuất hiện (Where/When/Who/What/Why/How/Yes-No/Tag/Indirect)
-
-3. 5 MẪU TRẢ LỜI hay dùng trong Part 2 với ví dụ thật
-
-4. 3-5 câu hay NGHE NHẦM — giải thích tại sao nhầm và cách phân biệt
-
-
-
-5. ĐOẠN VĂN SONG NGỮ (quan trọng):
-Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
-→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
-Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
-→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
-→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
-
-Không lý thuyết — chỉ từ vựng + mẫu câu cụ thể.`
-  },
-  p3: {
-    meta: 'Listening · 39 câu · Hội thoại 2-3 người',
-    desc: 'Copy script hội thoại từ sách giải, AI trích từ vựng thật và signal words trong đúng bài đó.',
-    useCase: '💡 Dùng sau khi nghe xong — mở sách giải, copy script hội thoại paste vào.',
-    prompt: `Tôi vừa làm Part 3 TOEIC. Script hội thoại:
-
-[PASTE SCRIPT HỘI THOẠI VÀO ĐÂY]
-Ví dụ:
-M: "I was wondering if you could help me with the quarterly report."
-W: "Sure. When do you need it by?"
-M: "The presentation is scheduled for Friday morning."
-
-Từ script này, hãy soạn:
-1. TỪ VỰNG THẬT từ bài — tất cả từ quan trọng:
-   → từ | nghĩa | ví dụ câu khác dùng từ này
-
-2. CỤM ĐỘNG TỪ / IDIOM trong hội thoại (nếu có):
-   → cụm | nghĩa thực tế | ngữ cảnh dùng
-
-3. CHỦ ĐỀ hội thoại (meeting/complaint/order/schedule...) + 5 từ thêm cùng chủ đề
-
-4. 3 DẠNG CÂU HỎI thường gặp cho loại hội thoại này trong đề TOEIC
-
-
-
-5. ĐOẠN VĂN SONG NGỮ (quan trọng):
-Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
-→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
-Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
-→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
-→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
-
-Viết tiếng Việt, ngắn gọn, dùng được ngay.`
-  },
-  p4: {
-    meta: 'Listening · 30 câu · Bài nói ngắn (monologue)',
-    desc: 'Copy script bài nói từ sách giải, AI phân tích từ vựng theo thể loại (thông báo/quảng cáo/tin tức...).',
-    useCase: '💡 Dùng sau khi nghe xong — đặc biệt các bài nghe không ra, mở script xem lại rồi paste vào.',
-    prompt: `Tôi vừa làm Part 4 TOEIC. Script bài nói:
-
-[PASTE SCRIPT BÀI NÓI VÀO ĐÂY]
-Ví dụ:
-"Good afternoon, shoppers. We'd like to remind you that our store will be closing in thirty minutes. Please bring your purchases to the checkout counter..."
-
-Từ script này, hãy soạn:
-1. TỪ VỰNG THẬT từ bài:
-   → từ | nghĩa | ghi chú (formal/informal, lĩnh vực gì)
-
-2. LOẠI BÀI NÓI (announcement/advertisement/news/tour guide/voicemail/meeting...)?
-   → 8 từ ĐẶC TRƯNG của thể loại này trong TOEIC
-
-3. SIGNAL WORDS trong bài — từ báo hiệu thông tin quan trọng (first, however, as a result...)
-
-4. 3 CÂU HỎI kiểu TOEIC thường đặt cho bài nói loại này
-
-
-
-5. ĐOẠN VĂN SONG NGỮ (quan trọng):
-Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
-→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
-Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
-→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
-→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
-
-Không viết dài — chỉ bảng từ + ví dụ thực tế.`
-  },
-  p5: {
-    meta: 'Reading · 30 câu · Điền từ vào câu đơn',
-    desc: 'Copy nguyên văn các câu Part 5 bạn vừa làm (ghi rõ đáp án đúng), AI phân tích word form và ngữ pháp.',
-    useCase: '💡 Dùng sau khi xem đáp án — đặc biệt câu sai về từ loại, thì, giới từ, đại từ.',
-    prompt: `Tôi vừa làm Part 5 TOEIC. Các câu tôi vừa làm (có đáp án đúng):
-
-[PASTE CÁC CÂU VÀO ĐÂY]
-Ví dụ:
-1. The new policy will ------- affect all employees.
-   (A) significance  (B) significant  (C) significantly  (D) signify
-   → ĐÁP ÁN ĐÚNG: C
-
-2. Employees are required to submit ------- expense reports by Friday.
-   (A) they  (B) their  (C) them  (D) themselves
-   → ĐÁP ÁN ĐÚNG: B
-
-Hãy soạn:
-1. PHÂN TÍCH TỪNG CÂU:
-   → câu số | loại câu hỏi (word form/tense/pronoun/preposition/conjunction...) | dấu hiệu nhận dạng | tại sao đáp án đúng
-
-2. TỪ VỰNG MỚI từ tất cả các câu:
-   → từ | nghĩa | word family (noun/verb/adj/adv cùng gốc)
-
-3. NGUYÊN TẮC NHANH để nhận dạng dạng câu này lần sau (1-2 câu)
-
-4. 3 CÂU LUYỆN THÊM tương tự — có đáp án ở cuối
-
-
-
-5. ĐOẠN VĂN SONG NGỮ (quan trọng):
-Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
-→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
-Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
-→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
-→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
-
-Viết súc tích, thực chiến — không lý thuyết ngữ pháp dài.`
-  },
-  p6: {
-    meta: 'Reading · 16 câu · Điền từ vào đoạn văn',
-    desc: 'Copy nguyên đoạn văn Part 6, AI phân tích từ vựng theo ngữ cảnh và coherence (tính mạch lạc).',
-    useCase: '💡 Dùng sau khi xem đáp án Part 6 — đặc biệt câu sentence insertion (chọn câu hoàn chỉnh).',
-    prompt: `Tôi vừa làm Part 6 TOEIC. Đoạn văn và câu hỏi:
-
-[PASTE ĐOẠN VĂN + ĐÁP ÁN VÀO ĐÂY]
-Ví dụ:
-"Dear Mr. Johnson, Thank you for your ----(1)---- in our products.
-We would like to ----(2)---- you to our annual trade show..."
-1. (A) interest  (B) interested  (C) interesting  (D) interestingly → ĐÁP ÁN: A
-2. (A) invite  (B) invitation  (C) inviting  (D) invited → ĐÁP ÁN: A
-
-Hãy soạn:
-1. TỪ VỰNG THẬT từ đoạn văn:
-   → từ | nghĩa | word form liên quan | ví dụ câu khác
-
-2. PHÂN TÍCH từng chỗ điền:
-   → vị trí | loại câu hỏi | dấu hiệu trong câu | tại sao sai các đáp án kia
-
-3. LOẠI VĂN BẢN (email/memo/notice/letter...) + 6 từ đặc trưng loại này
-
-4. TỪ NỐI / COHERENCE trong đoạn văn và cách dùng (however, therefore, in addition...)
-
-
-
-5. ĐOẠN VĂN SONG NGỮ (quan trọng):
-Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
-→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
-Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
-→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
-→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
-
-Ngắn gọn, dùng ngay trước buổi học sau.`
-  },
-  p7: {
-    meta: 'Reading · 54 câu · Bài đọc đơn + đôi + bộ 3',
-    desc: 'Copy đoạn văn bài đọc, AI phân tích từ vựng theo ngữ cảnh thực — đúng bài vừa đọc, không phải từ điển.',
-    useCase: '💡 Dùng sau khi dịch xong 1 bài Part 7 (email/thông báo/quảng cáo/bài báo).',
-    prompt: `Tôi vừa đọc/dịch bài Part 7 TOEIC. Nội dung bài:
-
-[PASTE BÀI ĐỌC VÀO ĐÂY]
-Ví dụ:
-"To: All staff
-From: HR Department
-Subject: Annual Performance Review
-The performance review period will begin on November 1st. All managers are required to complete evaluations for their direct reports by November 30th..."
-
-Từ bài đọc trên, hãy soạn:
-1. TỪ VỰNG THẬT từ bài — tất cả từ quan trọng:
-   → từ | nghĩa trong ngữ cảnh bài này | ví dụ câu mới dùng từ này
-
-2. CỤM TỪ NGHỀ NGHIỆP / CHUYÊN NGÀNH trong bài:
-   → cụm từ | nghĩa | lĩnh vực (HR/finance/logistics/marketing...)
-
-3. 3 CÂU HỎI TOEIC mẫu từ bài này + gợi ý tìm đáp án nhanh:
-   → dạng: main idea / detail / inference / NOT question / vocab in context
-
-4. TÓM TẮT bài bằng 3 câu tiếng Anh đơn giản (để luyện nói lại)
-
-
-
-5. ĐOẠN VĂN SONG NGỮ (quan trọng):
-Viết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê ở trên, theo format chêm song ngữ:
-→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.
-Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."
-→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên như 1 câu chuyện ngắn — KHÔNG phải liệt kê từ rời rạc.
-→ Đọc đoạn này 3 lần = nhớ được cả nghĩa lẫn cách dùng từ.
-
-Viết tiếng Việt, thực chiến, dùng được ngay.`
-  }
-};
-
-function showTab(partId) {
-  const data = AI_TIPS[partId];
-  if (!data) return;
-  // Update active tab button
-  document.querySelectorAll('.tab-btn').forEach(b => {
-    const btnPart = b.getAttribute('data-part');
-    b.classList.toggle('on', btnPart === partId);
-  });
-  // Render content
-  const tc = document.getElementById('tab-content');
-  const safeId = 'pb_' + partId;
-  tc.innerHTML = `
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
-      <span style="background:#DBEAFE;color:#1E40AF;font-size:11px;padding:3px 9px;border-radius:10px;font-weight:600">${data.meta.split('·')[0].trim()}</span>
-      <span style="background:#F3F4F6;color:#374151;font-size:11px;padding:3px 9px;border-radius:10px;font-weight:600">${data.meta.split('·').slice(1).join('·').trim()}</span>
-    </div>
-    <div style="font-size:13px;color:#374151;line-height:1.65;margin-bottom:6px">${data.desc}</div>
-    <div style="font-size:12px;color:#6B7280;background:#F3F4F6;border-radius:6px;padding:7px 11px;margin-bottom:14px">${data.useCase}</div>
-    <div style="font-size:11.5px;font-weight:700;color:#145E34;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Prompt — copy &amp; paste vào AI</div>
-    <div style="background:#F0F7FF;border:1px solid #BFDBFE;border-radius:8px;padding:14px 16px;position:relative">
-      <button id="${safeId}" onclick="copyPrompt('${partId}')" style="position:absolute;top:10px;right:10px;background:#2DA65C;color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit">Copy</button>
-      <pre style="font-size:12.5px;line-height:1.75;color:#1E3A5F;white-space:pre-wrap;font-family:inherit;margin:0;padding-right:60px">${escHtml(data.prompt)}</pre>
-    </div>
-    <div style="margin-top:10px;font-size:12px;color:#6B7280;background:#F0FDF4;border:1px solid #A3D9B5;border-radius:6px;padding:8px 12px;line-height:1.7">
-      <strong style="color:#145E34">Cách dùng:</strong> Làm xong bài → Mở ChatGPT / Claude / Gemini → Copy prompt → Thay phần <span style="color:#DC2626;font-weight:600">[PASTE ... VÀO ĐÂY]</span> bằng nội dung bài thật → Gửi → Nhận từ vựng từ đúng bài vừa làm
-    </div>
-  `;
-}
-
-function escHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-function copyPrompt(partId) {
-  const data = AI_TIPS[partId];
-  if (!data) return;
-  const btn = document.getElementById('pb_' + partId);
-  navigator.clipboard.writeText(data.prompt).then(() => {
-    if(btn){btn.textContent='✓ Đã copy!';btn.style.background='#059669';setTimeout(()=>{btn.textContent='Copy';btn.style.background='#2DA65C';},2000);}
-  }).catch(() => {
-    const ta=document.createElement('textarea');ta.value=data.prompt;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
-    if(btn){btn.textContent='✓ Đã copy!';btn.style.background='#059669';setTimeout(()=>{btn.textContent='Copy';btn.style.background='#2DA65C';},2000);}
+function fmtLine(l){var icons=['🎯','🔍','📖','📝','💬','💡','🏆','⭐'];var isMot=l.indexOf('💬')===0;var isIcon=icons.some(function(ic){return l.indexOf(ic)===0;});var out=l.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');if(isMot)return '<span class="mot">'+out+'</span>';if(isIcon)return '<span class="em">'+out+'</span>';return out;}
+
+// ═══════════════════════════════════════════════════════════════
+// VOCAB BY TOPIC
+// ═══════════════════════════════════════════════════════════════
+var pickedTopic='',vocabData=null,vScore={q:{c:0,t:0},f:{c:0,t:0}};
+
+function buildTopics(){
+  var g=document.getElementById('topic-grid');g.innerHTML='';
+  TOPICS.forEach(function(t){
+    var b=document.createElement('button');b.className='topic-btn';b.textContent=t;b.dataset.topic=t;
+    b.onclick=function(){document.querySelectorAll('.topic-btn').forEach(function(x){x.classList.remove('picked');});b.classList.add('picked');pickedTopic=t;document.getElementById('custom-topic').value='';};
+    g.appendChild(b);
   });
 }
+function showVT(tab){['words','quiz','fill'].forEach(function(t){var el=document.getElementById('vt-'+t);if(el)el.style.display=t===tab?'block':'none';});document.querySelectorAll('[data-vtab]').forEach(function(b){b.classList.toggle('on',b.dataset.vtab===tab);});}
 
-// init tab
-showTab('p1');
+function genVocab(){
+  
+  var topic=document.getElementById('custom-topic').value.trim()||pickedTopic;
+  if(!topic){document.getElementById('vocab-err').innerHTML='<div class="err">Chọn hoặc nhập chủ đề.</div>';return;}
+  document.getElementById('vocab-err').innerHTML='';
+  document.getElementById('vld').style.display='block';document.getElementById('vocab-out').style.display='none';document.getElementById('vbtn').disabled=true;
+  vScore={q:{c:0,t:0},f:{c:0,t:0}};
+  var msgs=['Đang tạo bảng từ vựng...','Đang soạn quiz...','Đang viết bài tập Part 5...','Đang viết đoạn văn song ngữ...'];
+  var mi=0;var iv=setInterval(function(){document.getElementById('vlsub').textContent=msgs[mi++%msgs.length];},1500);
 
-// ── VOCAB BY TOPIC ───────────────────────────────────────────
-let pickedTopic = '';
-let vocabData = null;
-let quizScore = {quiz: {correct:0, total:0}, fill: {correct:0, total:0}};
+  var prompt='Bạn là giáo viên TOEIC. Tạo bài học từ vựng chủ đề "'+topic+'" cho học viên TOEIC.\n\nTrả lời ĐÚNG FORMAT JSON. KHÔNG viết gì ngoài JSON. KHÔNG markdown backticks.\n\n{"topic":"'+topic+'","words":[{"en":"từ","vi":"nghĩa","pos":"n/v/adj/adv","example":"câu ví dụ"}],"quiz":[{"question":"câu hỏi","options":["A","B","C","D"],"answer":0,"explain":"giải thích tiếng Việt"}],"fill":[{"sentence":"câu có -------","options":["A","B","C","D"],"answer":0,"explain":"giải thích"}],"paragraph":"đoạn văn song ngữ 80-120 từ tiếng Anh, dùng tất cả từ vựng, chèn nghĩa tiếng Việt trong ngoặc sau từ khó. Ví dụ: The manager submitted (nộp) the report (báo cáo) before the deadline (hạn chót)."}\n\nwords: 12-15 từ hay gặp trong TOEIC chủ đề '+topic+'\nquiz: 8 câu (4 hỏi nghĩa, 4 đồng nghĩa/trái nghĩa), mỗi câu 4 options, answer=index 0-3\nfill: 6 câu Part 5 (3 word form, 2 vocab in context, 1 preposition/conjunction), chỗ trống ký hiệu "-------", 4 options, answer=index 0-3\nparagraph: đoạn văn ngữ cảnh thực tế, đọc tự nhiên, KHÔNG liệt kê từ rời rạc\n\nCHỈ TRẢ VỀ JSON.';
 
-function pickTopic(btn) {
-  document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('picked'));
-  btn.classList.add('picked');
-  pickedTopic = btn.dataset.topic;
-  document.getElementById('custom-topic').value = '';
-}
-
-function showVTab(tab) {
-  ['words','quiz','fill'].forEach(t => {
-    const el = document.getElementById('vtab-' + t);
-    if(el) el.style.display = t === tab ? 'block' : 'none';
-  });
-  document.querySelectorAll('[data-vtab]').forEach(b => b.classList.toggle('on', b.dataset.vtab === tab));
-}
-
-async function genVocab() {
-  }
-  const custom = document.getElementById('custom-topic').value.trim();
-  const topic = custom || pickedTopic;
-  if(!topic) {
-    document.getElementById('vocab-err').innerHTML = '<div class="err">Chọn hoặc nhập 1 chủ đề trước.</div>';
-    return;
-  }
-  document.getElementById('vocab-err').innerHTML = '';
-  document.getElementById('vld').style.display = 'block';
-  document.getElementById('vocab-out').style.display = 'none';
-  document.getElementById('vbtn').disabled = true;
-  quizScore = {quiz:{correct:0,total:0}, fill:{correct:0,total:0}};
-
-  const msgs = ['Đang tạo bảng từ vựng...','Đang soạn quiz trắc nghiệm...','Đang viết bài tập điền câu Part 5...'];
-  let mi = 0;
-  const iv = setInterval(() => { document.getElementById('vlsub').textContent = msgs[mi++ % msgs.length]; }, 1500);
-
-  const prompt = `Bạn là giáo viên TOEIC. Tạo bài học từ vựng chủ đề "${topic}" cho học viên luyện TOEIC.
-
-QUAN TRỌNG: Trả lời ĐÚNG FORMAT JSON bên dưới. KHÔNG viết gì ngoài JSON. KHÔNG dùng markdown backticks.
-
-{
-  "topic": "${topic}",
-  "words": [
-    {"en": "từ tiếng Anh", "vi": "nghĩa tiếng Việt", "pos": "n/v/adj/adv", "example": "câu ví dụ tiếng Anh có dùng từ này"},
-    ... (12-15 từ, từ dễ đến khó, đúng chủ đề "${topic}" hay gặp trong TOEIC)
-  ],
-  "quiz": [
-    {
-      "question": "câu hỏi nghĩa từ vựng — tiếng Anh",
-      "options": ["A đáp án", "B đáp án", "C đáp án", "D đáp án"],
-      "answer": 0,
-      "explain": "giải thích ngắn tại sao đáp án đúng — bằng tiếng Việt"
-    },
-    ... (8 câu quiz: 4 câu hỏi nghĩa từ, 4 câu chọn từ đồng nghĩa/trái nghĩa)
-  ],
-  "fill": [
-    {
-      "sentence": "câu tiếng Anh có chỗ trống -------",
-      "options": ["A", "B", "C", "D"],
-      "answer": 0,
-      "explain": "giải thích ngắn — tiếng Việt — tại sao chọn đáp án này, dấu hiệu nhận dạng"
-    },
-    ... (6 câu điền từ kiểu Part 5 TOEIC: 3 câu word form, 2 câu vocabulary in context, 1 câu preposition/conjunction)
-  ]
-}
-
-YÊU CẦU QUAN TRỌNG:
-- quiz: mỗi câu có ĐÚNG 4 options, answer là index 0-3
-- fill: câu tiếng Anh có 1 chỗ trống ký hiệu "-------", 4 đáp án, answer là index 0-3
-- fill phải giống Part 5 thật: test word form (noun/verb/adj/adv), tense, preposition, conjunction
-- Tất cả từ vựng phải liên quan đến chủ đề "${topic}" và hay gặp trong đề TOEIC thật
-- CHỈ TRẢ VỀ JSON, KHÔNG viết gì khác
-
-Thêm 1 field "paragraph" trong JSON: đoạn văn song ngữ 80-120 từ tiếng Anh, dùng tất cả từ vựng ở trên, format chêm nghĩa tiếng Việt trong ngoặc ngay sau từ khó.
-Ví dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board (ban giám đốc)."
-Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên — không phải liệt kê từ rời rạc.`;
-
-  try {
-    const res = await fetch('/api/groq', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json',},
-      body: JSON.stringify({model:'llama-3.3-70b-versatile', max_tokens:3000, temperature:0.6,
-        messages:[{role:'user',content:prompt}]})
-    });
-    const data = await res.json();
-    clearInterval(iv);
-    document.getElementById('vld').style.display = 'none';
-    document.getElementById('vbtn').disabled = false;
-    if(!res.ok) { document.getElementById('vocab-err').innerHTML = '<div class="err">Lỗi API: '+(data.error?.message||'Kiểm tra key')+'</div>'; return; }
-
-    let txt = data.choices?.[0]?.message?.content || '';
-    // Clean: remove markdown fences if any
-    txt = txt.replace(/```json\s*/gi,'').replace(/```\s*/gi,'').trim();
-    // Try to extract JSON object
-    const jsonMatch = txt.match(/\{[\s\S]*\}/);
-    if(!jsonMatch) { document.getElementById('vocab-err').innerHTML = '<div class="err">AI trả về format sai. Thử lại.</div>'; return; }
-
-    try {
-      vocabData = JSON.parse(jsonMatch[0]);
-    } catch(e) {
-      document.getElementById('vocab-err').innerHTML = '<div class="err">Lỗi parse JSON: '+e.message+'. Thử lại.</div>';
-      return;
-    }
+  fetch('/api/groq',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({model:'llama-3.3-70b-versatile',max_tokens:3000,temperature:0.6,messages:[{role:'user',content:prompt}]})
+  }).then(function(r){return r.json();}).then(function(data){
+    clearInterval(iv);document.getElementById('vld').style.display='none';document.getElementById('vbtn').disabled=false;
+    if(data.error){document.getElementById('vocab-err').innerHTML='<div class="err">Lỗi: '+(data.error.message||'')+'</div>';return;}
+    var txt=(data.choices[0].message.content||'').replace(/```json\s*/gi,'').replace(/```\s*/gi,'').trim();
+    var m=txt.match(/\{[\s\S]*\}/);
+    if(!m){document.getElementById('vocab-err').innerHTML='<div class="err">AI trả format sai. Thử lại.</div>';return;}
+    try{vocabData=JSON.parse(m[0]);}catch(e){document.getElementById('vocab-err').innerHTML='<div class="err">Lỗi JSON: '+e.message+'</div>';return;}
     renderVocab();
-  } catch(e) {
-    clearInterval(iv);
-    document.getElementById('vld').style.display = 'none';
-    document.getElementById('vbtn').disabled = false;
-    document.getElementById('vocab-err').innerHTML = '<div class="err">Lỗi kết nối: '+e.message+'</div>';
-  }
+  }).catch(function(e){clearInterval(iv);document.getElementById('vld').style.display='none';document.getElementById('vbtn').disabled=false;document.getElementById('vocab-err').innerHTML='<div class="err">Lỗi: '+e.message+'</div>';});
 }
 
-function renderVocab() {
-  if(!vocabData) return;
-  const d = vocabData;
+function renderVocab(){
+  var d=vocabData;if(!d)return;
+  document.getElementById('vtitle').innerHTML='<div style="background:var(--nv);color:#fff;border-radius:var(--rad);padding:14px 20px;margin-bottom:14px;display:flex;align-items:center;gap:12px"><span style="font-size:24px">📚</span><div><div style="font-weight:700;font-size:16px">'+escH(d.topic)+'</div><div style="font-size:12px;opacity:.6">'+(d.words?d.words.length:0)+' từ · '+(d.quiz?d.quiz.length:0)+' quiz · '+(d.fill?d.fill.length:0)+' Part 5</div></div></div>';
 
-  // Topic title
-  document.getElementById('vocab-topic-title').innerHTML =
-    `<div style="background:var(--nv);color:#fff;border-radius:var(--rad);padding:14px 20px;margin-bottom:14px;display:flex;align-items:center;gap:12px">
-      <span style="font-size:24px">📚</span>
-      <div><div style="font-weight:700;font-size:16px">${escHtml(d.topic)}</div>
-      <div style="font-size:12px;opacity:.6">${d.words?.length||0} từ vựng · ${d.quiz?.length||0} quiz · ${d.fill?.length||0} bài tập Part 5</div></div>
-    </div>`;
-
-  // TAB 1: Words table
-  let whtml = '<table class="vtable"><thead><tr><th style="width:24px">#</th><th>English</th><th>Tiếng Việt</th><th>Loại</th><th>Ví dụ</th></tr></thead><tbody>';
-  (d.words||[]).forEach((w, i) => {
-    whtml += `<tr><td style="color:var(--gr);font-size:12px">${i+1}</td><td class="en">${escHtml(w.en)}</td><td class="vi">${escHtml(w.vi)}</td><td style="font-size:11px;color:var(--gr)">${escHtml(w.pos||'')}</td><td class="ex">${escHtml(w.example||'')}</td></tr>`;
-  });
-  whtml += '</tbody></table>';
-  // Bilingual paragraph
-  if(d.paragraph) {
-    whtml += '<div style="margin-top:14px;background:#F0F7FF;border:1px solid #BFDBFE;border-radius:8px;padding:14px 16px">';
-    whtml += '<div style="font-size:11.5px;font-weight:700;color:#0A2240;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">📝 Đoạn văn song ngữ — Đọc 3 lần để nhớ từ</div>';
-    whtml += '<div style="font-size:14px;line-height:1.85;color:#1E3A5F">' + escHtml(d.paragraph).replace(/\(([^)]+)\)/g, '(<span style=\'color:#2DA65C;font-weight:600\'>$1</span>)') + '</div>';
-    whtml += '</div>';
+  // WORDS TAB
+  var wh='<table class="vtable"><thead><tr><th>#</th><th>English</th><th>Tiếng Việt</th><th>Loại</th><th>Ví dụ</th></tr></thead><tbody>';
+  (d.words||[]).forEach(function(w,i){wh+='<tr><td style="color:var(--gr);font-size:12px">'+(i+1)+'</td><td class="en">'+escH(w.en)+'</td><td class="vi">'+escH(w.vi)+'</td><td style="font-size:11px;color:var(--gr)">'+escH(w.pos||'')+'</td><td class="ex">'+escH(w.example||'')+'</td></tr>';});
+  wh+='</tbody></table>';
+  // Paragraph
+  if(d.paragraph){
+    var paraHtml=escH(d.paragraph).replace(/\(([^)]+)\)/g, '(<span class="vn">$1</span>)');
+    wh+='<div class="para-box"><div class="para-title">📝 Đoạn văn song ngữ — Đọc 3 lần để nhớ từ</div><div class="para-text">'+paraHtml+'</div></div>';
   }
-  document.getElementById('vtab-words').innerHTML = whtml;
+  document.getElementById('vt-words').innerHTML=wh;
 
-  // TAB 2: Quiz
-  let qhtml = '';
-  (d.quiz||[]).forEach((q, i) => {
-    const qid = 'qq_' + i;
-    qhtml += `<div class="q-card" id="${qid}">
-      <div class="q-num">Câu ${i+1} / ${d.quiz.length}</div>
-      <div class="q-text">${escHtml(q.question)}</div>
-      <div class="q-opts">`;
-    (q.options||[]).forEach((opt, oi) => {
-      const label = String.fromCharCode(65+oi);
-      qhtml += `<button class="q-opt" onclick="ansQuiz('${qid}',${oi},${q.answer||0})" data-oi="${oi}">${label}. ${escHtml(opt)}</button>`;
-    });
-    qhtml += `</div><div class="q-explain" id="${qid}_ex">${escHtml(q.explain||'')}</div></div>`;
+  // QUIZ TAB
+  var qh='';
+  (d.quiz||[]).forEach(function(q,i){
+    qh+='<div class="q-card" id="qq'+i+'"><div class="q-num">Câu '+(i+1)+' / '+d.quiz.length+'</div><div class="q-text">'+escH(q.question)+'</div><div class="q-opts">';
+    (q.options||[]).forEach(function(opt,oi){qh+='<button class="q-opt" onclick="ansQ('+i+','+oi+','+q.answer+')">'+String.fromCharCode(65+oi)+'. '+escH(opt)+'</button>';});
+    qh+='</div><div class="q-explain" id="qq'+i+'_ex">'+escH(q.explain||'')+'</div></div>';
   });
-  document.getElementById('vtab-quiz').innerHTML = qhtml;
+  document.getElementById('vt-quiz').innerHTML=qh;
 
-  // TAB 3: Fill blank (Part 5 style)
-  let fhtml = '';
-  (d.fill||[]).forEach((f, i) => {
-    const fid = 'ff_' + i;
-    // Replace ------- with blank span
-    const sentenceHtml = escHtml(f.sentence).replace(/[-]{3,}/g, '<span class="blank" id="'+fid+'_bl">?</span>');
-    fhtml += `<div class="fb-card" id="${fid}">
-      <div class="q-num">Câu ${i+1} / ${d.fill.length}</div>
-      <div class="fb-sentence">${sentenceHtml}</div>
-      <div class="fb-opts">`;
-    (f.options||[]).forEach((opt, oi) => {
-      const label = String.fromCharCode(65+oi);
-      fhtml += `<button class="q-opt" onclick="ansFill('${fid}',${oi},${f.answer||0},'${escAttr(opt)}')" data-oi="${oi}">(${label}) ${escHtml(opt)}</button>`;
-    });
-    fhtml += `</div><div class="fb-explain" id="${fid}_ex">${escHtml(f.explain||'')}</div></div>`;
+  // FILL TAB
+  var fh='';
+  (d.fill||[]).forEach(function(f,i){
+    var sentHtml=escH(f.sentence).replace(/[-]{3,}/g,'<span class="blank" id="ff'+i+'_bl">?</span>');
+    fh+='<div class="q-card" id="ff'+i+'"><div class="q-num">Câu '+(i+1)+' / '+d.fill.length+'</div><div class="fb-sentence">'+sentHtml+'</div><div class="fb-opts">';
+    (f.options||[]).forEach(function(opt,oi){fh+='<button class="q-opt" onclick="ansF('+i+','+oi+','+f.answer+')">('+String.fromCharCode(65+oi)+') '+escH(opt)+'</button>';});
+    fh+='</div><div class="q-explain" id="ff'+i+'_ex">'+escH(f.explain||'')+'</div></div>';
   });
-  document.getElementById('vtab-fill').innerHTML = fhtml;
+  document.getElementById('vt-fill').innerHTML=fh;
 
-  document.getElementById('vocab-score').style.display = 'none';
-  document.getElementById('vocab-out').style.display = 'block';
-  showVTab('words');
+  document.getElementById('vscore').style.display='none';
+  document.getElementById('vocab-out').style.display='block';
+  showVT('words');
   document.getElementById('vocab-out').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-function ansQuiz(qid, picked, correct) {
-  const card = document.getElementById(qid);
-  if(!card) return;
-  const btns = card.querySelectorAll('.q-opt');
-  if(btns[0] && btns[0].disabled) return; // already answered
-  btns.forEach((b, i) => {
-    b.disabled = true;
-    if(i === correct) b.classList.add('correct');
-    if(i === picked && picked !== correct) b.classList.add('wrong');
-  });
-  const ex = document.getElementById(qid + '_ex');
-  if(ex) { ex.style.display = 'block'; }
-  quizScore.quiz.total++;
-  if(picked === correct) quizScore.quiz.correct++;
-  checkAllDone();
+function ansQ(qi,picked,correct){
+  var card=document.getElementById('qq'+qi);if(!card)return;
+  var btns=card.querySelectorAll('.q-opt');if(btns[0]&&btns[0].disabled)return;
+  btns.forEach(function(b,i){b.disabled=true;if(i===correct)b.classList.add('correct');if(i===picked&&picked!==correct)b.classList.add('wrong');});
+  var ex=document.getElementById('qq'+qi+'_ex');if(ex)ex.style.display='block';
+  vScore.q.t++;if(picked===correct)vScore.q.c++;checkVDone();
 }
-
-function ansFill(fid, picked, correct, optText) {
-  const card = document.getElementById(fid);
-  if(!card) return;
-  const btns = card.querySelectorAll('.q-opt');
-  if(btns[0] && btns[0].disabled) return;
-  btns.forEach((b, i) => {
-    b.disabled = true;
-    if(i === correct) b.classList.add('correct');
-    if(i === picked && picked !== correct) b.classList.add('wrong');
-  });
-  // Fill in the blank
-  const bl = document.getElementById(fid + '_bl');
-  if(bl) {
-    const correctOpt = vocabData.fill[parseInt(fid.split('_')[1])].options[correct];
-    bl.textContent = correctOpt;
-    bl.style.color = picked === correct ? '#059669' : '#DC2626';
-  }
-  const ex = document.getElementById(fid + '_ex');
-  if(ex) ex.style.display = 'block';
-  quizScore.fill.total++;
-  if(picked === correct) quizScore.fill.correct++;
-  checkAllDone();
+function ansF(fi,picked,correct){
+  var card=document.getElementById('ff'+fi);if(!card)return;
+  var btns=card.querySelectorAll('.q-opt');if(btns[0]&&btns[0].disabled)return;
+  btns.forEach(function(b,i){b.disabled=true;if(i===correct)b.classList.add('correct');if(i===picked&&picked!==correct)b.classList.add('wrong');});
+  var bl=document.getElementById('ff'+fi+'_bl');
+  if(bl&&vocabData&&vocabData.fill[fi]){bl.textContent=vocabData.fill[fi].options[correct];bl.style.color=picked===correct?'#059669':'#DC2626';}
+  var ex=document.getElementById('ff'+fi+'_ex');if(ex)ex.style.display='block';
+  vScore.f.t++;if(picked===correct)vScore.f.c++;checkVDone();
 }
-
-function checkAllDone() {
-  if(!vocabData) return;
-  const totalQ = (vocabData.quiz?.length||0) + (vocabData.fill?.length||0);
-  const totalDone = quizScore.quiz.total + quizScore.fill.total;
-  if(totalDone >= totalQ && totalQ > 0) {
-    const totalCorrect = quizScore.quiz.correct + quizScore.fill.correct;
-    const pct = Math.round(totalCorrect / totalQ * 100);
-    let msg = '';
-    if(pct >= 90) msg = '🏆 Xuất sắc! Bạn nắm rất vững chủ đề này!';
-    else if(pct >= 70) msg = '👍 Tốt lắm! Ôn lại vài từ sai là hoàn hảo.';
-    else if(pct >= 50) msg = '💪 Khá ổn! Cần ôn thêm từ vựng chủ đề này.';
-    else msg = '📖 Cần ôn lại từ vựng — xem bảng từ và làm lại quiz nhé!';
-
-    document.getElementById('vocab-score').innerHTML = `
-      <div class="score-card">
-        <div class="score-big">${totalCorrect}/${totalQ}</div>
-        <div class="score-label">Đúng ${pct}% — Quiz: ${quizScore.quiz.correct}/${quizScore.quiz.total} · Part 5: ${quizScore.fill.correct}/${quizScore.fill.total}</div>
-        <div class="score-msg">${msg}</div>
-      </div>`;
-    document.getElementById('vocab-score').style.display = 'block';
+function checkVDone(){
+  if(!vocabData)return;
+  var totalQ=(vocabData.quiz?vocabData.quiz.length:0)+(vocabData.fill?vocabData.fill.length:0);
+  var totalDone=vScore.q.t+vScore.f.t;
+  if(totalDone>=totalQ&&totalQ>0){
+    var c=vScore.q.c+vScore.f.c,pct=Math.round(c/totalQ*100);
+    var msg=pct>=90?'🏆 Xuất sắc!':pct>=70?'👍 Tốt lắm! Ôn vài từ sai nữa.':pct>=50?'💪 Khá ổn! Cần ôn thêm.':'📖 Cần ôn lại — xem bảng từ và làm lại.';
+    document.getElementById('vscore').innerHTML='<div class="score-card"><div class="score-big">'+c+'/'+totalQ+'</div><div class="score-label">Đúng '+pct+'% — Quiz: '+vScore.q.c+'/'+vScore.q.t+' · Part 5: '+vScore.f.c+'/'+vScore.f.t+'</div><div class="score-msg">'+msg+'</div></div>';
+    document.getElementById('vscore').style.display='block';
   }
 }
 
-function escAttr(s) { return s.replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
+// ═══════════════════════════════════════════════════════════════
+// PROMPT COPY-PASTE (AI Tips per Part)
+// ═══════════════════════════════════════════════════════════════
+var BILINGUAL_BLOCK='\n\n5. ĐOẠN VĂN SONG NGỮ (quan trọng):\nViết 1 đoạn văn ngắn (80-120 từ tiếng Anh) sử dụng TẤT CẢ từ vựng đã liệt kê, format chêm song ngữ:\n→ Viết câu tiếng Anh, ngay sau từ khó chèn nghĩa tiếng Việt trong ngoặc.\nVí dụ: "The manager submitted (nộp) the quarterly report (báo cáo quý) to the board of directors (ban giám đốc) before the deadline (hạn chót)."\n→ Đoạn văn phải có ngữ cảnh thực tế, đọc tự nhiên — KHÔNG liệt kê rời rạc.\n→ Đọc 3 lần = nhớ cả nghĩa lẫn cách dùng.';
 
+var PROMPTS={
+p1:{meta:'Listening · 6 câu · Mô tả ảnh',desc:'Mô tả loại ảnh vừa làm → AI tạo từ vựng + đoạn văn song ngữ.',
+prompt:'Tôi vừa làm Part 1 TOEIC (mô tả ảnh). Ảnh có nội dung:\n[MÔ TẢ NGẮN ẢNH — ví dụ: "văn phòng, người ngồi làm việc, có máy tính"]\n\nSoạn:\n1. 8-10 từ/cụm từ MÔ TẢ ẢNH loại này trong TOEIC\n   → từ | nghĩa | ví dụ câu mô tả ảnh\n2. 4-5 CẤU TRÚC CÂU Part 1: "A man is + V-ing..." / "There is/are..."\n3. 3 TRAP thường gặp với loại ảnh này\n4. 3 câu Part 1 mẫu để luyện thêm'+BILINGUAL_BLOCK+'\n\nViết ngắn gọn, dễ nhớ.'},
+p2:{meta:'Listening · 25 câu · Hỏi & đáp',desc:'Paste script câu hỏi-đáp → AI phân loại + mẫu trả lời + đoạn văn song ngữ.',
+prompt:'Tôi vừa làm Part 2 TOEIC. Script:\n\n[PASTE SCRIPT CÁC CÂU VÀO ĐÂY]\nVí dụ: Q: "Where is the meeting being held?" A: "In the conference room."\n\nSoạn:\n1. TẤT CẢ từ quan trọng từ script: từ | nghĩa | loại\n2. PHÂN LOẠI câu hỏi (Where/When/Who/Yes-No/Tag/Indirect)\n3. 5 MẪU TRẢ LỜI hay dùng Part 2\n4. 3-5 câu hay NGHE NHẦM — giải thích cách phân biệt'+BILINGUAL_BLOCK+'\n\nKhông lý thuyết — chỉ từ vựng + mẫu câu.'},
+p3:{meta:'Listening · 39 câu · Hội thoại',desc:'Paste script hội thoại → AI trích từ vựng + signal words + đoạn văn song ngữ.',
+prompt:'Tôi vừa làm Part 3 TOEIC. Script hội thoại:\n\n[PASTE SCRIPT VÀO ĐÂY]\n\nSoạn:\n1. TỪ VỰNG THẬT từ bài: từ | nghĩa | ví dụ câu khác\n2. CỤM ĐỘNG TỪ / IDIOM (nếu có): cụm | nghĩa | ngữ cảnh\n3. CHỦ ĐỀ hội thoại + 5 từ thêm cùng chủ đề\n4. 3 DẠNG CÂU HỎI thường gặp cho loại này'+BILINGUAL_BLOCK+'\n\nViết tiếng Việt, ngắn gọn.'},
+p4:{meta:'Listening · 30 câu · Bài nói ngắn',desc:'Paste script bài nói → AI phân loại thể loại + từ đặc trưng + đoạn văn song ngữ.',
+prompt:'Tôi vừa làm Part 4 TOEIC. Script bài nói:\n\n[PASTE SCRIPT VÀO ĐÂY]\n\nSoạn:\n1. TỪ VỰNG THẬT: từ | nghĩa | ghi chú\n2. LOẠI BÀI (announcement/ad/news/voicemail...)? + 8 từ đặc trưng\n3. SIGNAL WORDS báo hiệu thông tin quan trọng\n4. 3 CÂU HỎI kiểu TOEIC cho bài nói loại này'+BILINGUAL_BLOCK+'\n\nKhông viết dài — chỉ bảng từ + ví dụ.'},
+p5:{meta:'Reading · 30 câu · Điền từ vào câu',desc:'Paste các câu Part 5 → AI phân tích word form + ngữ pháp + đoạn văn song ngữ.',
+prompt:'Tôi vừa làm Part 5 TOEIC. Các câu (có đáp án):\n\n[PASTE CÁC CÂU VÀO ĐÂY]\nVí dụ: The new policy will ------- affect all employees.\n(A) significance (B) significant (C) significantly (D) signify → C\n\nSoạn:\n1. PHÂN TÍCH TỪNG CÂU: loại câu hỏi | dấu hiệu | tại sao đúng\n2. TỪ VỰNG: từ | nghĩa | word family (noun/verb/adj/adv)\n3. NGUYÊN TẮC nhận dạng nhanh\n4. 3 CÂU LUYỆN THÊM tương tự — có đáp án cuối'+BILINGUAL_BLOCK+'\n\nViết súc tích, thực chiến.'},
+p6:{meta:'Reading · 16 câu · Điền từ vào đoạn',desc:'Paste đoạn văn Part 6 → AI phân tích coherence + từ nối + đoạn văn song ngữ.',
+prompt:'Tôi vừa làm Part 6 TOEIC. Đoạn văn + đáp án:\n\n[PASTE ĐOẠN VĂN VÀO ĐÂY]\n\nSoạn:\n1. TỪ VỰNG THẬT: từ | nghĩa | word form | ví dụ câu khác\n2. PHÂN TÍCH từng chỗ điền: vị trí | loại | dấu hiệu | lý do sai\n3. LOẠI VĂN BẢN (email/memo/notice...) + từ đặc trưng\n4. TỪ NỐI / COHERENCE: however, therefore, in addition...'+BILINGUAL_BLOCK+'\n\nNgắn gọn, dùng ngay.'},
+p7:{meta:'Reading · 54 câu · Đọc hiểu',desc:'Paste bài đọc → AI trích từ theo ngữ cảnh + câu hỏi mẫu + đoạn văn song ngữ.',
+prompt:'Tôi vừa đọc/dịch bài Part 7 TOEIC. Nội dung:\n\n[PASTE BÀI ĐỌC VÀO ĐÂY]\n\nSoạn:\n1. TỪ VỰNG THẬT: từ | nghĩa trong bài | ví dụ câu mới\n2. CỤM TỪ CHUYÊN NGÀNH: cụm | nghĩa | lĩnh vực\n3. 3 CÂU HỎI TOEIC mẫu từ bài + cách tìm đáp án nhanh\n4. TÓM TẮT bài bằng 3 câu tiếng Anh đơn giản'+BILINGUAL_BLOCK+'\n\nViết tiếng Việt, thực chiến.'}
+};
 
+function buildPTabs(){
+  var cont=document.getElementById('ptabs');cont.innerHTML='';
+  PARTS.forEach(function(p,i){
+    var btn=document.createElement('button');btn.className='tab-btn'+(i===0?' on':'');btn.textContent=p.name;btn.dataset.pid=p.id;
+    btn.onclick=function(){document.querySelectorAll('#ptabs .tab-btn').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');showPTab(p.id);};
+    cont.appendChild(btn);
+  });
+  showPTab('p1');
+}
+function showPTab(pid){
+  var d=PROMPTS[pid];if(!d)return;
+  var el=document.getElementById('pcontent');
+  el.innerHTML='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px"><span style="background:#DBEAFE;color:#1E40AF;font-size:11px;padding:3px 9px;border-radius:10px;font-weight:600">'+d.meta.split('·')[0].trim()+'</span><span style="background:var(--grl);color:var(--tx2);font-size:11px;padding:3px 9px;border-radius:10px;font-weight:600">'+d.meta.split('·').slice(1).join('·').trim()+'</span></div>'
+    +'<div style="font-size:13px;color:var(--tx2);line-height:1.65;margin-bottom:14px">'+d.desc+'</div>'
+    +'<div style="font-size:11.5px;font-weight:700;color:var(--nv);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Prompt — copy &amp; paste vào AI</div>'
+    +'<div class="prompt-box"><button class="copy-btn" id="cpb_'+pid+'" onclick="copyP(\''+pid+'\')">Copy</button><pre class="prompt-pre">'+escH(d.prompt)+'</pre></div>'
+    +'<div style="margin-top:10px;font-size:12px;color:var(--gr);background:#F0FDF4;border:1px solid #A3D9B5;border-radius:6px;padding:8px 12px;line-height:1.7"><strong style="color:var(--gd)">Cách dùng:</strong> Làm bài → Mở ChatGPT/Claude/Gemini → Copy prompt → Thay <span style="color:#DC2626;font-weight:600">[PASTE ... VÀO ĐÂY]</span> bằng bài thật → Gửi → Nhận từ vựng + đoạn văn song ngữ</div>';
+}
+function copyP(pid){
+  var d=PROMPTS[pid];if(!d)return;var btn=document.getElementById('cpb_'+pid);
+  navigator.clipboard.writeText(d.prompt).then(function(){if(btn){btn.textContent='✓ Đã copy!';btn.style.background='#059669';setTimeout(function(){btn.textContent='Copy';btn.style.background='';},2000);}}).catch(function(){
+    var ta=document.createElement('textarea');ta.value=d.prompt;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    if(btn){btn.textContent='✓ Đã copy!';btn.style.background='#059669';setTimeout(function(){btn.textContent='Copy';btn.style.background='';},2000);}
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════
+buildTable();
+buildFG();
+buildTopics();
+buildPTabs();
 </script>
 </body>
 </html>

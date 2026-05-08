@@ -149,11 +149,42 @@ main{max-width:920px;margin:auto;padding:22px 16px 56px}
 .card,.daycard,.vtab-panel,.score-card{animation:slideUp .35s ease-out}
 footer{background:var(--nv);color:rgba(255,255,255,.4);text-align:center;font-size:11px;padding:18px;margin-top:30px;line-height:1.8}
 footer strong{color:rgba(255,255,255,.75)}
+/* Dash & Checkbox */
+.dashcard { background: linear-gradient(135deg, var(--gd), var(--nv)); color: #fff; border-radius: var(--rad); padding: 18px 20px; margin-bottom: 18px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 12px rgba(0,0,0,.15); animation:slideUp .35s ease-out; }
+.dash-title { font-size: 16px; font-weight: 700; display:flex; align-items:center; gap:8px;}
+.dash-prog { background: rgba(255,255,255,.2); height: 8px; border-radius: 4px; overflow: hidden; margin: 4px 0; }
+.dash-prog-bar { background: var(--gld); height: 100%; width: 0%; transition: width 0.4s ease-out; }
+.dash-stat { font-size: 12px; opacity: 0.9; }
+.dash-btn { background: var(--gld); color: #92400E; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; align-self: flex-start; margin-top: 5px; transition: transform .1s; }
+.dash-btn:active { transform:scale(0.96); }
+.chk-row { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1.5px solid var(--bd); border-radius: 8px; margin-bottom: 8px; cursor: pointer; transition: all .2s; background: var(--wh); }
+.chk-row:hover { border-color: var(--g); }
+.chk-row.done { background: #F8FAFC; border-color: #E2E8F0; opacity: 0.7; }
+.chk-box { width: 22px; height: 22px; border: 2px solid var(--g); border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #fff; transition: all .2s; }
+.chk-row.done .chk-box { background: var(--g); border-color: var(--g); }
+.chk-row.done .chk-box::after { content: "✓"; color: #fff; font-weight: 800; font-size: 14px; }
+.chk-row.done .chk-text { text-decoration: line-through; color: var(--gr); }
+.chk-text { flex: 1; font-size: 13.5px; line-height: 1.5; color: var(--tx2); }
+.chk-time { font-size: 11px; font-weight: 700; color: var(--nv); background: #E2E8F0; padding: 3px 6px; border-radius: 6px; white-space: nowrap; }
+.chk-row.done .chk-time { background: transparent; color: var(--gr); }
+.modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.6); z-index:1000; align-items:center; justify-content:center; padding:16px; backdrop-filter: blur(2px); }
+.modal-box { background:#fff; padding:24px; border-radius:var(--rad); width:100%; max-width:400px; box-shadow: 0 10px 25px rgba(0,0,0,.2); animation:slideUp .3s ease-out; }
+.modal-title { font-size:18px; font-weight:700; color:var(--nv); margin-bottom:12px; }
+.modal-desc { font-size:14px; color:var(--tx2); line-height:1.6; margin-bottom:20px; }
+.modal-btns { display:flex; gap:10px; justify-content:flex-end; }
+.btn-outline { background:transparent; border:1.5px solid var(--bd); color:var(--tx2); padding:10px 16px; border-radius:8px; font-weight:600; font-size:13px; cursor:pointer; font-family:inherit; }
 </style>
 </head>
 <body>
 <header><div class="hi"><div style="display:flex;align-items:center"><div class="lm">ORI</div><div class="lt">ORI TOEIC Dream Job<div class="ls">Phản xạ – Không học thuộc</div></div></div><div class="htag">AI Study Planner</div></div></header>
 <main>
+
+<div class="dashcard" id="dashcard" style="display:none">
+  <div class="dash-title">🔥 Tiến độ tuần này <span id="streak-badge" style="font-size:11px; background:var(--g); padding:3px 8px; border-radius:12px; margin-left:auto;">0 Streak</span></div>
+  <div class="dash-prog"><div class="dash-prog-bar" id="dash-bar"></div></div>
+  <div class="dash-stat" id="dash-stat">Bạn đã hoàn thành 0/0 task. Cố lên nhé!</div>
+  <button class="dash-btn" id="eval-btn">📈 Đánh giá & Chuyển tuần</button>
+</div>
 
 <div class="slbl">Bước 1 — Nhập điểm hiện tại &amp; mục tiêu</div>
 <div class="card">
@@ -223,6 +254,17 @@ footer strong{color:rgba(255,255,255,.75)}
   <div id="pcontent"></div>
 </div>
 
+<div class="modal-overlay" id="eval-modal">
+  <div class="modal-box">
+    <div class="modal-title">📈 Đánh giá tiến độ</div>
+    <div class="modal-desc">Từ kinh nghiệm 10 năm của cô Katie: Nếu bạn đã hoàn thành kế hoạch tuần này, hãy tự làm 1 bài mini-test cho 2 Part vừa tập trung.<br><br>Bạn đã đạt mục tiêu tăng điểm cho 2 Part này chưa?</div>
+    <div class="modal-btns">
+      <button class="btn-outline" id="eval-no">Chưa (Giữ nguyên Part)</button>
+      <button class="gbtn" id="eval-yes">Đã đạt (Chọn Part mới)</button>
+    </div>
+  </div>
+</div>
+
 </main>
 <footer><strong>ORI TOEIC Dream Job Academy</strong> · 135 Bạch Đằng, Tân Bình, TP.HCM<br>oritoeicdreamjob.com · 0906 303 373 · Cô Katie dạy trực tiếp<br>Học là hiểu – Thi là đậu – Đi làm là dùng được</footer>
 
@@ -253,9 +295,11 @@ var TOPICS=["Office & Workplace","Travel & Tourism","Shopping & Retail","Banking
 
 var days=4,mins=90,trans=20,focus=[];
 var pickedTopic="",vocabData=null,vScore={q:{c:0,t:0},f:{c:0,t:0}};
+var savedData={scores:{},focus:[],plan:null,progress:{},streak:0};
 
 function $(id){return document.getElementById(id);}
 function gv(id){var e=$(id);return e?parseInt(e.value)||0:0;}
+function sv(id, val){var e=$(id);if(e)e.value=val;}
 function escH(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 function fmtM(m){if(m>=60){var h=Math.floor(m/60),r=m%60;return r?h+"g"+r+"p":h+" giờ";}return m+"p";}
 
@@ -278,7 +322,13 @@ function upd(){
   $("sn").textContent=now;$("st").textContent=tgt;$("sd").textContent=(tgt-now>0?"+":"")+(tgt-now);
   $("snlr").textContent="L: "+s.lc+" | R: "+s.rc;$("stlr").textContent="L: "+s.lt+" | R: "+s.rt;
   $("sdlr").textContent="L "+(s.lt-s.lc>=0?"+":"")+(s.lt-s.lc)+" | R "+(s.rt-s.rc>=0?"+":"")+(s.rt-s.rc);
+  
+  // Save scores
+  PARTS.forEach(function(p){ savedData.scores[p.id+"_n"] = gv(p.id+"_n"); savedData.scores[p.id+"_t"] = gv(p.id+"_t"); });
+  saveData();
 }
+
+function saveData(){ localStorage.setItem("ori_planner_v3", JSON.stringify(savedData)); }
 
 // === BUILD TABLE ===
 function buildTable(){
@@ -308,6 +358,7 @@ function togF(id){
   if(focus.indexOf(id)>=0)focus=focus.filter(function(x){return x!==id;});
   else{if(focus.length>=2){alert("Tối đa 2 Part.");return;}focus.push(id);}
   PARTS.forEach(function(p){var b=$("fb_"+p.id);if(b)b.className="fb"+(focus.indexOf(p.id)>=0?" sel":focus.length>=2?" dis":"");});
+  savedData.focus = focus; saveData();
   updFI();
 }
 function updFI(){
@@ -345,39 +396,118 @@ function genPlan(){
   
   if(focus.length<2){$("errbox").innerHTML="<div class='err'>Chọn 2 Part ở Bước 2.</div>";return;}
   $("errbox").innerHTML="";$("ldbox").style.display="block";$("planout").style.display="none";$("gbtn").disabled=true;
-  var msgs=["Đang phân tích điểm...","Đang phân bổ thời gian...","Đang soạn lịch..."],mi=0;
+  var msgs=["Cô Katie đang xem điểm...","Đang lên lịch chống lười...","Sắp xong rồi..."],mi=0;
   var iv=setInterval(function(){$("lsub").textContent=msgs[mi++%msgs.length];},1800);
-  var pInfo=PARTS.map(function(p){var n=gv(p.id+"_n"),t=gv(p.id+"_t");return p.name+"("+p.type+"): "+n+"/"+p.total+" cần +"+(Math.max(0,t-n))+(focus.indexOf(p.id)>=0?" [TẬP TRUNG]":" [duy trì]");}).join("\n");
+  
   var sc=calcScore(),fp=PARTS.filter(function(p){return focus.indexOf(p.id)>=0;});
-  var studyMins=mins-trans,dNames=DNS.slice(0,days).join(", ");
-  var fpD=fp.map(function(p){var q=p.id==="p1"?6:p.id==="p2"?10:p.id==="p3"?13:p.id==="p4"?10:p.id==="p5"?10:p.id==="p6"?8:15;return p.name+": "+q+" câu/buổi (tổng "+p.total+")";}).join("\n");
-  var prompt="Bạn là Cô Katie, giáo viên TOEIC ORI Academy.\n\nCẤU TRÚC ĐỀ (SỐ CÂU CHÍNH XÁC):\nPart 1(L):6 · Part 2(L):25 · Part 3(L):39 · Part 4(L):30\nPart 5(R):30 · Part 6(R):16 · Part 7(R):54\nKHÔNG tự bịa số câu khác.\n\nĐIỂM:\n"+pInfo+"\nTổng: "+(sc.lc+sc.rc)+" → "+(sc.lt+sc.rt)+"\n\nGỢI Ý:\n"+fpD+"\n\nLỊCH: "+days+" buổi ("+dNames+")\nMỗi buổi "+mins+"p. Bắt buộc "+trans+"p dịch Part 7.\nCòn "+studyMins+"p: 40% đề + 35% lỗi + 25% từ vựng\n\nTẬP TRUNG: "+fp.map(function(p){return p.name+" ("+p.total+" câu)";}).join(" và ")+"\n\n📅 [Ngày] — "+mins+"p\n🎯 Làm đề ([X]p): Part, số câu, tip\n🔍 Xem lỗi ([X]p): hướng dẫn\n📖 Từ vựng ([X]p): 4-5 từ thật: EN | VN | ví dụ\n📝 Dịch Part 7 ("+trans+"p): loại bài, cấu trúc\n💬 Slogan: 1 câu khác mỗi ngày\n\n---\nTIP TUẦN NÀY: 2-3 câu\n\nTiếng Việt, ngắn gọn.";
+  var studyMins=mins-trans;
+  
+  var prompt="Bạn là Cô Katie, Giám đốc học thuật TOEIC với 10 năm kinh nghiệm.\nBạn rất nghiêm khắc nhưng tâm lý với học viên lười.\n\nĐIỂM: "+(sc.lc+sc.rc)+" → "+(sc.lt+sc.rt)+"\nTẬP TRUNG: "+fp.map(p=>p.name).join(" & ")+"\nLỊCH: "+days+" buổi/tuần ("+mins+"p/buổi).\n\nNHIỆM VỤ: Lập kế hoạch học tập chi tiết cho từng buổi.\n\nBẮT BUỘC TRẢ VỀ ĐÚNG FORMAT JSON DƯỚI ĐÂY (KHÔNG markdown ```json, KHÔNG text ngoài):\n{\n  \"tip\": \"Lời khuyên thực tế từ giáo viên 10 năm kinh nghiệm (3 câu, đánh trúng tâm lý người lười)\",\n  \"days\": [\n    {\n      \"dayName\": \"Buổi 1\",\n      \"slogan\": \"1 câu tạo động lực cực mạnh\",\n      \"tasks\": [\n        {\"type\": \"Làm đề\", \"time\": \"40p\", \"desc\": \"Làm 15 câu Part...\"},\n        {\"type\": \"Sửa lỗi\", \"time\": \"30p\", \"desc\": \"Phân tích lỗi...\"},\n        {\"type\": \"Dịch P7\", \"time\": \"20p\", \"desc\": \"Dịch...\"}\n      ]\n    }\n  ]\n}";
 
   fetch("/api/groq",{
     method:"POST",headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({model:"llama-3.3-70b-versatile",max_tokens:2200,temperature:0.72,messages:[{role:"user",content:prompt}]})
+    body:JSON.stringify({model:"llama-3.3-70b-versatile",max_tokens:2500,temperature:0.7,messages:[{role:"user",content:prompt}]})
   }).then(function(r){return r.json();}).then(function(data){
     clearInterval(iv);$("ldbox").style.display="none";$("gbtn").disabled=false;
     if(data.error){$("errbox").innerHTML="<div class='err'>Lỗi: "+(data.error.message||"")+"</div>";return;}
-    renderPlan(data.choices[0].message.content||"");
-  }).catch(function(e){clearInterval(iv);$("ldbox").style.display="none";$("gbtn").disabled=false;$("errbox").innerHTML="<div class='err'>Lỗi: "+e.message+"</div>";});
+    
+    var txt=(data.choices[0].message.content||"").replace(/```json\s*/gi,"").replace(/```\s*/gi,"").trim();
+    try {
+      var planJSON = JSON.parse(txt);
+      savedData.plan = planJSON;
+      savedData.progress = {}; // reset progress
+      saveData();
+      renderPlan(planJSON);
+    } catch(e) {
+      $("errbox").innerHTML="<div class='err'>Lỗi đọc JSON từ AI. Hãy thử tạo lại.</div>";
+    }
+  }).catch(function(e){clearInterval(iv);$("ldbox").style.display="none";$("gbtn").disabled=false;$("errbox").innerHTML="<div class='err'>Lỗi mạng: "+e.message+"</div>";});
 }
-function renderPlan(txt){
+
+function renderPlan(plan){
+  if(!plan || !plan.days) return;
   var sl=SLOGANS[Math.floor(Math.random()*SLOGANS.length)];
-  $("sloganarea").innerHTML="<div class='slogan'><div class='sli'>"+sl.i+"</div><div><div class='slt'>"+sl.t+"</div><div class='sls'>"+sl.s+"</div></div></div>";
-  var lines=txt.split("\n"),dayBlocks=[],cur=null;
-  lines.forEach(function(line){var tr=line.trim();if(!tr)return;if(tr.indexOf("📅")===0||/^(Thứ [2-7]|Chủ nhật)/i.test(tr)){if(cur)dayBlocks.push(cur);cur={head:tr.replace(/^📅\s*/,""),body:[]};}else if(cur)cur.body.push(tr);});
-  if(cur)dayBlocks.push(cur);
-  var tipIdx=txt.indexOf("TIP TUẦN"),tipText=tipIdx>=0?txt.slice(tipIdx+11).trim():"";
-  var realDays=dayBlocks.filter(function(b){return b.head&&!/^TIP/i.test(b.head);});
+  $("sloganarea").innerHTML="<div class='slogan'><div class='sli'>👩‍🏫</div><div><div class='slt'>Lời khuyên từ Cô Katie</div><div class='sls'>"+escH(plan.tip||sl.s)+"</div></div></div>";
+  
   var pc=$("plancards");pc.innerHTML="";
-  realDays.forEach(function(b,i){var div=document.createElement("div");div.className="daycard";var bh=b.body.map(fmtLine).join("\n");div.innerHTML="<div class='dh'><div class='dn'>"+b.head.split("—")[0].trim()+"</div>"+(b.head.indexOf("—")>=0?"<div class='dtag'>"+(b.head.split("—")[1]||"").trim()+"</div>":"")+"<div class='dtm'>⏱ "+fmtM(mins)+"</div></div><div class='dbody'>"+bh+"</div>";pc.appendChild(div);});
-  if(tipText){var td=document.createElement("div");td.className="tipcard";td.innerHTML="<strong>💡 Tip tuần này:</strong>\n"+tipText.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>");pc.appendChild(td);}
+  plan.days.forEach(function(d, di){
+    var div=document.createElement("div");div.className="daycard";
+    
+    var bh = "";
+    (d.tasks||[]).forEach(function(t, ti){
+      var tID = "d"+di+"_t"+ti;
+      var isDone = savedData.progress[tID];
+      bh += "<div class='chk-row "+(isDone?"done":"")+"' data-tid='"+tID+"'>";
+      bh += "<div class='chk-box'></div>";
+      bh += "<div class='chk-text'><strong>"+escH(t.type)+"</strong>: "+escH(t.desc)+"</div>";
+      bh += "<div class='chk-time'>"+escH(t.time)+"</div>";
+      bh += "</div>";
+    });
+    
+    div.innerHTML="<div class='dh'><div class='dn'>"+escH(d.dayName)+"</div><div class='dtag'>"+escH(d.slogan)+"</div></div><div class='dbody' style='padding:10px 14px'>"+bh+"</div>";
+    pc.appendChild(div);
+  });
+  
   var totM=days*mins,totTr=days*trans;
-  $("totbar").innerHTML="<div class='totbar'><div class='ti'><div class='tv'>"+days+" buổi</div><div class='tl'>/ tuần</div></div><div class='ti'><div class='tv'>"+fmtM(totM)+"</div><div class='tl'>tổng</div></div><div class='ti'><div class='tv'>"+fmtM(totM-totTr)+"</div><div class='tl'>học & ôn</div></div><div class='ti'><div class='tv'>"+fmtM(totTr)+"</div><div class='tl'>dịch P7</div></div><div class='ti'><div class='tv'>"+focus.map(function(id){return PARTS.find(function(p){return p.id===id;}).name;}).join(" + ")+"</div><div class='tl'>tập trung</div></div></div>";
-  $("planout").style.display="block";$("planout").scrollIntoView({behavior:"smooth",block:"start"});
+  $("totbar").innerHTML="<div class='totbar'><div class='ti'><div class='tv'>"+days+" buổi</div><div class='tl'>/ tuần</div></div><div class='ti'><div class='tv'>"+fmtM(totM)+"</div><div class='tl'>tổng</div></div><div class='ti'><div class='tv'>"+fmtM(totM-totTr)+"</div><div class='tl'>học & ôn</div></div><div class='ti'><div class='tv'>"+fmtM(totTr)+"</div><div class='tl'>dịch P7</div></div></div>";
+  $("planout").style.display="block";
+  
+  // Attach checkbox events
+  pc.querySelectorAll(".chk-row").forEach(function(row){
+    row.addEventListener("click", function(){
+      var tid = row.dataset.tid;
+      var isDone = !row.classList.contains("done");
+      row.classList.toggle("done", isDone);
+      savedData.progress[tid] = isDone;
+      saveData();
+      updateDashboard();
+    });
+  });
+  
+  updateDashboard();
 }
-function fmtLine(l){var isM=l.indexOf("💬")===0;var isI=["🎯","🔍","📖","📝","💬","💡"].some(function(ic){return l.indexOf(ic)===0;});var o=l.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>");if(isM)return "<span class='mot'>"+o+"</span>";if(isI)return "<span class='em'>"+o+"</span>";return o;}
+
+function updateDashboard(){
+  if(!savedData.plan) return;
+  var totalTasks = 0;
+  var completedTasks = 0;
+  savedData.plan.days.forEach(function(d, di){
+    (d.tasks||[]).forEach(function(t, ti){
+      totalTasks++;
+      if(savedData.progress["d"+di+"_t"+ti]) completedTasks++;
+    });
+  });
+  
+  $("dashcard").style.display="flex";
+  var pct = totalTasks > 0 ? Math.round((completedTasks/totalTasks)*100) : 0;
+  $("dash-bar").style.width = pct + "%";
+  $("streak-badge").textContent = savedData.streak + " Streak 🔥";
+  
+  if(pct === 100) {
+    $("dash-stat").innerHTML = "🎉 Tuyệt vời! Bạn đã hoàn thành 100% mục tiêu tuần này.";
+    $("dash-bar").style.background = "#059669";
+    $("eval-btn").style.display = "block";
+  } else {
+    $("dash-stat").innerHTML = "Bạn đã hoàn thành <strong>"+completedTasks+"/"+totalTasks+"</strong> task ("+pct+"%). Cô Katie đang theo dõi bạn đấy!";
+    $("dash-bar").style.background = "var(--gld)";
+    $("eval-btn").style.display = "none";
+  }
+}
+
+// Eval Modal logic
+$("eval-btn").addEventListener("click", function(){ $("eval-modal").style.display="flex"; });
+$("eval-no").addEventListener("click", function(){ 
+  $("eval-modal").style.display="none"; 
+  alert("Cô Katie: Không sao, học ngôn ngữ cần thời gian. Tuần tới hãy tiếp tục giữ 2 Part này và cố gắng hơn nhé!");
+});
+$("eval-yes").addEventListener("click", function(){ 
+  $("eval-modal").style.display="none"; 
+  savedData.streak++;
+  saveData();
+  alert("Cô Katie: Xuất sắc! Hãy chọn 2 Part tiếp theo để tăng điểm nhé.");
+  $("resetbtn").click();
+});
+
 
 // === VOCAB ===
 function buildTopics(){
@@ -523,12 +653,40 @@ function showPTab(pid){
 }
 
 // === INIT ===
+function loadData(){
+  try {
+    var stored = localStorage.getItem("ori_planner_v3");
+    if(stored) {
+      savedData = JSON.parse(stored);
+      if(!savedData.scores) savedData.scores = {};
+      if(!savedData.progress) savedData.progress = {};
+      if(!savedData.streak) savedData.streak = 0;
+      
+      // Load scores
+      PARTS.forEach(function(p){
+        if(savedData.scores[p.id+"_n"] !== undefined) sv(p.id+"_n", savedData.scores[p.id+"_n"]);
+        if(savedData.scores[p.id+"_t"] !== undefined) sv(p.id+"_t", savedData.scores[p.id+"_t"]);
+      });
+      
+      // Load focus
+      if(savedData.focus && savedData.focus.length > 0) {
+        focus = savedData.focus;
+      }
+    }
+  } catch(e) {}
+}
+
+loadData();
 buildTable();
 buildFG();
 buildControls();
 buildTopics();
 buildVTabs();
 buildPTabs();
+
+if(savedData.plan) {
+  renderPlan(savedData.plan);
+}
 
 })();
 </script>

@@ -199,6 +199,14 @@ footer strong{color:rgba(255,255,255,.75)}
     <div class="sb t"><div class="lbl">Mục tiêu</div><div class="big" id="st">—</div><div class="sub" id="stlr"></div></div>
     <div class="sb d"><div class="lbl">Cần tăng</div><div class="big" id="sd">—</div><div class="sub" id="sdlr"></div></div>
   </div>
+  
+  <div style="background:#F0F7FF; border:1px solid #BFDBFE; border-radius:8px; padding:12px; margin-bottom:14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+    <div style="font-size:13px; font-weight:600; color:var(--b);">💡 Nhập mục tiêu để tự động tính số câu:</div>
+    <input type="number" id="smart-target" placeholder="VD: 600" style="width:80px; padding:6px; border:1px solid #BFDBFE; border-radius:6px; font-size:14px; font-weight:700; text-align:center; color:var(--b);">
+    <button class="gbtn" id="smart-dist-btn" style="padding:6px 14px; font-size:12px; height:auto; background:var(--b);">Tự chia mục tiêu</button>
+    <div style="font-size:11px; color:var(--b); opacity:0.8; width:100%;">*Hệ thống sẽ dựa trên điểm Hiện tại để rải đều số câu Cần tăng vào các Part sao cho hợp lý nhất. Bạn vẫn có thể tự chỉnh sửa thủ công ở dưới.</div>
+  </div>
+
   <div class="table-wrap">
   <table class="pt"><thead><tr><th style="text-align:left;width:190px">Part</th><th>Hiện tại</th><th>Mục tiêu</th><th>Cần tăng</th><th>Tổng câu</th><th>Mức độ</th></tr></thead><tbody id="ptb"></tbody></table>
   </div>
@@ -338,6 +346,58 @@ function upd(){
 }
 
 function saveData(){ localStorage.setItem("ori_planner_v3", JSON.stringify(savedData)); }
+
+// === SMART TARGET DISTRIBUTE ===
+$("smart-dist-btn").addEventListener("click", function() {
+  var tgt = parseInt($("smart-target").value);
+  var sc = calcScore();
+  var curTgt = sc.lc + sc.rc;
+  if (!tgt || tgt <= curTgt || tgt > 990) {
+    alert("Vui lòng nhập mục tiêu hợp lệ và phải LỚN HƠN điểm hiện tại (Tối đa 990)!");
+    return;
+  }
+  
+  var lRatio = sc.lc / (curTgt || 1);
+  if(curTgt === 0) lRatio = 0.55;
+  
+  var targetLScale = Math.round((tgt * lRatio) / 5) * 5;
+  var targetRScale = tgt - targetLScale;
+  
+  var reqLRaw = 0; while(reqLRaw <= 100 && LT[reqLRaw] < targetLScale) reqLRaw++;
+  if(reqLRaw > 100) reqLRaw = 100;
+  var reqRRaw = 0; while(reqRRaw <= 100 && RT[reqRRaw] < targetRScale) reqRRaw++;
+  if(reqRRaw > 100) reqRRaw = 100;
+  
+  var curLRaw = gv("p1_n")+gv("p2_n")+gv("p3_n")+gv("p4_n");
+  var curRRaw = gv("p5_n")+gv("p6_n")+gv("p7_n");
+  
+  if (curLRaw > reqLRaw) { reqLRaw = curLRaw; targetLScale = LT[reqLRaw]; targetRScale = tgt - targetLScale; reqRRaw = 0; while(reqRRaw <= 100 && RT[reqRRaw] < targetRScale) reqRRaw++; }
+  if (curRRaw > reqRRaw) { reqRRaw = curRRaw; targetRScale = RT[reqRRaw]; targetLScale = tgt - targetRScale; reqLRaw = 0; while(reqLRaw <= 100 && LT[reqLRaw] < targetLScale) reqLRaw++; }
+  reqLRaw = Math.min(100, Math.max(curLRaw, reqLRaw));
+  reqRRaw = Math.min(100, Math.max(curRRaw, reqRRaw));
+
+  var targetVals = {};
+  PARTS.forEach(function(p){ targetVals[p.id] = gv(p.id+"_n"); });
+
+  function addPoints(type, delta) {
+    var parts = PARTS.filter(function(p){return p.type === type;});
+    for(var i=0; i<delta; i++) {
+      var bestP = null; var bestRatio = 1.0;
+      parts.forEach(function(p){
+        var ratio = targetVals[p.id] / p.total;
+        if(ratio < bestRatio && targetVals[p.id] < p.total) { bestRatio = ratio; bestP = p; }
+      });
+      if(!bestP) bestP = parts.find(function(p){return targetVals[p.id] < p.total;});
+      if(bestP) targetVals[bestP.id]++;
+    }
+  }
+  
+  addPoints("L", reqLRaw - curLRaw);
+  addPoints("R", reqRRaw - curRRaw);
+  
+  PARTS.forEach(function(p){ sv(p.id+"_t", targetVals[p.id]); });
+  upd();
+});
 
 // === BUILD TABLE ===
 function buildTable(){

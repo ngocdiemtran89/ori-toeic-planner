@@ -257,7 +257,7 @@ footer strong{color:rgba(255,255,255,.75)}
 <div class="modal-overlay" id="eval-modal">
   <div class="modal-box">
     <div class="modal-title">📈 Đánh giá tiến độ</div>
-    <div class="modal-desc">Từ kinh nghiệm 10 năm của cô Katie: Nếu bạn đã hoàn thành kế hoạch tuần này, hãy tự làm 1 bài mini-test cho 2 Part vừa tập trung.<br><br>Bạn đã đạt mục tiêu tăng điểm cho 2 Part này chưa?</div>
+    <div class="modal-desc">Từ chuyên gia của ORI: Nếu bạn đã hoàn thành 100% kế hoạch tuần này, hãy tự làm 1 bài mini-test cho 2 Part vừa tập trung.<br><br>Sự thật mất lòng: Bạn đã đạt mục tiêu tăng điểm cho 2 Part này chưa? Đừng tự lừa bản thân nhé!</div>
     <div class="modal-btns">
       <button class="btn-outline" id="eval-no">Chưa (Giữ nguyên Part)</button>
       <button class="gbtn" id="eval-yes">Đã đạt (Chọn Part mới)</button>
@@ -266,7 +266,7 @@ footer strong{color:rgba(255,255,255,.75)}
 </div>
 
 </main>
-<footer><strong>ORI TOEIC Dream Job Academy</strong> · 135 Bạch Đằng, Tân Bình, TP.HCM<br>oritoeicdreamjob.com · 0906 303 373 · Cô Katie dạy trực tiếp<br>Học là hiểu – Thi là đậu – Đi làm là dùng được</footer>
+<footer><strong>ORI TOEIC Dream Job Academy</strong> · 135 Bạch Đằng, Tân Bình, TP.HCM<br>oritoeicdreamjob.com · 0906 303 373 · Giỏi TOEIC, Giao Tiếp Thạo – Chạm Tay Tới Dream Job<br>Học là hiểu – Thi là đậu – Đi làm là dùng được</footer>
 
 <script>
 (function(){
@@ -396,13 +396,13 @@ function genPlan(){
   
   if(focus.length<2){$("errbox").innerHTML="<div class='err'>Chọn 2 Part ở Bước 2.</div>";return;}
   $("errbox").innerHTML="";$("ldbox").style.display="block";$("planout").style.display="none";$("gbtn").disabled=true;
-  var msgs=["Cô Katie đang xem điểm...","Đang lên lịch chống lười...","Sắp xong rồi..."],mi=0;
+  var msgs=["ORI đang xem điểm...","Đang lên lịch chống lười...","Sắp xong rồi..."],mi=0;
   var iv=setInterval(function(){$("lsub").textContent=msgs[mi++%msgs.length];},1800);
   
   var sc=calcScore(),fp=PARTS.filter(function(p){return focus.indexOf(p.id)>=0;});
   var studyMins=mins-trans;
   
-  var prompt="Bạn là Cô Katie, Giám đốc học thuật TOEIC với 10 năm kinh nghiệm.\nBạn rất nghiêm khắc nhưng tâm lý với học viên lười.\n\nĐIỂM: "+(sc.lc+sc.rc)+" → "+(sc.lt+sc.rt)+"\nTẬP TRUNG: "+fp.map(p=>p.name).join(" & ")+"\nLỊCH: "+days+" buổi/tuần ("+mins+"p/buổi).\n\nNHIỆM VỤ: Lập kế hoạch học tập chi tiết cho từng buổi.\n\nBẮT BUỘC TRẢ VỀ ĐÚNG FORMAT JSON DƯỚI ĐÂY (KHÔNG markdown ```json, KHÔNG text ngoài):\n{\n  \"tip\": \"Lời khuyên thực tế từ giáo viên 10 năm kinh nghiệm (3 câu, đánh trúng tâm lý người lười)\",\n  \"days\": [\n    {\n      \"dayName\": \"Buổi 1\",\n      \"slogan\": \"1 câu tạo động lực cực mạnh\",\n      \"tasks\": [\n        {\"type\": \"Làm đề\", \"time\": \"40p\", \"desc\": \"Làm 15 câu Part...\"},\n        {\"type\": \"Sửa lỗi\", \"time\": \"30p\", \"desc\": \"Phân tích lỗi...\"},\n        {\"type\": \"Dịch P7\", \"time\": \"20p\", \"desc\": \"Dịch...\"}\n      ]\n    }\n  ]\n}";
+  var prompt="Bạn là chuyên gia TOEIC của ORI Academy với 10 năm kinh nghiệm.\nBạn có phong cách 'cà khịa', hay trêu chọc học viên lười một cách hài hước nhưng sâu sắc để ép họ học.\n\nĐIỂM: "+(sc.lc+sc.rc)+" → "+(sc.lt+sc.rt)+"\nTẬP TRUNG: "+fp.map(p=>p.name).join(" & ")+"\nLỊCH: "+days+" buổi/tuần ("+mins+"p/buổi).\n\nNHIỆM VỤ: Lập kế hoạch học tập chi tiết cho từng buổi.\n\nBẮT BUỘC TRẢ VỀ ĐÚNG FORMAT JSON DƯỚI ĐÂY (KHÔNG markdown ```json, KHÔNG text ngoài):\n{\n  \"tip\": \"1 lời khuyên mang tính 'cà khịa' nhưng cực kỳ đúng đắn để trị bệnh lười (Ví dụ: Thở còn lười thì sao qua nổi Part 7?)\",\n  \"days\": [\n    {\n      \"dayName\": \"Buổi 1\",\n      \"slogan\": \"1 câu tạo động lực (có thể trêu chọc)\",\n      \"tasks\": [\n        {\"type\": \"Làm đề\", \"time\": \"40p\", \"desc\": \"Làm 15 câu Part...\"},\n        {\"type\": \"Sửa lỗi\", \"time\": \"30p\", \"desc\": \"Phân tích lỗi...\"},\n        {\"type\": \"Dịch P7\", \"time\": \"20p\", \"desc\": \"Dịch...\"}\n      ]\n    }\n  ]\n}";
 
   fetch("/api/groq",{
     method:"POST",headers:{"Content-Type":"application/json"},
@@ -427,7 +427,7 @@ function genPlan(){
 function renderPlan(plan){
   if(!plan || !plan.days) return;
   var sl=SLOGANS[Math.floor(Math.random()*SLOGANS.length)];
-  $("sloganarea").innerHTML="<div class='slogan'><div class='sli'>👩‍🏫</div><div><div class='slt'>Lời khuyên từ Cô Katie</div><div class='sls'>"+escH(plan.tip||sl.s)+"</div></div></div>";
+  $("sloganarea").innerHTML="<div class='slogan'><div class='sli'>🔥</div><div><div class='slt'>Lời khuyên từ chuyên gia ORI</div><div class='sls'>"+escH(plan.tip||sl.s)+"</div></div></div>";
   
   var pc=$("plancards");pc.innerHTML="";
   plan.days.forEach(function(d, di){
@@ -483,12 +483,23 @@ function updateDashboard(){
   $("dash-bar").style.width = pct + "%";
   $("streak-badge").textContent = savedData.streak + " Streak 🔥";
   
+  var ROASTS = [
+    "Hôm nay lại tính 'mai học' đúng không? ORI biết thừa!",
+    "Lười thì chỉ có đi làm... bù buồn ngủ thôi. Học đi!",
+    "Lướt Tiktok 3 tiếng được mà học 30 phút lại kêu mệt?",
+    "Thở còn lười thì sao qua nổi Part 7 hả trời?",
+    "Điểm TOEIC không tự sinh ra, nó chỉ chuyển từ đứa siêng sang đứa... lười (à nhầm, làm gì có chuyện đó!)",
+    "Chưa học bài mà đòi Dream Job? Đi ngủ tiếp đi mơ cho lẹ!",
+    "Trời đánh tránh bữa ăn, còn làm bài tập TOEIC thì không được tránh!"
+  ];
+  var roastStr = ROASTS[Math.floor(Math.random()*ROASTS.length)];
+  
   if(pct === 100) {
     $("dash-stat").innerHTML = "🎉 Tuyệt vời! Bạn đã hoàn thành 100% mục tiêu tuần này.";
     $("dash-bar").style.background = "#059669";
     $("eval-btn").style.display = "block";
   } else {
-    $("dash-stat").innerHTML = "Bạn đã hoàn thành <strong>"+completedTasks+"/"+totalTasks+"</strong> task ("+pct+"%). Cô Katie đang theo dõi bạn đấy!";
+    $("dash-stat").innerHTML = "Đã xong <strong>"+completedTasks+"/"+totalTasks+"</strong> task ("+pct+"%). <br><span style='color:#FFD700; font-style:italic; font-size:11.5px; opacity: 0.95; display:inline-block; margin-top:4px;'>\"" + roastStr + "\"</span>";
     $("dash-bar").style.background = "var(--gld)";
     $("eval-btn").style.display = "none";
   }
@@ -498,13 +509,13 @@ function updateDashboard(){
 $("eval-btn").addEventListener("click", function(){ $("eval-modal").style.display="flex"; });
 $("eval-no").addEventListener("click", function(){ 
   $("eval-modal").style.display="none"; 
-  alert("Cô Katie: Không sao, học ngôn ngữ cần thời gian. Tuần tới hãy tiếp tục giữ 2 Part này và cố gắng hơn nhé!");
+  alert("ORI: Không sao, ngôn ngữ thấm từ từ. Tuần tới hãy tiếp tục giữ 2 Part này và bớt lười lại nhé!");
 });
 $("eval-yes").addEventListener("click", function(){ 
   $("eval-modal").style.display="none"; 
   savedData.streak++;
   saveData();
-  alert("Cô Katie: Xuất sắc! Hãy chọn 2 Part tiếp theo để tăng điểm nhé.");
+  alert("ORI: Đỉnh của chóp! Giờ thì chọn 2 Part tiếp theo để phá đảo TOEIC nào.");
   $("resetbtn").click();
 });
 

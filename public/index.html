@@ -4,18 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ORI TOEIC – AI Study Planner</title>
+<meta name="description" content="AI lập kế hoạch học TOEIC cá nhân hóa. Phân tích điểm, chọn Part tập trung, luyện từ vựng + quiz.">
+<meta property="og:title" content="ORI TOEIC – AI Study Planner">
+<meta property="og:description" content="AI lập kế hoạch TOEIC cá nhân hóa. 7 Parts, quiz, từ vựng theo chủ đề.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0A2240">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--g:#2DA65C;--gl:#E8F5EE;--gd:#145E34;--b:#0057B8;--bl:#E6F0FB;--nv:#0A2240;--gld:#C8A951;--gldb:#FFF8E7;--gr:#6B7280;--grl:#F3F4F6;--bd:#E5E7EB;--wh:#fff;--tx:#111827;--tx2:#374151;--rad:10px;--sh:0 1px 4px rgba(0,0,0,.08)}
-body{font-family:'Be Vietnam Pro',sans-serif;background:#EFF7F2;color:var(--tx);min-height:100vh}
+:root{--g:#2DA65C;--gl:#E8F5EE;--gd:#145E34;--b:#0057B8;--bl:#E6F0FB;--nv:#0A2240;--gld:#C8A951;--gldb:#FFF8E7;--gr:#6B7280;--grl:#F3F4F6;--bd:#E5E7EB;--wh:#fff;--tx:#111827;--tx2:#374151;--rad:12px;--sh:0 2px 8px rgba(0,0,0,.06)}
+body{font-family:'Be Vietnam Pro',sans-serif;background:linear-gradient(180deg,#EAF4EE 0%,#F5F7FA 100%);color:var(--tx);min-height:100vh}
+.card{transition:box-shadow .2s,transform .2s}.card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1);transform:translateY(-1px)}
 header{background:var(--nv);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 .hi{max-width:980px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:11px 20px}
 .lm{width:36px;height:36px;background:var(--g);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:13px;flex-shrink:0}
 .lt{color:#fff;font-weight:700;font-size:15px;line-height:1.25;margin-left:10px}
 .ls{color:rgba(255,255,255,.5);font-size:10px}
 .htag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);font-size:11px;padding:3px 10px;border-radius:20px}
-main{max-width:980px;margin:auto;padding:22px 16px 56px}
+main{max-width:920px;margin:auto;padding:22px 16px 56px}
 .slbl{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--gd);margin-bottom:10px;display:flex;align-items:center;gap:6px}
 .slbl::before{content:'';width:3px;height:13px;background:var(--g);border-radius:2px;display:inline-block}
 .card{background:var(--wh);border-radius:var(--rad);border:1px solid var(--bd);padding:18px 20px;box-shadow:var(--sh);margin-bottom:18px}
@@ -108,7 +114,40 @@ main{max-width:980px;margin:auto;padding:22px 16px 56px}
 .para-text{font-size:14px;line-height:1.85;color:#1E3A5F}
 .para-text .vn{color:var(--g);font-weight:600}
 @media(max-width:560px){.srow{grid-template-columns:1fr 1fr}.srow .sb:last-child{grid-column:span 2}}
-footer{background:var(--nv);color:rgba(255,255,255,.4);text-align:center;font-size:11px;padding:14px;margin-top:24px;line-height:1.8}
+/* Mobile table scroll */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
+@media(max-width:700px){
+  .pt{min-width:580px}
+  .hi{padding:10px 14px}
+  .lt{font-size:14px}
+  .card{padding:14px 16px;margin-bottom:14px}
+  .sb .big{font-size:22px}
+  .slbl{font-size:11px}
+  .fg{grid-template-columns:repeat(2,1fr)}
+  .gbtn{width:100%;justify-content:center;padding:14px}
+  .cheat-fab,.fab{display:none}
+  .topic-grid{grid-template-columns:repeat(2,1fr)}
+  .prompt-pre{font-size:11px;padding-right:10px}
+  .copy-btn{position:static;margin-top:10px;width:100%;padding:8px}
+  .prompt-box{padding:12px}
+  .vtab-panel{padding:14px}
+  .vtable{font-size:12px}
+  .vtable th,.vtable td{padding:5px 6px}
+  .q-card{padding:12px}
+  .fb-opts{grid-template-columns:repeat(2,1fr)}
+  footer{font-size:10px;padding:12px}
+}
+@media(max-width:400px){
+  .sb .big{font-size:18px}
+  .srow{gap:6px}
+  .pt input[type=number]{width:44px;font-size:12px;padding:3px 4px}
+  .fg{gap:6px}
+  .topic-grid{grid-template-columns:1fr 1fr}
+}
+/* Smooth animations */
+@keyframes slideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.card,.daycard,.vtab-panel,.score-card{animation:slideUp .35s ease-out}
+footer{background:var(--nv);color:rgba(255,255,255,.4);text-align:center;font-size:11px;padding:18px;margin-top:30px;line-height:1.8}
 footer strong{color:rgba(255,255,255,.75)}
 </style>
 </head>
@@ -123,7 +162,9 @@ footer strong{color:rgba(255,255,255,.75)}
     <div class="sb t"><div class="lbl">Mục tiêu</div><div class="big" id="st">—</div><div class="sub" id="stlr"></div></div>
     <div class="sb d"><div class="lbl">Cần tăng</div><div class="big" id="sd">—</div><div class="sub" id="sdlr"></div></div>
   </div>
+  <div class="table-wrap">
   <table class="pt"><thead><tr><th style="text-align:left;width:190px">Part</th><th>Hiện tại</th><th>Mục tiêu</th><th>Cần tăng</th><th>Tổng câu</th><th>Mức độ</th></tr></thead><tbody id="ptb"></tbody></table>
+  </div>
 </div>
 
 <div class="slbl">Bước 2 — Chọn 2 Part tập trung tuần này</div>
@@ -141,9 +182,9 @@ footer strong{color:rgba(255,255,255,.75)}
 </div>
 
 <div class="slbl">Bước 4 — Tạo kế hoạch bằng AI</div>
-<div class="card">
-  <div id="errbox"><span style="font-size:12px;color:var(--gr)">Nhấn nút → AI sẽ lập kế hoạch học tập riêng cho bạn</span>
-  </div>
+<div class="card" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+  <div id="errbox" style="flex:1;min-width:200px"><span style="font-size:12px;color:var(--gr)">Nhấn nút → AI sẽ lập kế hoạch học tập riêng cho bạn</span></div>
+  <button class="gbtn" id="gbtn">🧠 Tạo kế hoạch AI</button>
 </div>
 <div class="ldbox" id="ldbox"><div class="spin"></div><div class="ltxt">AI đang lập kế hoạch...</div><div class="lsub" id="lsub"></div></div>
 
@@ -313,7 +354,7 @@ function genPlan(){
   var prompt="Bạn là Cô Katie, giáo viên TOEIC ORI Academy.\n\nCẤU TRÚC ĐỀ (SỐ CÂU CHÍNH XÁC):\nPart 1(L):6 · Part 2(L):25 · Part 3(L):39 · Part 4(L):30\nPart 5(R):30 · Part 6(R):16 · Part 7(R):54\nKHÔNG tự bịa số câu khác.\n\nĐIỂM:\n"+pInfo+"\nTổng: "+(sc.lc+sc.rc)+" → "+(sc.lt+sc.rt)+"\n\nGỢI Ý:\n"+fpD+"\n\nLỊCH: "+days+" buổi ("+dNames+")\nMỗi buổi "+mins+"p. Bắt buộc "+trans+"p dịch Part 7.\nCòn "+studyMins+"p: 40% đề + 35% lỗi + 25% từ vựng\n\nTẬP TRUNG: "+fp.map(function(p){return p.name+" ("+p.total+" câu)";}).join(" và ")+"\n\n📅 [Ngày] — "+mins+"p\n🎯 Làm đề ([X]p): Part, số câu, tip\n🔍 Xem lỗi ([X]p): hướng dẫn\n📖 Từ vựng ([X]p): 4-5 từ thật: EN | VN | ví dụ\n📝 Dịch Part 7 ("+trans+"p): loại bài, cấu trúc\n💬 Slogan: 1 câu khác mỗi ngày\n\n---\nTIP TUẦN NÀY: 2-3 câu\n\nTiếng Việt, ngắn gọn.";
 
   fetch("/api/groq",{
-    method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+key},
+    method:"POST",headers:{"Content-Type":"application/json"},
     body:JSON.stringify({model:"llama-3.3-70b-versatile",max_tokens:2200,temperature:0.72,messages:[{role:"user",content:prompt}]})
   }).then(function(r){return r.json();}).then(function(data){
     clearInterval(iv);$("ldbox").style.display="none";$("gbtn").disabled=false;
@@ -369,7 +410,7 @@ function genVocab(){
   var prompt="Bạn là giáo viên TOEIC. Tạo bài học từ vựng chủ đề \""+topic+"\".\n\nTrả lời ĐÚNG JSON. KHÔNG markdown. KHÔNG backticks.\n\n{\"topic\":\""+topic+"\",\"words\":[{\"en\":\"từ\",\"vi\":\"nghĩa\",\"pos\":\"n/v/adj\",\"example\":\"câu ví dụ\"}],\"quiz\":[{\"question\":\"câu hỏi\",\"options\":[\"A\",\"B\",\"C\",\"D\"],\"answer\":0,\"explain\":\"giải thích\"}],\"fill\":[{\"sentence\":\"câu có -------\",\"options\":[\"A\",\"B\",\"C\",\"D\"],\"answer\":0,\"explain\":\"giải thích\"}],\"paragraph\":\"đoạn 80-120 từ Anh, chèn (nghĩa Việt) sau từ khó\"}\n\nwords:12-15 từ. quiz:8 câu(4 options,answer=0-3). fill:6 câu Part 5(-------=chỗ trống,4 options,answer=0-3). paragraph: ngữ cảnh thực tế.\nCHỈ JSON.";
 
   fetch("/api/groq",{
-    method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+key},
+    method:"POST",headers:{"Content-Type":"application/json"},
     body:JSON.stringify({model:"llama-3.3-70b-versatile",max_tokens:3000,temperature:0.6,messages:[{role:"user",content:prompt}]})
   }).then(function(r){return r.json();}).then(function(data){
     clearInterval(iv);$("vld").style.display="none";$("vbtn").disabled=false;

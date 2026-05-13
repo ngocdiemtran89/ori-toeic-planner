@@ -783,10 +783,10 @@ $("capture-btn").addEventListener("click", function(){
   if(typeof html2canvas === 'undefined') { alert("Đang tải công cụ chụp ảnh, vui lòng thử lại sau 2 giây."); return; }
   btn.textContent = "⏳ Đang chụp...";
   btn.style.opacity = "0.5";
-  html2canvas($("step1-card"), {scale: 2, backgroundColor: "#ffffff"}).then(function(canvas) {
+  html2canvas($("step1-card"), {scale: 4, backgroundColor: "#ffffff"}).then(function(canvas) {
     var link = document.createElement("a");
     link.download = "Muc_Tieu_TOEIC_Thang_" + (new Date().getMonth()+1) + ".png";
-    link.href = canvas.toDataURL("image/png");
+    link.href = canvas.toDataURL("image/png", 1.0);
     link.click();
     btn.textContent = "📸 Đã lưu!";
     btn.style.opacity = "1";

@@ -1,4 +1,4 @@
-// Vercel Serverless Function — Proxy LLM / Groq API (Tự động fallback model)
+// Vercel Serverless Function — Proxy LLM / Groq API
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -6,30 +6,24 @@ export default async function handler(req, res) {
 
   const API_KEY = process.env.GROQ_API_KEY || process.env.LLM_API_KEY;
   if (!API_KEY) {
-    return res.status(500).json({ error: "Server chưa cấu hình API key (GROQ_API_KEY hoặc LLM_API_KEY)" });
+    return res.status(500).json({ error: "Server chưa cấu hình API key" });
   }
 
   const BASE_URL = (process.env.LLM_BASE_URL || "https://api.groq.com/openai/v1").replace(/\/+$/, "");
   
-  // Danh sách model chuẩn mới nhất của Groq
+  // Các model mới nhất trên hệ thống
   const candidateModels = [
     process.env.LLM_MODEL,
-    req.body.model,
-    "llama-3.3-70b-versatile",
-    "llama-3.2-3b-preview",
-    "llama-3.2-1b-preview",
-    "llama-3.2-11b-vision-preview",
-    "qwen-2.5-coder-32b",
-    "qwen-qwq-32b",
-    "mistral-saba-24b",
-    "deepseek-r1-distill-llama-70b",
-    "gemma2-9b-it"
+    "qwen/qwen3.8-27b",
+    "openai/gpt-oss-120b",
+    "llama-3.3-70b-specdec",
+    "llama-3.3-70b"
   ].filter(Boolean);
 
   const modelsToTry = [...new Set(candidateModels)];
   const { max_tokens, temperature, messages } = req.body;
   
-  const errors = [];
+  let lastError = null;
 
   for (const currentModel of modelsToTry) {
     try {
@@ -53,15 +47,11 @@ export default async function handler(req, res) {
         return res.status(200).json(data);
       }
 
-      errors.push({ model: currentModel, error: data?.error?.message || data });
+      lastError = data;
     } catch (err) {
-      errors.push({ model: currentModel, error: err.message });
+      lastError = { error: { message: err.message } };
     }
   }
 
-  return res.status(500).json({ 
-    error: { 
-      message: "Tất cả các model đều gặp lỗi: " + JSON.stringify(errors) 
-    } 
-  });
+  return res.status(500).json(lastError || { error: { message: "Lỗi kết nối AI" } });
 }

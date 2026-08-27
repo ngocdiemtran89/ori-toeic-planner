@@ -1,6 +1,5 @@
-// Vercel Serverless Function — Proxy LLM / Groq API (hỗ trợ đổi Model & Base URL linh hoạt)
+// Vercel Serverless Function — Proxy LLM / Groq API (Tự động fallback model)
 export default async function handler(req, res) {
-  // Chỉ cho phép POST
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -11,34 +10,54 @@ export default async function handler(req, res) {
   }
 
   const BASE_URL = (process.env.LLM_BASE_URL || "https://api.groq.com/openai/v1").replace(/\/+$/, "");
-  const DEFAULT_MODEL = process.env.LLM_MODEL || process.env.GROQ_MODEL || "llama-3.1-8b-instant";
+  
+  // Danh sách các model thử lần lượt nếu model trước bị lỗi quota hoặc không tồn tại
+  const candidateModels = [
+    process.env.LLM_MODEL,
+    req.body.model,
+    "llama-3.3-70b-versatile",
+    "deepseek-r1-distill-llama-70b",
+    "gemma2-9b-it",
+    "llama3-70b-8192",
+    "llama3-8b-8192"
+  ].filter(Boolean);
 
-  try {
-    const { model, max_tokens, temperature, messages } = req.body;
+  // Loại bỏ trùng lặp
+  const modelsToTry = [...new Set(candidateModels)];
 
-    const response = await fetch(`${BASE_URL}/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: model || DEFAULT_MODEL,
-        max_tokens: max_tokens || 2200,
-        temperature: temperature !== undefined ? temperature : 0.7,
-        messages: messages || [],
-      }),
-    });
+  const { max_tokens, temperature, messages } = req.body;
+  let lastError = null;
 
-    const data = await response.json();
+  for (const currentModel of modelsToTry) {
+    try {
+      const response = await fetch(`${BASE_URL}/chat/completions`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: currentModel,
+          max_tokens: max_tokens || 2200,
+          temperature: temperature !== undefined ? temperature : 0.7,
+          messages: messages || [],
+        }),
+      });
 
-    if (!response.ok) {
-      return res.status(response.status).json(data);
+      const data = await response.json();
+
+      if (response.ok && data.choices && data.choices.length > 0) {
+        return res.status(200).json(data);
+      }
+
+      // Nếu bị lỗi model không tồn tại hoặc hết quota, ghi nhận và thử model tiếp theo
+      lastError = data;
+      console.warn(`Model ${currentModel} failed:`, data?.error?.message || data);
+    } catch (err) {
+      lastError = { error: { message: err.message } };
+      console.error(`Request with model ${currentModel} threw error:`, err);
     }
-
-    return res.status(200).json(data);
-  } catch (err) {
-    console.error("LLM proxy error:", err);
-    return res.status(500).json({ error: "Lỗi kết nối server: " + err.message });
   }
+
+  return res.status(500).json(lastError || { error: { message: "Không có model nào khả dụng trên hệ thống" } });
 }

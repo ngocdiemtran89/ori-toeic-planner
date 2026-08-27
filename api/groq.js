@@ -11,22 +11,25 @@ export default async function handler(req, res) {
 
   const BASE_URL = (process.env.LLM_BASE_URL || "https://api.groq.com/openai/v1").replace(/\/+$/, "");
   
-  // Danh sách các model thử lần lượt nếu model trước bị lỗi quota hoặc không tồn tại
+  // Danh sách model chuẩn mới nhất của Groq
   const candidateModels = [
     process.env.LLM_MODEL,
     req.body.model,
     "llama-3.3-70b-versatile",
+    "llama-3.2-3b-preview",
+    "llama-3.2-1b-preview",
+    "llama-3.2-11b-vision-preview",
+    "qwen-2.5-coder-32b",
+    "qwen-qwq-32b",
+    "mistral-saba-24b",
     "deepseek-r1-distill-llama-70b",
-    "gemma2-9b-it",
-    "llama3-70b-8192",
-    "llama3-8b-8192"
+    "gemma2-9b-it"
   ].filter(Boolean);
 
-  // Loại bỏ trùng lặp
   const modelsToTry = [...new Set(candidateModels)];
-
   const { max_tokens, temperature, messages } = req.body;
-  let lastError = null;
+  
+  const errors = [];
 
   for (const currentModel of modelsToTry) {
     try {
@@ -50,14 +53,15 @@ export default async function handler(req, res) {
         return res.status(200).json(data);
       }
 
-      // Nếu bị lỗi model không tồn tại hoặc hết quota, ghi nhận và thử model tiếp theo
-      lastError = data;
-      console.warn(`Model ${currentModel} failed:`, data?.error?.message || data);
+      errors.push({ model: currentModel, error: data?.error?.message || data });
     } catch (err) {
-      lastError = { error: { message: err.message } };
-      console.error(`Request with model ${currentModel} threw error:`, err);
+      errors.push({ model: currentModel, error: err.message });
     }
   }
 
-  return res.status(500).json(lastError || { error: { message: "Không có model nào khả dụng trên hệ thống" } });
+  return res.status(500).json({ 
+    error: { 
+      message: "Tất cả các model đều gặp lỗi: " + JSON.stringify(errors) 
+    } 
+  });
 }
